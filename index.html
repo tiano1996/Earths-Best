@@ -12,13 +12,16 @@
 	<link rel="stylesheet" type="text/css" href="./public/md/css/ripples.min.css">
 	<link href="./public/style/common.css" type="text/css" rel="stylesheet" >
 	<style type="text/css">
-	.des{
-		vertical-align: middle;
-	}
 	.logo{
 		color:white;
 		font-weight: 800;
     	font-family: "microsoft yahei";
+    	float: left;
+	}
+	.slogo{
+		float: left;
+		padding-top:20px; 
+		color: #f1f1f1;
 	}
 	.login{
 		margin-top: -10px;
@@ -34,6 +37,22 @@
 		height: 35px;
 		border: none;
 	}
+	#header{
+		background:#1876d3;
+	}
+	.nav>li>a{
+		color:white;
+	}
+	.nav>li>a:focus, .nav>li>a:hover {
+	    background-color: #1876d3;
+	}
+	.nav>li>a:focus, .nav>li>a:hover{
+		padding-bottom: 13px;
+		border-bottom: 2px solid #f1f1f1;
+	}
+	.nav>li{
+		text-align: center;
+	}
 	</style>
 	<!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -41,10 +60,11 @@
     <![endif]-->
 </head>
 <body>
-<div id="header" style="background:#1876d3">
+<div id="header">
 	 <div class="container">
 	 	<div class="row">
-	 		<h1 class="logo">地球最好</h1><h3 class="fl">Earth-Best</h3>
+	 		<h1 class="logo">地球最好</h1>
+	 		<h3 class="slogo">Earth-Best</h3>
 	 	</div>
   	 	<div class="row des">
 	 		<div class="col-md-3 descript">
@@ -57,6 +77,62 @@
 	 			<a href="#" class="btn btn-material-light-green-600">登录</a>
 	 			<a href="#" class="btn btn-material-blue-400">注册</a>
 	 		</div>
+	 	</div>
+	 	<div class="row">
+	 		  <div class="navbar-header">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <nav id="bs-navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="">
+                    	<a href="#"><i class="fa fa-home"></i> 全部 </a>
+                    </li>
+                    <li class="">
+                    	<a href="#">Bootstrap</a>
+                    </li>
+                    <li class="">
+                    	<a href="#">HTML</a>
+                    </li>                     
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">CSS</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">css</a>
+                            </li>
+                            <li>
+                                <a href="#">css3</a>
+                            </li>
+                            <li>
+                                <a href="#"></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">JavaScript</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="">
+                                <a href="#">Jquery</a>
+                            </li>
+                            <li class="">
+                                <a href="">CoffeeJs</a>
+                            </li>
+                            <li>
+                                <a href="#">AngularJs</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                    	<a href="#">PHP</a>
+                    </li>
+                    <li>
+                    	<a href="#">JAVA</a>
+                    </li>
+                </ul>
 	 	</div>
 	 </div>
 </div>
