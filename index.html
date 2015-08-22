@@ -20,7 +20,7 @@
 	}
 	.slogo{
 		float: left;
-		padding-top:20px; 
+		padding-top:17px; 
 		color: #f1f1f1;
 	}
 	.login{
@@ -47,11 +47,14 @@
 	    background-color: #1876d3;
 	}
 	.nav>li>a:focus, .nav>li>a:hover{
-		padding-bottom: 13px;
+		padding-bottom: 4px;
 		border-bottom: 2px solid #f1f1f1;
 	}
 	.nav>li{
 		text-align: center;
+	}
+	@media (min-width: 768px) and (max-width: 991px) {
+		 
 	}
 	</style>
 	<!--[if lt IE 9]>
@@ -61,19 +64,19 @@
 </head>
 <body>
 <div id="header">
-	 <div class="container">
+	 <div class="container col-xs-offset-1">
 	 	<div class="row">
 	 		<h1 class="logo">地球最好</h1>
 	 		<h3 class="slogo">Earth-Best</h3>
 	 	</div>
-  	 	<div class="row des">
-	 		<div class="col-md-3 descript">
+  	 	<div class="row hidden-xs">
+	 		<div class="col-xs-4 descript">
 	 			Bootstrap@HTML交流分享
 	 		</div>
-	 		<div class="col-md-6 search">
-	 			<input type="text" name='sa' class="col-md-11 search" placeholder='search'/>
+	 		<div class="col-xs-4 search">
+	 			<input type="text" name='sa' class="col-xs-11 search" placeholder='search'/>
 	 		</div>
-	 		<div class="col-md-3 login">
+	 		<div class="col-xs-4 login">
 	 			<a href="#" class="btn btn-material-light-green-600">登录</a>
 	 			<a href="#" class="btn btn-material-blue-400">注册</a>
 	 		</div>
