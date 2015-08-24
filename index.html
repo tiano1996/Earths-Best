@@ -13,47 +13,6 @@
 		<link rel="stylesheet" type="text/css" href="./public/md/css/ripples.min.css">
 		<link rel="stylesheet" type="text/css" href="./public/md/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="./public/style/common.css">
-		<style type="text/css">
-			.post {
-				margin: 10px;
-				height: 600px;
-				background-color: white;
-				border-radius: 5px;
-				padding: 10px;
-			}
-			.sidebar {
-				margin: 10px;
-				height: 500px;
-				background-color: white;
-				border-radius: 5px;
-				padding: 10px;
-			}
-			.tag:after {
-				display: table;
-				content: " ";
-				width: 100%;
-				border-bottom: 1px solid #ccc;
-			}
-			.cate li {
-				list-style: none;
-				float: left;
-				padding: 5px 10px;
-			}
-			.cate li.active {
-				border: 1px solid #ccc;
-				border-bottom: none;
-				border-radius: 5px 5px 0 0;
-			}
-			.cate li>a {
-				text-decoration: none;
-			}
-			.tag:after {
-				clear: both;
-				display: table;
-				content: " ";
-			}
-
-		</style>
 		<!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -68,13 +27,13 @@
 					<h3 class="slogo">Earth-Best</h3>
 				</div>
 				<div class="row hidden-xs">
-					<div class="col-xs-4 descript">
+					<div class="col-xs-3 descript">
 						Bootstrap@HTML交流分享
 					</div>
-					<div class="col-xs-4 search">
-						<input type="text" name='sa' class="col-xs-11 search" placeholder='search' /> <i class='fa fa-search fa-lg'></i>
+					<div class="col-xs-6 search">
+						<input type="text" name='sa' class="col-xs-11" placeholder='search' /> <i class='fa fa-search fa-lg'></i>
 					</div>
-					<div class="col-xs-4 login">
+					<div class="col-xs-3 login">
 						<a href="#" class="btn btn-material-light-green-600">登录</a>
 						<a href="#" class="btn btn-material-blue-400">注册</a>
 					</div>
@@ -143,8 +102,8 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 bg-info post">
-					<div class="tag">
+				<div class="col-md-8 bg-info">
+					<div class="info-base">
 						<ul class="cate">
 							<li class="active"><a href="#">最新发布</a></li>
 							<li><a href="#">经验分享</a></li>
@@ -153,7 +112,23 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-md-3 bg-info sidebar">sidebar</div>
+				<div class="col-md-4 pull-right side-base">
+					<div class=" bg-info sidebar">
+						<div class="info-base">
+							<div class="info-tit">
+								<i class="fa fa-list-ol"></i>&nbsp;TOP 10
+							</div>
+							hahhdfhadaskfdjsa
+						</div>
+					</div>
+					<div class=" bg-info sidebar">
+						<div class="info-base">
+							<div class="info-tit">
+								<i class="fa fa-link"></i>&nbsp;友情连接
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="footer">
