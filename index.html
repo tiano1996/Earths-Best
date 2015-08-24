@@ -1,24 +1,197 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>bootstrap资源分享站|分享人生,分享快乐</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="资源分享">
-	<meta name="author" content="popohum,tino1996">
-	<link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js" rel="stylesheet">
-	<link href="./public/style/common.css" type="text/css" rel="stylesheet" >
-	<!--[if lt IE 9]>
+
+	<head>
+		<title>bootstrap资源分享站|分享人生,分享快乐</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="资源分享">
+		<meta name="author" content="popohum,tino1996">
+		<link rel="stylesheet" type="text/css" href="./public/md/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./public/md/css/material.min.css">
+		<link rel="stylesheet" type="text/css" href="./public/md/css/material-fullpalette.min.css">
+		<link rel="stylesheet" type="text/css" href="./public/md/css/ripples.min.css">
+		<link rel="stylesheet" type="text/css" href="./public/md/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="./public/style/common.css">
+		<style type="text/css">
+			.logo {
+				color: white;
+				font-weight: 800;
+				font-family: "microsoft yahei";
+				float: left;
+			}
+			.slogo {
+				float: left;
+				padding-top: 17px;
+				color: #f1f1f1;
+			}
+			.login {
+				margin-top: -10px;
+			}
+			.descript {
+				color: white;
+				background: #1464c1;
+				padding-top: 5px;
+				padding-bottom: 5px;
+				font-size: 18px;
+			}
+			.search {
+				height: 35px;
+				border: none;
+			}
+			#header {
+				background: #1876d3;
+			}
+			.nav>li>a {
+				color: white;
+			}
+			.nav>li>a:focus,
+			.nav>li>a:hover {
+				background-color: #1876d3;
+			}
+			.nav>li>a:focus,
+			.nav>li>a:hover {
+				padding-bottom: 4px;
+				border-bottom: 2px solid #7cb342;
+			}
+			.dropdown li {
+				padding: 4px;
+			}
+			.dropdown li:not(:last-child) {
+				border-bottom: 1px solid #F1F1F1;
+			}
+			.nav>li {
+				text-align: center;
+			}
+			@media (min-width: 768px) and (max-width: 991px) {}
+		</style>
+		<!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
-<body>
-<div id="header">
-	首页
-</div>
-<div class="container">
-	body
-</div>
-</body>
+	</head>
+
+	<body>
+		<div id="header">
+			<div class="container col-xs-offset-1">
+				<div class="row">
+					<h1 class="logo">地球最好</h1>
+					<h3 class="slogo">Earth-Best</h3>
+				</div>
+				<div class="row hidden-xs">
+					<div class="col-xs-4 descript">
+						Bootstrap@HTML交流分享
+					</div>
+					<div class="col-xs-4 search">
+						<input type="text" name='sa' class="col-xs-11 search" placeholder='search' />
+					</div>
+					<div class="col-xs-4 login">
+						<a href="#" class="btn btn-material-light-green-600">登录</a>
+						<a href="#" class="btn btn-material-blue-400">注册</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="navbar-header">
+						<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<nav id="bs-navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="">
+								<a href="#"><i class="fa fa-home"></i> 全部 </a>
+							</li>
+							<li class="">
+								<a href="#">Bootstrap</a>
+							</li>
+							<li class="">
+								<a href="#">HTML</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle">CSS <i class="fa fa-caret-down"></i></a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="#">css</a>
+									</li>
+									<li>
+										<a href="#">css3</a>
+									</li>
+									<li>
+										<a href="#"></a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle">JavaScript <i class="fa fa-caret-down"></i></a>
+								<ul class="dropdown-menu" role="menu">
+									<li class="">
+										<a href="#">JQuery</a>
+									</li>
+									<li class="">
+										<a href="">CoffeeJS</a>
+									</li>
+									<li class="">
+										<a href="">BackboneJS</a>
+									</li>
+									<li>
+										<a href="#">AngularJS</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">PHP</a>
+							</li>
+							<li>
+								<a href="#">JAVA</a>
+							</li>
+						</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+		</div>
+		<div id="footer">
+		</div>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src='./public/md/js/material.min.js'></script>
+		<script type="text/javascript" src='./public/md/js/ripples.min.js'></script>
+		<script type="text/javascript">
+			$.material.init()
+			 $(document).ready(function() {
+				menuToggle();
+				$(window).resize(function() {
+					menuToggle();
+				});
+			});
+
+			function menuToggle() {
+				$('.dropdown').off('mouseover mouseleave');
+				if ($('.navbar-toggle').css('display') == 'none') {
+					$('.dropdown').on('mouseover', function() {
+						$(this).find('>a>i').removeClass('fa-caret-down').addClass('fa-caret-up').animate()
+						$(this).find('>a').css({
+							'padding-bottom': '11px',
+							'border-bottom': '2px solid #7cb342',
+							'margin-bottom': '2px'
+						})
+						$(this).find('.dropdown-menu').stop().slideDown("fast");
+					});
+					$('.dropdown').on('mouseleave', function() {
+						$(this).find('>a>i').removeClass('fa-caret-up').addClass('fa-caret-down')
+						$(this).find('>a').css({
+							'padding-bottom': '15px',
+							'border-bottom': 'none',
+							'margin-bottom': '0px'
+						})
+						$(this).find('.dropdown-menu').stop().slideUp("fast");
+					});
+				}
+			}
+		</script>
+	</body>
+
 </html>
