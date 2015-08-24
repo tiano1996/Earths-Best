@@ -8,62 +8,51 @@
 		<meta name="description" content="资源分享">
 		<meta name="author" content="popohum,tino1996">
 		<link rel="stylesheet" type="text/css" href="./public/md/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="./public/md/css/material.min.css">
-		<link rel="stylesheet" type="text/css" href="./public/md/css/material-fullpalette.min.css">
+		<!-- <link rel="stylesheet" type="text/css" href="./public/md/css/material.min.css"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="./public/md/css/material-fullpalette.min.css"> -->
 		<link rel="stylesheet" type="text/css" href="./public/md/css/ripples.min.css">
 		<link rel="stylesheet" type="text/css" href="./public/md/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="./public/style/common.css">
 		<style type="text/css">
-			.logo {
-				color: white;
-				font-weight: 800;
-				font-family: "microsoft yahei";
+			.post {
+				margin: 10px;
+				height: 600px;
+				background-color: white;
+				border-radius: 5px;
+				padding: 10px;
+			}
+			.sidebar {
+				margin: 10px;
+				height: 500px;
+				background-color: white;
+				border-radius: 5px;
+				padding: 10px;
+			}
+			.tag:after {
+				display: table;
+				content: " ";
+				width: 100%;
+				border-bottom: 1px solid #ccc;
+			}
+			.cate li {
+				list-style: none;
 				float: left;
+				padding: 5px 10px;
 			}
-			.slogo {
-				float: left;
-				padding-top: 17px;
-				color: #f1f1f1;
+			.cate li.active {
+				border: 1px solid #ccc;
+				border-bottom: none;
+				border-radius: 5px 5px 0 0;
 			}
-			.login {
-				margin-top: -10px;
+			.cate li>a {
+				text-decoration: none;
 			}
-			.descript {
-				color: white;
-				background: #1464c1;
-				padding-top: 5px;
-				padding-bottom: 5px;
-				font-size: 18px;
+			.tag:after {
+				clear: both;
+				display: table;
+				content: " ";
 			}
-			.search {
-				height: 35px;
-				border: none;
-			}
-			#header {
-				background: #1876d3;
-			}
-			.nav>li>a {
-				color: white;
-			}
-			.nav>li>a:focus,
-			.nav>li>a:hover {
-				background-color: #1876d3;
-			}
-			.nav>li>a:focus,
-			.nav>li>a:hover {
-				padding-bottom: 4px;
-				border-bottom: 2px solid #7cb342;
-			}
-			.dropdown li {
-				padding: 4px;
-			}
-			.dropdown li:not(:last-child) {
-				border-bottom: 1px solid #F1F1F1;
-			}
-			.nav>li {
-				text-align: center;
-			}
-			@media (min-width: 768px) and (max-width: 991px) {}
+			
 		</style>
 		<!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -83,7 +72,7 @@
 						Bootstrap@HTML交流分享
 					</div>
 					<div class="col-xs-4 search">
-						<input type="text" name='sa' class="col-xs-11 search" placeholder='search' />
+						<input type="text" name='sa' class="col-xs-11 search" placeholder='search' /> <i class='fa fa-search fa-lg'></i>
 					</div>
 					<div class="col-xs-4 login">
 						<a href="#" class="btn btn-material-light-green-600">登录</a>
@@ -114,13 +103,13 @@
 								<a href="#" class="dropdown-toggle">CSS <i class="fa fa-caret-down"></i></a>
 								<ul class="dropdown-menu">
 									<li>
-										<a href="#">css</a>
+										<a href="#">CSS</a>
 									</li>
 									<li>
-										<a href="#">css3</a>
+										<a href="#">LESS</a>
 									</li>
 									<li>
-										<a href="#"></a>
+										<a href="#">SASS</a>
 									</li>
 								</ul>
 							</li>
@@ -131,10 +120,10 @@
 										<a href="#">JQuery</a>
 									</li>
 									<li class="">
-										<a href="">CoffeeJS</a>
+										<a href="#">CoffeeJS</a>
 									</li>
 									<li class="">
-										<a href="">BackboneJS</a>
+										<a href="#">BackboneJS</a>
 									</li>
 									<li>
 										<a href="#">AngularJS</a>
@@ -152,6 +141,19 @@
 			</div>
 		</div>
 		<div class="container">
+			<div class="row">
+				<div class="col-md-8 bg-info post">
+					<div class="tag">
+						<ul class="cate">
+							<li class="active"><a href="#">最新发布</a></li>
+							<li><a href="#">经验分享</a></li>
+							<li><a href="#">疑难解答</a></li>
+							<li><a href="#">资源分享</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3 bg-info sidebar">sidebar</div>
+			</div>
 		</div>
 		<div id="footer">
 		</div>
