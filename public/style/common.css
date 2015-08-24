@@ -8,13 +8,14 @@ body {
 }
 .logo {
 	color: white;
-	font-weight: 800;
+	font-weight: 700;
 	float: left;
 }
 .slogo {
 	float: left;
+	margin-left: 3px;
 	padding-top: 17px;
-	color: #f1f1f1;
+	color: #90caf9;
 }
 .login {
 	margin-top: -10px;
@@ -22,13 +23,17 @@ body {
 .descript {
 	color: white;
 	background: #1464c1;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	height: 30px;
+	line-height: 30px;
 	font-size: 18px;
+	max-width: 270px;
+	float: left;
+	text-align: center;
 }
-.search {
-	height: 35px;
+.search input {
+	height: 30px;
 	border: none;
+	border: 1px solid  #1464c1;
 }
 #header {
 	background: #1876d3;
@@ -65,7 +70,7 @@ body {
 	position: relative;
 	padding: 8px 30px;
 	border: 0;
-	margin: 10px 1px;
+	margin: 8px 1px;
 	cursor: pointer;
 	border-radius: 2px;
 	text-transform: uppercase;
@@ -103,3 +108,79 @@ body {
 	;
 }
 @media (min-width: 768px) and (max-width: 991px) {}
+
+
+/*---------- 以下 面板 ---------------*/
+.bg-info { /*公用圆角白底 上下15px外边距*/
+	margin: 15px 0;
+	position: relative;
+	background-color: white;
+	border-radius: 5px;
+	padding: 0px;
+}
+
+.info-base {
+	padding: 15px;
+}
+.info-base:before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 40px;
+	left: 0px;
+	right: 0px;
+	height: 1px;
+	background: #bdbdbd;
+	z-index: 1;
+}
+.side-base {
+	padding-right: 0px;
+}
+.sidebar {
+
+}
+.info-tit {
+	color: #424242;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.info-tit i {
+	color: #bdbdbd;
+}
+/*------- 以下 tab ----------------*/
+.cate {
+	padding: 0;
+	list-style: none;
+	margin-top: -4px;
+	background: #fff;
+}
+.cate:after {
+	content: '';
+	display: block;
+	clear: both;
+	line-height: 0px;
+	height: 0px;
+}
+.cate li {
+	position: relative;
+	z-index: 1;
+	float: left;
+	border-radius: 5px 5px 0 0;
+	border: 1px solid transparent;
+	border-bottom: 1px solid #bdbdbd;
+}
+.cate li a {
+	color: #1976d2;
+	text-decoration: none;
+	display: block;
+	padding: 3px 15px;
+	font-size: 16px;
+}
+.cate li.active {
+	border: 1px solid #bdbdbd;
+	border-bottom: 1px solid #fff;
+
+}
+.cate li.active a {
+	color: #424242;
+}
