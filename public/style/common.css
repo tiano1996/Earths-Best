@@ -1,3 +1,105 @@
-body{
-	font-family:'microsoft yahei'
+body {
+	font-family: "微软雅黑", "microsoft yahei";
+	background-color: #EEE;
 }
+.navbar-collapse {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.logo {
+	color: white;
+	font-weight: 800;
+	float: left;
+}
+.slogo {
+	float: left;
+	padding-top: 17px;
+	color: #f1f1f1;
+}
+.login {
+	margin-top: -10px;
+}
+.descript {
+	color: white;
+	background: #1464c1;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 18px;
+}
+.search {
+	height: 35px;
+	border: none;
+}
+#header {
+	background: #1876d3;
+}
+.nav>li>a {
+	color: white;
+}
+.nav>li>a:focus,
+.nav>li>a:hover {
+	background-color: #1876d3;
+	padding-bottom: 4px;
+	border-bottom: 2px solid #7cb342;
+}
+.dropdown li {
+	padding: 4px;
+	border: 0;
+}
+.dropdown-menu li {
+	overflow: hidden;
+	position: relative;
+}
+.dropdown-menu li:hover {
+	background-color: #f1f1f1;
+}
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+	background-color: transparent;
+	color: #009688;
+}
+.dropdown li:not(:last-child) {
+	border-bottom: 1px solid #F1F1F1;
+}
+.btn {
+	position: relative;
+	padding: 8px 30px;
+	border: 0;
+	margin: 10px 1px;
+	cursor: pointer;
+	border-radius: 2px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: rgba(255, 255, 255, .84);
+	transition: background-color .2s ease, box-shadow .28s cubic-bezier(.4, 0, .2, 1);
+	outline: none!important;
+}
+.btn:hover {
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .12), 0 1px 6px 0 rgba(0, 0, 0, .12);
+}
+.btn-material-blue-400 {
+	background-color: #42a5f5;
+	color: rgba(255, 255, 255, .84);
+}
+.btn-material-blue-400:hover,
+.btn-material-blue-400:focus {
+	color: rgba(255, 255, 255, .84);
+	background-color: #55aef6;
+}
+.btn-material-light-green-600 {
+	background-color: #7cb342;
+	color: rgba(255, 255, 255, .84);
+}
+.btn-material-light-green-600:hover,
+.btn-material-light-green-600:focus {
+	color: rgba(255, 255, 255, .84);
+	background-color: #86bd4c;
+}
+.search>i.fa-search {
+	position: absolute;
+	top: 10px;
+	margin-left: -26px;
+	color: rgba(120, 180, 60, 0.8);
+	;
+}
+@media (min-width: 768px) and (max-width: 991px) {}
