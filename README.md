@@ -26,3 +26,9 @@ QQ群：
 152842347
 
 <a href="http://tiano.gotoip4.com">演示地址</a>
+
+效果图：
+
+<img src="image-1.jpg" alt="">
+
+<img src="image-2.jpg" alt="">
