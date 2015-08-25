@@ -1,6 +1,10 @@
 # Earths-Best
 Bootstrap@HTML5
 
+项目参与者：
+
+八荒、炮姐、小灰灰、美工狗
+
 目的：
 
 1. 方便群成员交流，提高，整合
@@ -22,3 +26,9 @@ QQ群：
 152842347
 
 <a href="http://tiano.gotoip4.com">演示地址</a>
+
+效果图：
+
+<img src="image-1.jpg" alt="">
+
+<img src="image-2.jpg" alt="">
