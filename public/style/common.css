@@ -2,6 +2,15 @@ body {
 	font-family: "微软雅黑", "microsoft yahei";
 	background-color: #EEE;
 }
+dl,
+h3,
+menu,
+ol,
+p,
+pre,
+ul {
+	margin: 1em 0;
+}
 .navbar-collapse {
 	padding-left: 0px;
 	padding-right: 0px;
@@ -21,7 +30,7 @@ body {
 	margin-top: -10px;
 }
 .descript {
-	color: white;
+	color: #fff;
 	background: #1464c1;
 	height: 30px;
 	line-height: 30px;
@@ -33,13 +42,13 @@ body {
 .search input {
 	height: 30px;
 	border: none;
-	border: 1px solid  #1464c1;
+	border: 1px solid #1464c1;
 }
 #header {
 	background: #1876d3;
 }
 .nav>li>a {
-	color: white;
+	color: #fff;
 }
 .nav>li>a:focus,
 .nav>li>a:hover {
@@ -102,23 +111,22 @@ body {
 }
 .search>i.fa-search {
 	position: absolute;
-	top: 10px;
-	margin-left: -26px;
+	top: 8px;
+	margin-left: -24px;
 	color: rgba(120, 180, 60, 0.8);
-	;
 }
 @media (min-width: 768px) and (max-width: 991px) {}
-
-
 /*---------- 以下 面板 ---------------*/
-.bg-info { /*公用圆角白底 上下15px外边距*/
+
+.bg-info {
+	/*公用圆角白底 上下15px外边距*/
+	
 	margin: 15px 0;
 	position: relative;
 	background-color: white;
 	border-radius: 5px;
 	padding: 0px;
 }
-
 .info-base {
 	padding: 15px;
 }
@@ -145,26 +153,15 @@ body {
 	color: #bdbdbd;
 }
 /*------- 以下 tab ----------------*/
+
 .cate {
-	padding: 0;
-	list-style: none;
 	margin-top: -4px;
-	background: #fff;
-}
-.cate:after {
-	content: '';
-	display: block;
-	clear: both;
-	line-height: 0px;
-	height: 0px;
 }
 .cate li {
 	position: relative;
 	z-index: 1;
 	float: left;
 	border-radius: 5px 5px 0 0;
-	border: 1px solid transparent;
-	border-bottom: 1px solid #bdbdbd;
 }
 .cate li a {
 	color: #1976d2;
@@ -176,67 +173,116 @@ body {
 .cate li.active {
 	border: 1px solid #bdbdbd;
 	border-bottom: 1px solid #fff;
-
 }
 .cate li.active a {
 	color: #424242;
 }
-/*----------- 以下 右侧TOP10列表-------------------*/
-.top10 {
-	padding: 0;
-	margin: 0;
-	list-style-position: inside;
+.cate>a {
+	margin-top: -6px;
+	padding: 5px 10px;
 }
-.top10 li {
-	position: relative;
+li.new-article a {
+	margin: -2px 0;
+	color: #fff;
 }
-.top10 li:after {
-	content: '';
-	height: 1px;
-	line-height: 1px;
-	background: #eeeeee;
-	position: absolute;
-	left: -15px;
-	right: -15px;
-	top: 36px;
+li.post-style a {
+	color: #757575;
+	background-color: rgb(230, 230, 230);
+	padding: 3px 8px;
+	border-radius: 3px;
+	margin: -2px 2px;
 }
-.top10 li:last-child:after {
+/*----- tag -------*/
+
+.tag li {
+	float: left;
+	padding: 3px 5px;
+}
+.badge {
+	border-radius: 5px;
+	padding: 5px 8px;
+}
+.badge-success {
+	background-color: #7cb342;
+	font-weight: 500;
+}
+.post-list .post {
+	margin: 0px -15px;
+	padding: 5px 15px;
+	border-top: 1px solid #F1F1F1;
+}
+.post-list :first-child {
+	border-top: none;
+}
+.post-list>div:hover {
+	background-color: #f6f6f6;
+}
+.post-list .post-content {
 	display: none;
 }
-.top10 li a {
-	display: block;
-	height: 36px;
-	line-height: 36px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+.post-head>i {
+	color: rgba(250, 50, 0, 0.8);
 }
-.top10 li:first-child,
-.top10 li:nth-child(2),
-.top10 li:nth-child(3) {
-	color: #f57f17;
-}
-.top10 li:first-child a,
-.top10 li:nth-child(2) a,
-.top10 li:nth-child(3) a {
-	color: #f44336;
-}
-/*-------以下 友情链接 ----------------*/
-.index-link:after {
-	content: '';
-	height: 0px;
-	line-height: 0px;
-	display: block;
-	clear: both;
-}
-.index-link a {
-	display: block;
-	max-width: 100%;
-	margin-bottom: 10px;
-}
-.index-link a:last-child {
-	margin-bottom: 0;
-}
-.index-link a img {
-	max-width: 100%;
-}
+.post-footer {
+	color: #757575;
+	/*----------- 以下 右侧TOP10列表-------------------*/
+	
+	.top10 {
+		padding: 0;
+		margin: 0;
+		list-style-position: inside;
+	}
+	.top10 li {
+		position: relative;
+	}
+	.top10 li:after {
+		content: '';
+		height: 1px;
+		line-height: 1px;
+		background: #eeeeee;
+		position: absolute;
+		left: -15px;
+		right: -15px;
+		top: 36px;
+	}
+	.top10 li:last-child:after {
+		display: none;
+	}
+	.top10 li a {
+		display: block;
+		height: 36px;
+		line-height: 36px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.top10 li:first-child,
+	.top10 li:nth-child(2),
+	.top10 li:nth-child(3) {
+		color: #f57f17;
+	}
+	.top10 li:first-child a,
+	.top10 li:nth-child(2) a,
+	.top10 li:nth-child(3) a {
+		color: #f44336;
+	}
+	/*-------以下 友情链接 ----------------*/
+	
+	.index-link:after {
+		content: '';
+		height: 0px;
+		line-height: 0px;
+		display: block;
+		clear: both;
+	}
+	.index-link a {
+		display: block;
+		max-width: 100%;
+		margin-bottom: 10px;
+	}
+	.index-link a:last-child {
+		margin-bottom: 0;
+	}
+	.index-link a img {
+		max-width: 100%;
+	}

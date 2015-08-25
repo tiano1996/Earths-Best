@@ -8,8 +8,6 @@
 		<meta name="description" content="资源分享">
 		<meta name="author" content="popohum,tino1996">
 		<link rel="stylesheet" type="text/css" href="./public/md/css/bootstrap.min.css">
-		<!-- <link rel="stylesheet" type="text/css" href="./public/md/css/material.min.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="./public/md/css/material-fullpalette.min.css"> -->
 		<link rel="stylesheet" type="text/css" href="./public/md/css/ripples.min.css">
 		<link rel="stylesheet" type="text/css" href="./public/md/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="./public/style/common.css">
@@ -104,12 +102,62 @@
 			<div class="row">
 				<div class="col-md-9 bg-info">
 					<div class="info-base">
-						<ul class="cate">
+						<ul class="cate list-unstyled clearfix">
 							<li class="active"><a href="#">最新发布</a></li>
 							<li><a href="#">经验分享</a></li>
 							<li><a href="#">疑难解答</a></li>
 							<li><a href="#">资源分享</a></li>
+							<li class="pull-right post-style"><a href="javascript:;"><i class="fa fa-th-large"></i></a></li>
+							<li class="pull-right new-article"><a href="#" class="btn btn-success">发表新文章</a></li>
 						</ul>
+						<ul class="tag list-unstyled clearfix">
+							<li><a href="#" class="badge">angularJS</a></li>
+							<li><a href="#" class="badge">Bootstrap</a></li>
+							<li><a href="#" class="badge">招聘</a></li>
+							<li><a href="#" class="badge">HMTL预处理</a></li>
+							<li><a href="#" class="badge badge-success"><i class="fa fa-plus"></i> 更多</a></li>
+						</ul>
+
+						<div class="post-list">
+							<div class="post">
+								<div class="post-head">
+									<a href="#">Awesome Node.js development tools for 2015</a>
+									<i class="fa fa-lg fa-commenting pull-right" title="热度">58</i>
+								</div>
+								<div class="post-content">
+									<p>
+									With the arrival of Node.js, creating a website in JavaScript is very easy and cost-effective. This framework brings a massive changeover in the web application development with the advanced push innovation instead of using old web sockets. With these
+									beneficial aspects, [Node.js][2] is gaining popularity among web developers who aspire to develop their next website in this framework. …
+									</p>
+								</div>
+								<div class="post-footer">
+									<i class="fa fa-user"></i><a href="#"> popohum</a>
+									<i class="fa fa-edit"></i><span>8-25 17:30</span>
+									<i class="fa fa-reply"></i><span>8-25 18:00</span>
+									<a href="#">angularJS</a> <a href="#">Bootstrap</a>
+								</div>
+							</div>
+							<div class="post">
+								<div class="post-head">标题2</div>
+								<div class="post-content">简洁正文</div>
+								<div class="post-footer">脚部</div>
+							</div>
+							<div class="post">
+								<div class="post-head">标题3</div>
+								<div class="post-content">简洁正文</div>
+								<div class="post-footer">脚部</div>
+							</div>
+							<div class="post">
+								<div class="post-head">标题4</div>
+								<div class="post-content">简洁正文</div>
+								<div class="post-footer">脚部</div>
+							</div>
+							<div class="post">
+								<div class="post-head">标题5</div>
+								<div class="post-content">简洁正文</div>
+								<div class="post-footer">脚部</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- 右侧容器 -->
@@ -156,8 +204,8 @@
 		<div id="footer" class="text-center">
 			CopyLeft 2015 Bootstrap@HTML5群(152842347) 版权部分所有，遵循 <a target="_blank" href="http://opensource.org/licenses/gpl-2.0.php">GNU GENERAL PUBLIC LICENSE v2</a> 授权使用 <a href="#">土豪请慷慨捐赠</a>
 		</div>
-		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./public/jquery/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="./public/md/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src='./public/md/js/material.min.js'></script>
 		<script type="text/javascript" src='./public/md/js/ripples.min.js'></script>
 		<script type="text/javascript">
@@ -167,13 +215,22 @@
 				$(window).resize(function() {
 					menuToggle();
 				});
+				$('.post-style>a').on('click', function() {
+					if ($('.post .post-content').css('display') == 'none') {
+						$(this).find('>i').addClass('fa-th-list').removeClass('fa-th-large');
+						$('.post .post-content').css('display', 'block');
+					} else {
+						$(this).find('>i').removeClass('fa-th-list').addClass('fa-th-large');
+						$('.post .post-content').css('display', 'none');
+					}
+				})
 			});
 
 			function menuToggle() {
 				$('.dropdown').off('mouseover mouseleave');
 				if ($('.navbar-toggle').css('display') == 'none') {
 					$('.dropdown').on('mouseover', function() {
-						$(this).find('>a>i').removeClass('fa-caret-down').addClass('fa-caret-up').animate()
+						$(this).find('>a>i').removeClass('fa-caret-down').addClass('fa-caret-up')
 						$(this).find('>a').css({
 							'padding-bottom': '11px',
 							'border-bottom': '2px solid #7cb342',
