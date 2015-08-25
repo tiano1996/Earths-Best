@@ -225,65 +225,64 @@ li.post-style a {
 }
 .post-footer {
 	color: #757575;
-}
-/*----------- 以下 右侧TOP10列表-------------------*/
-
-.top10 {
-	padding: 0;
-	margin: 0;
-	list-style-position: inside;
-}
-.top10 li {
-	position: relative;
-}
-.top10 li:after {
-	content: '';
-	height: 1px;
-	line-height: 1px;
-	background: #eeeeee;
-	position: absolute;
-	left: -15px;
-	right: -15px;
-	top: 36px;
-}
-.top10 li:last-child:after {
-	display: none;
-}
-.top10 li a {
-	display: block;
-	height: 36px;
-	line-height: 36px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.top10 li:first-child,
-.top10 li:nth-child(2),
-.top10 li:nth-child(3) {
-	color: #f57f17;
-}
-.top10 li:first-child a,
-.top10 li:nth-child(2) a,
-.top10 li:nth-child(3) a {
-	color: #f44336;
-}
-/*-------以下 友情链接 ----------------*/
-
-.index-link:after {
-	content: '';
-	height: 0px;
-	line-height: 0px;
-	display: block;
-	clear: both;
-}
-.index-link a {
-	display: block;
-	max-width: 100%;
-	margin-bottom: 10px;
-}
-.index-link a:last-child {
-	margin-bottom: 0;
-}
-.index-link a img {
-	max-width: 100%;
-}
+	/*----------- 以下 右侧TOP10列表-------------------*/
+	
+	.top10 {
+		padding: 0;
+		margin: 0;
+		list-style-position: inside;
+	}
+	.top10 li {
+		position: relative;
+	}
+	.top10 li:after {
+		content: '';
+		height: 1px;
+		line-height: 1px;
+		background: #eeeeee;
+		position: absolute;
+		left: -15px;
+		right: -15px;
+		top: 36px;
+	}
+	.top10 li:last-child:after {
+		display: none;
+	}
+	.top10 li a {
+		display: block;
+		height: 36px;
+		line-height: 36px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.top10 li:first-child,
+	.top10 li:nth-child(2),
+	.top10 li:nth-child(3) {
+		color: #f57f17;
+	}
+	.top10 li:first-child a,
+	.top10 li:nth-child(2) a,
+	.top10 li:nth-child(3) a {
+		color: #f44336;
+	}
+	/*-------以下 友情链接 ----------------*/
+	
+	.index-link:after {
+		content: '';
+		height: 0px;
+		line-height: 0px;
+		display: block;
+		clear: both;
+	}
+	.index-link a {
+		display: block;
+		max-width: 100%;
+		margin-bottom: 10px;
+	}
+	.index-link a:last-child {
+		margin-bottom: 0;
+	}
+	.index-link a img {
+		max-width: 100%;
+	}
