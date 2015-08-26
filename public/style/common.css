@@ -1,3 +1,14 @@
+/*-------全局 样式（覆盖bootstrap）----------*/
+.badge {
+	font-weight: 500;
+}
+a {
+	color: #1976d2;
+}
+/*-------dend 全局样式----------------------*/
+
+
+
 body {
 	font-family: "微软雅黑", "microsoft yahei";
 	background-color: #EEE;
@@ -25,6 +36,7 @@ ul {
 	margin-left: 3px;
 	padding-top: 11px;
 	color: #90caf9;
+	margin-bottom: 10px;
 }
 .login {
 	margin-top: -10px;
@@ -46,6 +58,10 @@ ul {
 }
 #header {
 	background: #1876d3;
+}
+#footer {
+	color: #757575;
+	margin-bottom: 20px;
 }
 .nav>li>a {
 	color: #fff;
@@ -117,10 +133,12 @@ ul {
 }
 @media (min-width: 768px) and (max-width: 991px) {}
 /*---------- 以下 面板 ---------------*/
-
+.main-base {
+	padding: 0;
+}
 .bg-info {
 	/*公用圆角白底 上下15px外边距*/
-	
+
 	margin: 15px 0;
 	position: relative;
 	background-color: white;
@@ -145,9 +163,10 @@ ul {
 	padding-right: 0px;
 }
 .info-tit {
+	margin-top: -4px;
 	color: #424242;
 	font-size: 16px;
-	margin-bottom: 10px;
+	margin-bottom: 21px;
 }
 .info-tit i {
 	color: #bdbdbd;
@@ -190,7 +209,8 @@ li.post-style a {
 	background-color: rgb(230, 230, 230);
 	padding: 3px 8px;
 	border-radius: 3px;
-	margin: -2px 2px;
+	margin: -2px 0;
+	margin-left: 5px;
 }
 /*----- tag -------*/
 
@@ -208,23 +228,61 @@ li.post-style a {
 }
 .post-list .post {
 	margin: 0px -15px;
-	padding: 5px 15px;
+	padding: 10px 15px;
 	border-top: 1px solid #F1F1F1;
 }
 .post-list :first-child {
 	border-top: none;
 }
 .post-list>div:hover {
-	background-color: #f6f6f6;
+	background-color: #f7f7f7;
 }
 .post-list .post-content {
 	display: none;
 }
+.post-head {
+	margin-bottom: 3px;
+}
+.post-head a {
+	font-size: 18px;
+}
+.post-head a span {
+	padding-right: 5px;
+}
 .post-head>i {
-	color: rgba(250, 50, 0, 0.8);
+	height: 20px;
+	line-height: 20px;
+	color: #e57373;
+}
+.post-content p {
+	margin: 10px 0;
 }
 .post-footer {
 	color: #757575;
+}
+.post-footer span,
+.post-footer a {
+	margin-right: 5px;
+}
+.post-footer a {
+	text-decoration: underline;
+}
+.post-footer a.post-badge {
+	text-decoration: none;
+	padding: 0 3px;
+	border-radius: 3px;
+	color: #448aff;
+}
+.post-footer a.post-badge:hover {
+	background: #e0e0e0;
+}
+.post-footer span {color: #757575;}
+.post-footer .fa-user {
+	color: #8bc34a;
+}
+.post-footer .fa-edit,
+.post-footer .fa-reply {
+	color: #bdbdbd;
 }
 /*----------- 以下 右侧TOP10列表-------------------*/
 
@@ -234,20 +292,16 @@ li.post-style a {
 	list-style-position: inside;
 }
 .top10 li {
+	margin: 0 -15px;
+	padding: 0 15px;
 	position: relative;
+	border-bottom: 1px solid #eee;
 }
-.top10 li:after {
-	content: '';
-	height: 1px;
-	line-height: 1px;
-	background: #eeeeee;
-	position: absolute;
-	left: -15px;
-	right: -15px;
-	top: 36px;
+.top10 li:hover {
+	background-color: #f7f7f7;
 }
-.top10 li:last-child:after {
-	display: none;
+.top10 li:last-child {
+	border-color: transparent;
 }
 .top10 li a {
 	display: block;
@@ -299,8 +353,129 @@ li.post-style a {
 	/*vertical-align: middle;*/
 }
 .login .user-header>img{
-	border: 1px solid #F1F1F1
+	width: 42px;
+	height: 42px;
+	border-radius: 3px;
+}
+.header-user {
+	color: #fff;
+	margin-left: 5px;
+	font-size: 16px;
 }
 .login>ul>li>a:hover{
 	border: none;
+}
+/*----------以下 作者/个人信息 面板 ------------*/
+.profile {
+	padding-left: 81px;
+	position: relative;
+}
+.profile img {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 66px;
+	height: 66px;
+	border-radius: 3px;
+}
+.profile .user-name {
+	font-size: 16px;
+	margin-right: 5px;
+}
+.profile .fa-male {
+	color: #82b1ff;
+}
+.profile .fa-female {
+	color: #ef9a9a;
+}
+.profile .jobs {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	display: block;
+	width: 100%;
+	font-size: 12px;
+	color: #616161;
+}
+.profile-info {
+	margin-bottom: 0;
+}
+.profile-info dt {
+	font-weight: 500;
+	color: #757575;
+}
+.profile-info dd {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+/*----------以下 设置 面板-----------*/
+.settings a {
+	font-size: 16px;
+	height: 40px;
+	line-height: 40px;
+	text-decoration: none;
+	display: block;
+	padding: 0 15px;
+	margin: 0 -15px;
+	padding-left: 30px;
+	border-bottom: 1px solid #eee;
+}
+.settings a:hover {
+	background: #f7f7f7;
+}
+.settings a:last-child {
+	border-color: transparent;
+}
+.settings a.active {
+	color: #757575;
+}
+.settings a.active:hover {
+	background: transparent;
+}
+/*----------以下分页样式------------*/
+.page-base:after {
+	content: '';
+	display: block;
+	line-height: 0px;
+	height: 0px;
+	clear: both;
+
+}
+.page-ctrl {
+	float: left;
+	padding-right: 5px;
+}
+.page-ctrl:after {
+	content: '';
+	display: block;
+	line-height: 0px;
+	height: 0px;
+	clear: both;
+}
+.page-ctrl a {
+	width: 36px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	display: block;
+	float: left;
+	background: #fff;
+	font-size: 16px;
+	text-decoration: none;
+	border-right: 1px solid #eee;
+}
+.page-ctrl a:first-child {
+	border-radius: 5px 0 0 5px;
+}
+.page-ctrl a:last-child {
+	border-radius: 0 5px 5px 0;
+}
+.page-ctrl a:hover {
+	background: #f7f7f7;
+}
+.page-ctrl a.active {
+	color: #757575;
+}
+.page-ctrl a.active:hover {
+	background: #fff;
 }
