@@ -61,7 +61,7 @@ ul {
 }
 #footer {
 	color: #757575;
-	margin-bottom: 20px;
+	margin: 20px;
 }
 .nav>li>a {
 	color: #fff;
@@ -176,6 +176,7 @@ ul {
 	left: 0;
 	right: 0;
 }
+
 .main-info-base:after {
 	display: none;
 }
@@ -300,9 +301,35 @@ li.post-style a {
 .post-footer .fa-user {
 	color: #5cb85c;
 }
-.post-footer .fa-edit,
-.post-footer .fa-reply {
+.post-footer i,.post-head i,.post-footer span,.post-head span{
 	color: #bdbdbd;
+}
+.post-page .post h3{
+	margin: 0.2em 0;
+}
+.post-page .post-head {
+	margin: 10px;
+}
+.post-page .post-head a{
+	font-size: 14px;
+}
+.post-page .main-info-base:before{
+	top: 82px;
+	background-color: #ddd;
+}
+.post-page .post-content{
+	display: block;
+	margin-top: 20px;
+}
+/*----------- 评论面板--------------------*/
+.comment-panel{
+	padding: 15px;
+}
+.comment-body img{
+	width: 72px;
+    height: 72px;
+    border-radius: 3px;
+    margin: 10px;
 }
 /*----------- 以下 右侧TOP10列表-------------------*/
 
