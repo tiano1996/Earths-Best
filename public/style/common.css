@@ -153,11 +153,15 @@ ul {
 	display: block;
 	position: absolute;
 	top: 40px;
-	left: 0px;
-	right: 0px;
+	left: 15px;
+	right: 15px;
 	height: 1px;
 	background: #bdbdbd;
 	z-index: 1;
+}
+.main-info-base:before {
+	left: 0;
+	right: 0;
 }
 .side-base {
 	padding-right: 0px;
