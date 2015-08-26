@@ -352,7 +352,14 @@ li.post-style a {
 	/*vertical-align: middle;*/
 }
 .login .user-header>img{
-	border: 1px solid #F1F1F1
+	width: 42px;
+	height: 42px;
+	border-radius: 3px;
+}
+.header-user {
+	color: #fff;
+	margin-left: 5px;
+	font-size: 16px;
 }
 .login>ul>li>a:hover{
 	border: none;
