@@ -53,8 +53,8 @@ ul {
 .nav>li>a:focus,
 .nav>li>a:hover {
 	background-color: #1876d3;
-	padding-bottom: 4px;
-	border-bottom: 2px solid #7cb342;
+	padding-bottom: 10px;
+	border-bottom: 4px solid #7cb342;
 }
 .dropdown li {
 	padding: 4px;
@@ -286,4 +286,21 @@ li.post-style a {
 }
 .index-link a img {
 	max-width: 100%;
+}
+/*-------log panel---------*/
+.login .dropdown li a{
+	color: #1876d3;
+}
+.login>ul{
+	margin-top: 7px;
+}
+.login .dropdown >span{
+	padding: 2px;
+	/*vertical-align: middle;*/
+}
+.login .user-header>img{
+	border: 1px solid #F1F1F1
+}
+.login>ul>li>a:hover{
+	border: none;
 }
