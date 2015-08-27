@@ -32,18 +32,18 @@
 						<input type="text" name='sa' class="col-xs-11" placeholder='search' /> <i class='fa fa-search fa-lg'></i>
 					</div>
 					<div class="col-xs-3 login">
-						<!-- <a href="#" class="btn btn-material-light-green-600">登录</a> -->
-						<!-- <a href="#" class="btn btn-material-blue-400">注册</a> -->
-							<ul>
-								<li class="dropdown list-unstyled">
-									<a href="#" class="dropdown-toggle user-header"><img src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg"></a><span class="header-user">popohum</span>
-									<ul class="dropdown-menu">
-										<li><a href="user.html"><i class='fa fa-user'></i> 个人主页</a></li>
-										<li><a href="#setting"><i class='fa fa-cog fa-spin'></i> 个人设置</a></li>
-										<li><a href="#logout"><i class='fa fa-sign-out'></i> 退出登录</a></li>
-									</ul>
-								</li>
-							</ul>
+						<a href="#" id="login" class="btn btn-material-light-green-600">登录</a>
+						<a href="#" id="register" class="btn btn-material-blue-400">注册</a>
+						<!--<ul>
+							<li class="dropdown list-unstyled">
+								<a href="#" class="dropdown-toggle user-header"><img src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg"></a><span class="header-user">popohum</span>
+								<ul class="dropdown-menu">
+									<li><a href="user.html"><i class='fa fa-user'></i> 个人主页</a></li>
+									<li><a href="#setting"><i class='fa fa-cog fa-spin'></i> 个人设置</a></li>
+									<li><a href="#logout"><i class='fa fa-sign-out'></i> 退出登录</a></li>
+								</ul>
+							</li>
+						</ul>-->
 					</div>
 				</div>
 				<div class="row">
@@ -309,7 +309,8 @@
 								<a href="#">99+</a>&nbsp;文章&nbsp;&#124;&nbsp;<a href="#">99+</a>&nbsp;评论
 							</div>
 							<dl class="profile-info">
-								<dt>登陆邮箱</dt><dd>popohum@popohpopohpopohpopohum.com</dd>
+								<dt>登陆邮箱</dt>
+								<dd>popohum@popohpopohpopohpopohum.com</dd>
 								<dt>注册时间</dt><dd>2015-08-25 18:30</dd>
 								<dt>最后登录</dt><dd>2015-08-26 23:30</dd>
 							</dl>
@@ -337,55 +338,109 @@
 		</div>
 		<script type="text/javascript" src="./public/jquery/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="./public/md/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./public/md/js/bootstrap-dialog.min.js"></script>
 		<script type="text/javascript" src='./public/md/js/material.min.js'></script>
 		<script type="text/javascript" src='./public/md/js/ripples.min.js'></script>
-		<script type="text/javascript">
-			$.material.init()
-			 $(document).ready(function() {
-				menuToggle();
-				$(window).resize(function() {
-					menuToggle();
-				});
-				$('.post-style>a').on('click', function() {
-					if ($('.post .post-content').css('display') == 'none') {
-						$(this).find('>i').addClass('fa-th-list').removeClass('fa-th-large');
-						$('.post .post-content').css('display', 'block');
-					} else {
-						$(this).find('>i').removeClass('fa-th-list').addClass('fa-th-large');
-						$('.post .post-content').css('display', 'none');
-					}
-				})
-			});
-
-			function menuToggle() {
-				$('.dropdown').off('mouseover mouseleave');
-				if ($('.navbar-toggle').css('display') == 'none') {
-					$('nav .dropdown').on('mouseover', function() {
-						$(this).find('>a>i').removeClass('fa-caret-down').addClass('fa-caret-up')
-						$(this).find('>a').css({
-							'padding-bottom': '10px',
-							'border-bottom': '4px solid #7cb342',
-							'margin-bottom': '1px'
-						})
-						$(this).find('.dropdown-menu').stop().slideDown("fast");
-					});
-					$('nav .dropdown').on('mouseleave', function() {
-						$(this).find('>a>i').removeClass('fa-caret-up').addClass('fa-caret-down')
-						$(this).find('>a').css({
-							'padding-bottom': '15px',
-							'border-bottom': 'none',
-							'margin-bottom': '0px'
-						})
-						$(this).find('.dropdown-menu').stop().slideUp("fast");
-					});
-					$('.login .dropdown').on('mouseover', function() {
-						$(this).find('.dropdown-menu').stop().slideDown("fast");
-					});
-					$('.login .dropdown').on('mouseleave', function() {
-						$(this).find('.dropdown-menu').stop().slideUp("fast");
-					});
+		<script type="text/javascript">$.material.init()
+$(document).ready(function() {
+	menuToggle();
+	$(window).resize(function() {
+		menuToggle();
+	});
+	$('.post-style>a').on('click', function() {
+		if ($('.post .post-content').css('display') == 'none') {
+			$(this).find('>i').addClass('fa-th-list').removeClass('fa-th-large');
+			$('.post .post-content').css('display', 'block');
+		} else {
+			$(this).find('>i').removeClass('fa-th-list').addClass('fa-th-large');
+			$('.post .post-content').css('display', 'none');
+		}
+	})
+	$("#register").on('click', function() {
+		BootstrapDialog.show({
+			title:'注册',
+			message: 
+			function(){
+                var $message =$('<div></div>').load('register.html');
+                return $message;
+			},
+			closable: true,
+			closeByBackdrop: false,
+			closeByKeyboard: false,
+			buttons: [{
+				label: '注册!',
+				cssClass: 'btn-success',
+				action: function(dialogRef) {
+					alert('恭喜。注册成功~');
+					dialogRef.close();
 				}
-			}
+			}, {
+				label: '取消~',
+				cssClass:'btn',
+				action: function(dialogRef) {
+					dialogRef.close();
+				}
+			}]
+		})
+	});
+	$("#login").on('click', function() {
+		BootstrapDialog.show({
+			title:'登录',
+			message: 
+			function(){
+                var $message =$('<div></div>').load('login.html');
+                return $message;
+			},
+			closable: true,
+			closeByBackdrop: false,
+			closeByKeyboard: false,
+			buttons: [{
+				label: '登录!',
+				cssClass: 'btn-success',
+				action: function(dialogRef) {
+					alert('恭喜。登录成功！！');
+					dialogRef.close();
+				}
+			}, {
+				label: '取消~',
+				cssClass:'btn',
+				action: function(dialogRef) {
+					dialogRef.close();
+				}
+			}]
+		})
+	});
+})
+
+function menuToggle() {
+		$('.dropdown').off('mouseover mouseleave');
+						if ($('.navbar-toggle').css('display') == 'none') {
+							$('nav .dropdown').on('mouseover', function() {
+								$(this).find('>a>i').removeClass('fa-caret-down').addClass('fa-caret-up')
+								$(this).find('>a').css({
+									'padding-bottom': '10px',
+									'border-bottom': '4px solid #7cb342',
+									'margin-bottom': '1px'
+								})
+								$(this).find('.dropdown-menu').stop().slideDown("fast");
+							});
+							$('nav .dropdown').on('mouseleave', function() {
+								$(this).find('>a>i').removeClass('fa-caret-up').addClass('fa-caret-down')
+								$(this).find('>a').css({
+									'padding-bottom': '15px',
+									'border-bottom': 'none',
+									'margin-bottom': '0px'
+								})
+								$(this).find('.dropdown-menu').stop().slideUp("fast");
+							});
+							$('.login .dropdown').on('mouseover', function() {
+								$(this).find('.dropdown-menu').stop().slideDown("fast");
+							});
+							$('.login .dropdown').on('mouseleave', function() {
+								$(this).find('.dropdown-menu').stop().slideUp("fast");
+							});
+						}
+					}
 		</script>
 	</body>
 
