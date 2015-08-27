@@ -262,6 +262,7 @@ li.post-style a {
 	display: none;
 }
 .post-head {
+	position: relative;
 	margin-bottom: 3px;
 }
 .post-head a {
@@ -280,6 +281,13 @@ li.post-style a {
 }
 .post-footer {
 	color: #757575;
+}
+.post-info-footer {
+	margin: 0 -15px;
+	margin-top: 15px;
+	padding: 0 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #bdbdbd;
 }
 .post-footer span,
 .post-footer a {
@@ -301,7 +309,7 @@ li.post-style a {
 .post-footer .fa-user {
 	color: #5cb85c;
 }
-.post-footer i,.post-head i,.post-footer span,.post-head span{
+.post-footer i{
 	color: #bdbdbd;
 }
 .post-page .post h3{
@@ -314,12 +322,11 @@ li.post-style a {
 	font-size: 14px;
 }
 .post-page .main-info-base:before{
-	top: 82px;
-	background-color: #ddd;
+	background-color: transparent;
 }
 .post-page .post-content{
 	display: block;
-	margin-top: 20px;
+	padding: 15px;
 }
 /*----------- 评论面板--------------------*/
 .comment-panel{
@@ -525,4 +532,35 @@ li.post-style a {
 }
 .page-ctrl a.active:hover {
 	background: #fff;
+}
+
+/*-----------以下 个人中心 的操作按钮样式 ------------*/
+.edit-btn {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 66px;
+	background: #fff;
+	z-index: 1;
+	border-radius: 5px;
+	border: 1px solid #bdbdbd;
+	text-align: center;
+	line-height: 26px;
+	box-shadow: 0,2,5,rgba(0,0,0,.15);
+}
+.edit-btn a {
+	display: block;
+	width: 100%;
+	hegiht: 26px;
+	line-height: 26px;
+	font-size: 14px;
+}
+.edit-btn > a {
+	text-decoration: none;
+}
+.edit-post {
+	display: none;
+}
+.edit-post a:last-child {
+	color: #f44336;
 }

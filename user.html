@@ -58,7 +58,7 @@
 					<nav id="bs-navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li class="">
-								<a href="#"><i class="fa fa-home"></i> 全部 </a>
+								<a href="index.html"><i class="fa fa-home"></i> 全部 </a>
 							</li>
 							<li class="">
 								<a href="#">Bootstrap</a>
@@ -124,8 +124,15 @@
 							<div class="post-list">
 								<div class="post">
 									<div class="post-head">
-										<a href="#"><span class="fa fa-share-alt"></span>Awesome Node.js development tools for 2015 tools for 2015</a>
-										<i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
+										<a href="post.html"><span class="fa fa-share-alt"></span>Awesome Node.js development tools for 2015 tools for 2015</a>
+										<div class="edit-btn">
+											<a href="javascript:void(0)">操作</a>
+											<div class="edit-post">
+												<a href="#">查看</a>
+												<a href="#">编辑</a>
+												<a href="#">删除</a>
+											</div>
+										</div>
 									</div>
 									<div class="post-content">
 										<p>
@@ -137,6 +144,7 @@
 										<i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
 										<i class="fa fa-edit"></i>&nbsp;<span>8-25 17:30</span>
 										<i class="fa fa-reply"></i>&nbsp;<span>8-25 18:00</span>
+										<i class="fa fa-commenting"></i>&nbsp;<span>58</span>
 										<a class="post-badge" href="#">angularJS</a><a class="post-badge" href="#">Bootstrap</a><a class="post-badge" href="#">angularJS</a><a class="post-badge" href="#">Bootstrap</a><a class="post-badge" href="#">angularJS</a><a class="post-badge" href="#">Bootstrap</a>
 									</div>
 								</div>
@@ -238,55 +246,6 @@
 				<!-- end 左侧容器 -->
 				<!-- 右侧容器 -->
 				<div class="col-md-3 side-base">
-					<!-- TOP10 列表面板 -->
-					<div class=" bg-info">
-						<div class="info-base">
-							<div class="info-tit">
-								<i class="fa fa-list-ol"></i>&nbsp;TOP 10
-							</div>
-							<ol class="top10">
-								<li><a href="#">fdafdsafdsafdsafdsafdsafdsafdsafasd</a></li>
-								<li><a href="#">fdafdsafasd</a></li>
-								<li><a href="#">fdafdsafasd</a></li>
-								<li><a href="#">fdafdsafasd</a></li>
-								<li><a href="#">fdafdsafasd</a></li>
-								<li><a href="#">fdafdsafasd</a></li>
-								<li><a href="#">fdafdfdsafdsafdsafdsafsdafdsasafasd</a></li>
-								<li><a href="#">fdafdsadfsafdsafdsafdsafdsafdsafasd</a></li>
-								<li><a href="#">fdafdsdfsafdsafdsafdsafdsaafasd</a></li>
-								<li><a href="#">fdafddfafdsafdsafsdasafasd</a></li>
-							</ol>
-						</div>
-					</div>
-					<!-- 友情链接 面板 -->
-					<div class=" bg-info">
-						<div class="info-base">
-							<div class="info-tit">
-								<i class="fa fa-link"></i>&nbsp;友情连接
-							</div>
-							<div class="index-link">
-								<a href="#"><img src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt=""></a>
-								<a href="#"><img src="http://static.zcool.com.cn/v3.5.150820.0/zcool/images/logo.png?v2" alt=""></a>
-								<a href="#">11111</a>
-								<a href="#">11111</a>
-								<a href="#">11111</a>
-							</div>
-						</div>
-					</div>
-					<!-- 作者 面板 -->
-					<div class="bg-info">
-						<div class="info-base">
-							<div class="info-tit">
-								<i class="fa fa-user"></i>&nbsp;作者
-							</div>
-							<div class="profile">
-								<img src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg" alt="">
-								<a href="#" class="user-name">popohum</a><span class="fa fa-male"></span><span class="fa fa-female"></span>
-								<span class="jobs">前端功臣是</span>
-								<a href="#">99+</a>&nbsp;文章&nbsp;&#124;&nbsp;<a href="#">99+</a>&nbsp;评论
-							</div>
-						</div>
-					</div>
 					<!-- 个人信息 面板 -->
 					<div class="bg-info">
 						<div class="info-base">
@@ -313,7 +272,7 @@
 								<i class="fa fa-gear"></i>&nbsp;设置
 							</div>
 							<div class="settings">
-								<a href="#" class="active">基本信息</a>
+								<a href="#" class="">基本信息</a>
 								<a href="#">上传头像</a>
 								<a href="#">修改密码</a>
 							</div>
@@ -377,6 +336,16 @@
 					});
 				}
 			}
+
+			// 个人中心操作按钮下拉
+			$(document).ready(function() {
+				$('.edit-btn > a').on('click', function() {
+					$(this).css({'cursor':'default','color':'#bdbdbd'});
+					$(this).next().slideDown('100');
+					$('.edit-btn').css('box-shadow', '0,2,5,rgba(0,0,0,.15)');
+					/* Act on the event */
+				});
+			});
 		</script>
 	</body>
 
