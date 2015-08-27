@@ -160,6 +160,8 @@ ul {
 }
 .info-base {
 	padding: 15px;
+}.setitng-info-base {
+	min-height: 474px;
 }
 .info-base:before {
 	content: '';
@@ -498,6 +500,7 @@ li.post-style a {
 }
 .settings a.active {
 	color: #757575;
+	cursor: default;
 }
 .settings a.active:hover {
 	background: transparent;
