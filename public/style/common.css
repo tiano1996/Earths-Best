@@ -14,6 +14,10 @@ a {
 	color: #82b1ff;
 	margin-left: 15px;
 }
+.post-err {
+	color: #f44336;
+	font-size: 12px;
+}
 /*-------dend 全局样式----------------------*/
 
 
@@ -188,6 +192,9 @@ ul {
 
 .main-info-base:after {
 	display: none;
+}
+.setitng-info-base:after {
+	width: 140px;
 }
 .side-base {
 	padding-right: 0px;
@@ -576,10 +583,7 @@ li.post-style a {
 	color: #f44336;
 }
 /*-----------以下 发布新文章 页面-------------*/
-.post-err {
-	color: #f44336;
-	font-size: 12px;
-}
+
 .preview-con {
 	padding: 15px;
 }
@@ -612,4 +616,9 @@ li.post-style a {
 }
 #p-markdown {
 	display: none;
+}
+/*------------------用户设置相关样式-----------------------*/
+.using-email {
+	margin-top: 0;
+	font-size: 16px;
 }
