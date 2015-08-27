@@ -5,6 +5,15 @@
 a {
 	color: #1976d2;
 }
+.form-group label {
+	font-weight: 500;
+	color: #424242;
+}
+.form-group label span {
+	font-style: 12px;
+	color: #82b1ff;
+	margin-left: 15px;
+}
 /*-------dend 全局样式----------------------*/
 
 
@@ -541,12 +550,10 @@ li.post-style a {
 	top: 0px;
 	width: 66px;
 	background: #fff;
-	z-index: 1;
 	border-radius: 5px;
 	border: 1px solid #bdbdbd;
 	text-align: center;
 	line-height: 26px;
-	box-shadow: 0,2,5,rgba(0,0,0,.15);
 }
 .edit-btn a {
 	display: block;
@@ -558,9 +565,51 @@ li.post-style a {
 .edit-btn > a {
 	text-decoration: none;
 }
+.edit-btn > a.active {
+	color: #bdbdbd;
+	cursor: default;
+}
 .edit-post {
 	display: none;
 }
 .edit-post a:last-child {
 	color: #f44336;
+}
+/*-----------以下 发布新文章 页面-------------*/
+.post-err {
+	color: #f44336;
+	font-size: 12px;
+}
+.preview-con {
+	padding: 15px;
+}
+.post-edit-badge {
+	margin-top: 10px;
+}
+.post-edit-badge:after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+	line-height: 0;
+}
+.post-edit-badge span {
+	display: block;
+	float: left;
+	margin-right: 5px;
+}
+.post-edit-badge span:not(.post-badge-tit) {
+	color: #448aff;
+	padding: 0 3px;
+	cursor: pointer;
+	border-radius: 3px;
+}
+.post-edit-badge span:not(.post-badge-tit):hover {
+	background: #eee;
+}
+.btn-markdown {
+	text-transform: none;
+}
+#p-markdown {
+	display: none;
 }
