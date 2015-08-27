@@ -10,9 +10,13 @@ a {
 	color: #424242;
 }
 .form-group label span {
-	font-style: 12px;
+	font-size: 12px;
 	color: #82b1ff;
 	margin-left: 15px;
+}
+.post-err {
+	color: #f44336;
+	font-size: 12px;
 }
 /*-------dend 全局样式----------------------*/
 
@@ -156,6 +160,8 @@ ul {
 }
 .info-base {
 	padding: 15px;
+}.setitng-info-base {
+	min-height: 474px;
 }
 .info-base:before {
 	content: '';
@@ -188,6 +194,9 @@ ul {
 
 .main-info-base:after {
 	display: none;
+}
+.setitng-info-base:after {
+	width: 140px;
 }
 .side-base {
 	padding-right: 0px;
@@ -491,6 +500,7 @@ li.post-style a {
 }
 .settings a.active {
 	color: #757575;
+	cursor: default;
 }
 .settings a.active:hover {
 	background: transparent;
@@ -576,10 +586,7 @@ li.post-style a {
 	color: #f44336;
 }
 /*-----------以下 发布新文章 页面-------------*/
-.post-err {
-	color: #f44336;
-	font-size: 12px;
-}
+
 .preview-con {
 	padding: 15px;
 }
@@ -612,4 +619,34 @@ li.post-style a {
 }
 #p-markdown {
 	display: none;
+}
+/*------------------用户设置相关样式-----------------------*/
+.using-email {
+	margin-top: 0;
+	font-size: 16px;
+}
+.user-face img {
+	border-radius: 10px;
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin-top: 10px;
+}
+.file-sele {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	display: block;
+	width: 90px;
+	text-align: center;
+	line-height: 26px;
+	height: 26px;
+	border-radius: 5px;
+	background: #eee;
+	color: #1976d2;
+}
+.img-note {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 12px;
+	color: #448aff;
 }
