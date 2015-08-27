@@ -1,33 +1,35 @@
 # Earths-Best
 Bootstrap@HTML5
 
-项目参与者：
+###项目参与者：
 
-八荒、炮姐、小灰灰、美工狗
+八荒、炮姐、小灰灰、美工狗、Mr.White
 
-目的：
+###目的：
 
-1. 方便群成员交流，提高，整合
+* 方便群成员交流，提高，整合
 
-目标：
+###目标：
 
-1. 建立交流网站
+* 建立交流网站
 
-功能：
+###功能：
 
-1. 会员登陆
-2. 发表文章，提交资源分享(附件以百度云盘连接加密码方式)
-3. 评论互动
-4. ...
+* 会员登陆
+* 发表文章，提交资源分享(附件以百度云盘连接加密码方式)
+* 评论互动
+* ...
 
-联系：
+###联系：
 
 QQ群：
-<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cYdUUY">点击加入群【Bootstrap@HTML5】</a>
+点击加入群[【Bootstrap@HTML5】](http://jq.qq.com/?_wv=1027&k=cYdUUY "152842347")
 
-<a target="_blank" href="http://tiano.gotoip4.com">演示地址</a>
+***
 
-效果图：
+[演示地址](http://tiano.gotoip4.com)
+
+###效果图：
 
 <img src="image-1.jpg" alt="">
 
