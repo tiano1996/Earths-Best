@@ -1,4 +1,5 @@
 /*-------全局 样式（覆盖bootstrap）----------*/
+
 .badge {
 	font-weight: 500;
 }
@@ -19,8 +20,6 @@ a {
 	font-size: 12px;
 }
 /*-------dend 全局样式----------------------*/
-
-
 
 body {
 	font-family: "微软雅黑", "microsoft yahei";
@@ -146,12 +145,13 @@ ul {
 }
 @media (min-width: 768px) and (max-width: 991px) {}
 /*---------- 以下 面板 ---------------*/
+
 .main-base {
 	padding: 0;
 }
 .bg-info {
 	/*公用圆角白底 上下15px外边距*/
-
+	
 	margin: 15px 0;
 	position: relative;
 	background-color: white;
@@ -160,7 +160,8 @@ ul {
 }
 .info-base {
 	padding: 15px;
-}.setitng-info-base {
+}
+.setitng-info-base {
 	min-height: 474px;
 }
 .info-base:before {
@@ -191,7 +192,6 @@ ul {
 	left: 0;
 	right: 0;
 }
-
 .main-info-base:after {
 	display: none;
 }
@@ -323,38 +323,41 @@ li.post-style a {
 .post-footer a.post-badge:hover {
 	background: #e0e0e0;
 }
-.post-footer span {color: #757575;}
+.post-footer span {
+	color: #757575;
+}
 .post-footer .fa-user {
 	color: #5cb85c;
 }
-.post-footer i{
+.post-footer i {
 	color: #bdbdbd;
 }
-.post-page .post h3{
+.post-page .post h3 {
 	margin: 0.2em 0;
 }
 .post-page .post-head {
 	margin: 10px;
 }
-.post-page .post-head a{
+.post-page .post-head a {
 	font-size: 14px;
 }
-.post-page .main-info-base:before{
+.post-page .main-info-base:before {
 	background-color: transparent;
 }
-.post-page .post-content{
+.post-page .post-content {
 	display: block;
 	padding: 15px;
 }
 /*----------- 评论面板--------------------*/
-.comment-panel{
+
+.comment-panel {
 	padding: 15px;
 }
-.comment-body img{
+.comment-body img {
 	width: 72px;
-    height: 72px;
-    border-radius: 3px;
-    margin: 10px;
+	height: 72px;
+	border-radius: 3px;
+	margin: 10px;
 }
 /*----------- 以下 右侧TOP10列表-------------------*/
 
@@ -414,17 +417,18 @@ li.post-style a {
 	max-width: 100%;
 }
 /*-------log panel---------*/
-.login .dropdown li a{
+
+.login .dropdown li a {
 	color: #1876d3;
 }
-.login>ul{
+.login>ul {
 	margin-top: 7px;
 }
-.login .dropdown >span{
+.login .dropdown >span {
 	padding: 2px;
 	/*vertical-align: middle;*/
 }
-.login .user-header>img{
+.login .user-header>img {
 	width: 42px;
 	height: 42px;
 	border-radius: 3px;
@@ -434,10 +438,11 @@ li.post-style a {
 	margin-left: 5px;
 	font-size: 16px;
 }
-.login>ul>li>a:hover{
+.login>ul>li>a:hover {
 	border: none;
 }
 /*----------以下 作者/个人信息 面板 ------------*/
+
 .profile {
 	padding-left: 81px;
 	position: relative;
@@ -481,6 +486,7 @@ li.post-style a {
 	text-overflow: ellipsis;
 }
 /*----------以下 设置 面板-----------*/
+
 .settings a {
 	font-size: 16px;
 	height: 40px;
@@ -506,13 +512,13 @@ li.post-style a {
 	background: transparent;
 }
 /*----------以下分页样式------------*/
+
 .page-base:after {
 	content: '';
 	display: block;
 	line-height: 0px;
 	height: 0px;
 	clear: both;
-
 }
 .page-ctrl {
 	float: left;
@@ -552,8 +558,8 @@ li.post-style a {
 .page-ctrl a.active:hover {
 	background: #fff;
 }
-
 /*-----------以下 个人中心 的操作按钮样式 ------------*/
+
 .edit-btn {
 	position: absolute;
 	right: 0px;
@@ -621,6 +627,7 @@ li.post-style a {
 	display: none;
 }
 /*------------------用户设置相关样式-----------------------*/
+
 .using-email {
 	margin-top: 0;
 	font-size: 16px;
@@ -649,4 +656,19 @@ li.post-style a {
 	margin-bottom: 10px;
 	font-size: 12px;
 	color: #448aff;
+}
+/*----弹窗bug fix----*/
+
+.modal-footer .btn+.btn {
+	margin-bottom: 8px;
+	margin-left: 5px;
+}
+.bootstrap-dialog .modal-header {
+    background-color: #428bca;
+    border-radius: 4px 4px 0 0 ;
+    color: #fff;
+}
+.modal-footer {
+    margin: 5px auto;
+    text-align: center;
 }
