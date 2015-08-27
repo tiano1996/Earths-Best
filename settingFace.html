@@ -119,20 +119,12 @@
               </div>
               <form class="row" action="" method="post">
                 <div class="col-md-5 col-md-offset-2">
-                  <div class="form-group">
-                    <label for="pwdOld">当前密码</label>
-                    <input class="form-control" type="password" name="pwdOld" placeholder="">
-                    <span class="pull-right post-err">密码错误</span>
+                  <div class="user-face">
+                    当前头像
+                    <img src="http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=38ecb37c54fbb2fb347e50167a7a0c92/d01373f082025aafc50dc5eafaedab64034f1ad7.jpg" alt="">
                   </div>
-                  <div class="form-group">
-                    <label for="pwdNew">新密码</label>
-                    <input class="form-control" type="password" name="pwdNew" placeholder="">
-                  </div>
-                  <div class="form-group">
-                    <label for="pwdRe">当前密码</label>
-                    <input class="form-control" type="password" name="pwdRe" placeholder="">
-                    <span class="pull-right post-err">密码输入不一致</span>
-                  </div>
+                  <a class="file-sele" id="fileSelect" href="javascript:void(0)">选择图片</a>
+                  <span class="img-note">请选择正方形图片，文件不得大于200kb</span>
                   <input type="submit" class="btn btn-success" value="保存">
                   <input type="button" class="btn" value="取消">
                 </div>
@@ -170,8 +162,8 @@
               </div>
               <div class="settings">
                 <a href="settingInfo.html" class="">基本信息</a>
-                <a href="#">上传头像</a>
-                <a href="#" class="active">修改密码</a>
+                <a href="#" class="active">上传头像</a>
+                <a href="settingPwd.html" class="">修改密码</a>
               </div>
             </div>
           </div>
@@ -247,6 +239,16 @@
           $(this).css('z-index', '0');
           $(this).find('.active').removeClass('active');
           /* Act on the event */
+        });
+      });
+      // 选择上传图片按钮
+      $(document).ready(function() {
+        $('#fileSelect').on('click',function(){
+          $file = $('<input type="file" name="face">');
+          $file.trigger('click');
+          $file.change(function() {
+            alert($(this).val());
+          });
         });
       });
     </script>

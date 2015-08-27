@@ -625,3 +625,28 @@ li.post-style a {
 	margin-top: 0;
 	font-size: 16px;
 }
+.user-face img {
+	border-radius: 10px;
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin-top: 10px;
+}
+.file-sele {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	display: block;
+	width: 90px;
+	text-align: center;
+	line-height: 26px;
+	height: 26px;
+	border-radius: 5px;
+	background: #eee;
+	color: #1976d2;
+}
+.img-note {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 12px;
+	color: #448aff;
+}
