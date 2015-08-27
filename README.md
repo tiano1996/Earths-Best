@@ -23,9 +23,9 @@ Bootstrap@HTML5
 联系：
 
 QQ群：
-<a href="http://jq.qq.com/?_wv=1027&k=cYdUUY">点击加入群【Bootstrap@HTML5】</a>
+<a target="_blank" href="http://jq.qq.com/?_wv=1027&k=cYdUUY">点击加入群【Bootstrap@HTML5】</a>
 
-<a href="http://tiano.gotoip4.com">演示地址</a>
+<a target="_blank" href="http://tiano.gotoip4.com">演示地址</a>
 
 效果图：
 
