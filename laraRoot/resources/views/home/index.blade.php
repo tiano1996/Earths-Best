@@ -32,7 +32,7 @@
                         <div class="post-list">
                             <div class="post">
                                 <div class="post-head">
-                                    <a href="post.html"><span class="fa fa-share-alt"></span>Awesome Node.js development
+                                    <a href="/post/1"><span class="fa fa-share-alt"></span>Awesome Node.js development
                                         tools for 2015 tools for 2015</a>
                                     <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
                                 </div>
@@ -58,7 +58,7 @@
                             </div>
                             <div class="post">
                                 <div class="post-head">
-                                    <a href="#"><span class="fa fa-tag"></span>这个是中文的标题哦，哈哈哈你看怎么样啊嗯？ popohum兄</a>
+                                    <a href="/post/2"><span class="fa fa-tag"></span>这个是中文的标题哦，哈哈哈你看怎么样啊嗯？ popohum兄</a>
                                     <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
                                 </div>
                                 <div class="post-content">
@@ -81,7 +81,7 @@
                             </div>
                             <div class="post">
                                 <div class="post-head">
-                                    <a href="#"><span class="fa fa-tag"></span>Awesome Node.js development Awesome
+                                    <a href="/post/3"><span class="fa fa-tag"></span>Awesome Node.js development Awesome
                                         Node.js deve5</a>
                                     <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
                                 </div>
@@ -105,7 +105,7 @@
                             </div>
                             <div class="post">
                                 <div class="post-head">
-                                    <a href="#"><span class="fa fa-tag"></span>Awesome Node.js development tools for
+                                    <a href="/post/4"><span class="fa fa-tag"></span>Awesome Node.js development tools for
                                         2015</a>
                                     <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
                                 </div>
@@ -129,7 +129,7 @@
                             </div>
                             <div class="post">
                                 <div class="post-head">
-                                    <a href="#"><span class="fa fa-tag"></span>Awesome Node.js development tools for
+                                    <a href="/post/5"><span class="fa fa-tag"></span>Awesome Node.js development tools for
                                         2015</a>
                                     <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
                                 </div>
