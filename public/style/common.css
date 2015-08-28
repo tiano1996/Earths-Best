@@ -201,13 +201,13 @@ ul {
 .side-base {
 	padding-right: 0px;
 }
-.info-tit {
+.info-title {
 	margin-top: -4px;
 	color: #424242;
 	font-size: 16px;
 	margin-bottom: 21px;
 }
-.info-tit i {
+.info-title i {
 	color: #bdbdbd;
 }
 /*------- 以下 tab ----------------*/
