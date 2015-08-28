@@ -21,9 +21,9 @@
                             <img src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg">
                         </a><span class="header-user">popohum</span>
                         <ul class="dropdown-menu">
-                            <li><a href="user.html"><i class='fa fa-user'></i> 个人主页</a></li>
-                            <li><a href="#setting"><i class='fa fa-cog fa-spin'></i> 个人设置</a></li>
-                            <li><a href="#logout"><i class='fa fa-sign-out'></i> 退出登录</a></li>
+                            <li><a href="/user/user_info"><i class='fa fa-user'></i> 个人主页</a></li>
+                            <li><a href="/user/set_info"><i class='fa fa-cog fa-spin'></i> 个人设置</a></li>
+                            <li><a href="/auth/logout"><i class='fa fa-sign-out'></i> 退出登录</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -43,7 +43,7 @@
             <nav id="bs-navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="">
-                        <a href="index.html"><i class="fa fa-home"></i> 全部 </a>
+                        <a href="/"><i class="fa fa-home"></i> 全部 </a>
                     </li>
                     <li class="">
                         <a href="#">Bootstrap</a>
