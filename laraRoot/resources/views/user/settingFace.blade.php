@@ -13,8 +13,7 @@
                             <div class="col-md-5 col-md-offset-2">
                                 <div class="user-face">
                                     当前头像
-                                    <img src="http://b.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=38ecb37c54fbb2fb347e50167a7a0c92/d01373f082025aafc50dc5eafaedab64034f1ad7.jpg"
-                                         alt="">
+                                    <img alt="" src="http://cdn.duitang.com/uploads/item/201409/26/20140926213444_jiuXB.thumb.200_0.jpeg">
                                 </div>
                                 <a class="file-sele" id="fileSelect" href="javascript:void(0)">选择图片</a>
                                 <span class="img-note">请选择正方形图片，文件不得大于200kb</span>

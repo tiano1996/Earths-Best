@@ -179,11 +179,19 @@
             <div class="col-md-3 side-base">
                 @include('partial.top10')
                 @include('partial.links')
-                @include('user.author')
-                @include('user.userInfo')
-                @include('user.setting')
             </div>
             <!-- end 右侧容器 -->
         </div>
     </div>
+    <script>
+        $('.post-style>a').on('click', function() {
+            if ($('.post .post-content').css('display') == 'none') {
+                $(this).find('>i').addClass('fa-th-list').removeClass('fa-th-large');
+                $('.post .post-content').slideDown('normal');
+            } else {
+                $(this).find('>i').removeClass('fa-th-list').addClass('fa-th-large');
+                $('.post .post-content').slideUp('normal');
+            }
+        })
+    </script>
 @endsection
