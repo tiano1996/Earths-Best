@@ -6,7 +6,7 @@ Route::get('post/{id}','Home\PostController@show');
 Route::get('user/set_info','Home\UserController@setInfo');
 Route::get('user/set_face','Home\UserController@setFace');
 Route::get('user/set_pwd','Home\UserController@setPwd');
-Route::get('user/{id}/user_info','Home\UserController@show');
+Route::get('user/user_info','Home\UserController@show');
 //Route::post('comment/store', 'Home\CommentsController@store');
 //Route::post('ajax/uploads','Ajax\UploadsController@uploadImage');
 //auth路由
