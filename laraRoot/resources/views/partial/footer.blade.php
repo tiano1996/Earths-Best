@@ -13,15 +13,6 @@
         $(window).resize(function() {
             menuToggle();
         });
-        $('.post-style>a').on('click', function() {
-            if ($('.post .post-content').css('display') == 'none') {
-                $(this).find('>i').addClass('fa-th-list').removeClass('fa-th-large');
-                $('.post .post-content').css('display', 'block');
-            } else {
-                $(this).find('>i').removeClass('fa-th-list').addClass('fa-th-large');
-                $('.post .post-content').css('display', 'none');
-            }
-        })
     });
 
     function menuToggle() {

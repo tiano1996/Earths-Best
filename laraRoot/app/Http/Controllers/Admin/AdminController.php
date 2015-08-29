@@ -8,9 +8,9 @@ class AdminController extends Controller {
 	public function index()
 	{
         if(Auth::User()->role=='adminer'){
-            return view('admin.AdminHome')->withPosts(Post::all());
+            return view('admin.index');
         }else{
-            \Log::info('Notice,guest try to admins:'.Auth::User()->name);
+            \Log::warning('Notice,guest try to visit admins:'.Auth::User()->name);
             return Redirect::to('/');
         }
 	}

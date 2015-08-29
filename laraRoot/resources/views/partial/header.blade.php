@@ -13,13 +13,15 @@
                 <i class='fa fa-search fa-lg'></i>
             </div>
             <div class="col-xs-3 login">
-                <!-- <a href="#" class="btn btn-material-light-green-600">登录</a> -->
-                <!-- <a href="#" class="btn btn-material-blue-400">注册</a> -->
+                @if(Auth::guest())
+                <a href="/auth/login" class="btn btn-material-light-green-600">登录</a>
+                <a href="/auth/register" class="btn btn-material-blue-400">注册</a>
+                @else
                 <ul>
                     <li class="dropdown list-unstyled">
                         <a href="#" class="dropdown-toggle user-header">
                             <img src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg">
-                        </a><span class="header-user">popohum</span>
+                        </a><span class="header-user">{{Auth::user()->user_name}}</span>
                         <ul class="dropdown-menu">
                             <li><a href="/user/user_info"><i class='fa fa-user'></i> 个人主页</a></li>
                             <li><a href="/user/set_info"><i class='fa fa-cog fa-spin'></i> 个人设置</a></li>
@@ -27,6 +29,7 @@
                         </ul>
                     </li>
                 </ul>
+                @endif
             </div>
         </div>
         <div class="row">
