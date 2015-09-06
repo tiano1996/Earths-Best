@@ -36,10 +36,10 @@
                 });
                 $(this).find('.dropdown-menu').stop().slideUp("fast");
             });
-            $('.login .dropdown').on('mouseover', function() {
+            $('.loginPanel .dropdown').on('mouseover', function() {
                 $(this).find('.dropdown-menu').stop().slideDown("fast");
             });
-            $('.login .dropdown').on('mouseleave', function() {
+            $('.loginPanel .dropdown').on('mouseleave', function() {
                 $(this).find('.dropdown-menu').stop().slideUp("fast");
             });
         }

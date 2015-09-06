@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers\Home;
-use App\Models\Post;
+use App\Models\Article;
 use App\Http\Controllers\Controller;
 class HomeController extends Controller {
 
@@ -9,8 +9,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-        $event = Post::all();
-        return view('home.index')->with('posts',$event);
+        $article = Article::where('status','0')->get();
+        return view('home.index')->with('articles',$article);
 	}
 
 }

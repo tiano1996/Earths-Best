@@ -1,9 +1,4 @@
 @extends('_layouts.index')
-@section('css')
-    <style>
-
-    </style>
-@stop
 @section('content')
     <div class="container">
         <div class="row">

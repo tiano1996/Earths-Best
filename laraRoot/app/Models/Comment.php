@@ -5,12 +5,9 @@ class Comment extends Model
 {
     /*
      * Comment model
-     * belongsTo Events
+     * belongsTo Articles
      */
     public $timestamps=true;
     protected $table='comments';
     protected $fillable = ['nickname', 'email', 'content'];
-    public function article(){
-        $this->belongsTo('\App\Models\Article');
-    }
 }

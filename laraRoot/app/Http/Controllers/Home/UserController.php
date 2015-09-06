@@ -25,8 +25,8 @@ class UserController extends Controller
         return view('user.settingFace');
     }
 
-    public function setPwd()
+    public function setPassword()
     {
-        return view('user.settingPwd');
+        return view('user.settingPassword');
     }
 }
