@@ -29,7 +29,43 @@ class UploadsController extends Controller
             ]);
         }
 
-        $destinationPath = '/public/uploads/images/';
+        $destinationPath = '/uploads/images/';
+        $filename = $this->getRandomName($file->getClientOriginalName(), "{yy}{mm}{dd}-{rand:6}-{filename}",$file->getClientOriginalExtension());
+        if ($file->move(base_path() . '/../' . $destinationPath, $filename)) {
+            return Response::json(
+                [
+                    'success' => true,
+                    'msg' => 'ok',
+                    'urlPath' => $destinationPath . $filename,
+                ]
+            );
+        } else {
+            return Response::json(
+                [
+                    'success' => false,
+                    'msg' => '上传失败',
+                ]
+            );
+        }
+    }
+
+    public function uploadFile(Request $request)
+    {
+        $file = Input::file('file');
+        $input = array('file' => $file);
+        $rules = array(
+            'file' => 'mimes:xls,doc,ppt'
+        );
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            return Response::json([
+                'success' => false,
+                'msg' => 'Validator failed',
+                'errors' => $validator->getMessageBag()->toArray()
+            ]);
+        }
+
+        $destinationPath = '/uploads/files/';
         $filename = $this->getRandomName($file->getClientOriginalName(), "{yy}{mm}{dd}-{rand:6}-{filename}",$file->getClientOriginalExtension());
         if ($file->move(base_path() . '/../' . $destinationPath, $filename)) {
             return Response::json(

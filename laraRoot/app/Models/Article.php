@@ -7,9 +7,9 @@ class Article extends Model {
 	 * Article model :
 	 */
     protected $table='articles';
-
+    public $timestamps=true;
     public function comment(){
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany('App\Models\Comment')->orderBy('created_at', 'desc');
     }
 
 }

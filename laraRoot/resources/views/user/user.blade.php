@@ -17,31 +17,27 @@
                         </ul>
 
                         <div class="post-list">
-                            @for($i=0;$i<5;$i++)
+                            @foreach($articles as $article)
                                 <div class="post">
                                     <div class="post-head">
-                                        <a href="/post/{{$i+1}}"><span class="fa fa-share-alt"></span>
-                                            {{$i+1}}.Awesome Node.js development tools for 2015 tools for 2015</a>
-
+                                        <a href="/article/{{$article->id}}"><span class="fa fa-share-alt"></span>
+                                            {{$article->id.'.'.$article->title}}</a>
                                         <div class="edit-btn">
                                             <a href="javascript:void(0)">操作</a>
 
                                             <div class="edit-post">
-                                                <a href="#">查看</a>
-                                                <a href="#">编辑</a>
-                                                <a href="#">删除</a>
+                                                <a href="/article/{{$article->id}}">查看</a>
+                                                <a href="/user/article/{{$article->id}}/edit">编辑</a>
+                                                <form action="/user/article/{{$article->id}}" method="POST">
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <input type="submit" class="btn-link" value="删除">
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="post-content">
-                                        <p>
-                                            With the arrival of Node.js, creating a website in JavaScript is very easy
-                                            and cost-effective. This framework brings a massive changeover in the web
-                                            application development with the advanced push innovation instead of using
-                                            old web sockets. With these beneficial aspects, [Node.js][2] is gaining
-                                            popularity among web developers who aspire to develop their next website
-                                            in this framework. …
-                                        </p>
+                                        <p>{{$article->introduction}}</p>
                                     </div>
                                     <div class="post-footer">
                                         <i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
@@ -56,7 +52,7 @@
                                         <a class="post-badge" href="#">Bootstrap</a>
                                     </div>
                                 </div>
-                            @endfor
+                            @endforeach
                         </div>
                     </div>
                 </div>

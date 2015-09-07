@@ -8,17 +8,16 @@ class ArticleController extends Controller
 
     public function index()
     {
-        return view('user.article.index');
+        $article=Article::where('status',0)->get();
+        return view('user.article.index')->with('articles',$article);
     }
 
     public function show($id)
     {
-//        $article = Article::findOrFail($id);
-//        if($article==null){
-//            abort('404');
-//        }
-//        return view('user.article.article')->with('article', $article);
-        return view('user.article.show');
+        $article = Article::findOrFail($id);
+        $article->slug=explode(",",$article->slug);
+        $article->last_reply=$article->comment->get(0)->created_at;
+        return view('user.article.show')->with('article', $article);
     }
 
     public function create()
