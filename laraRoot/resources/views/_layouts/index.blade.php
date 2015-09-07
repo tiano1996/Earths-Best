@@ -2,7 +2,7 @@
 <html lang="zh-cmn-Hans">
 @include('partial.head')
 <body>
-@section('header')@include('partial.header')@show
-@yield('sliderShow')
+@include('partial.header')
+@yield('style')
 @yield('content')
 @include('partial.footer')

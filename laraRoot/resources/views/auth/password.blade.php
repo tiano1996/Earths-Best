@@ -23,7 +23,7 @@
                     <div class="bg-info">
                         <div class="info-base setitng-info-base">
                             <div class="info-title">
-                                &nbsp;找回密码 Click here to reset your password: {{ url('password/reset/'.$token) }}
+                                &nbsp;找回密码
                             </div>
                             <form action="" method="post">
                                 <div class="col-md-4 col-md-offset-4 pwdfind">

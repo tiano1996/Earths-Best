@@ -22,12 +22,11 @@ a {
 /*-------dend 全局样式----------------------*/
 
 body {
-	font-family: "微软雅黑", "microsoft yahei";
+    font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
 	background-color: #EEE;
 }
 dl,
 h3,
-menu,
 ol,
 p,
 pre,
@@ -35,8 +34,8 @@ ul {
 	margin: 1em 0;
 }
 .navbar-collapse {
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0;
+	padding-right: 0;
 }
 .logo {
 	color: white;
@@ -50,7 +49,7 @@ ul {
 	color: #90caf9;
 	margin-bottom: 10px;
 }
-.login {
+.loginPanel {
 	margin-top: -10px;
 }
 .descript {
@@ -65,7 +64,6 @@ ul {
 }
 .search input {
 	height: 30px;
-	border: none;
 	border: 1px solid #1464c1;
 }
 #header {
@@ -119,21 +117,21 @@ ul {
 .btn:hover {
 	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .12), 0 1px 6px 0 rgba(0, 0, 0, .12);
 }
-.btn-material-blue-400 {
+.btn-md-primary {
 	background-color: #42a5f5;
 	color: rgba(255, 255, 255, .84);
 }
-.btn-material-blue-400:hover,
-.btn-material-blue-400:focus {
+.btn-md-primary:hover,
+.btn-md-primary:focus {
 	color: rgba(255, 255, 255, .84);
 	background-color: #55aef6;
 }
-.btn-material-light-green-600 {
+.btn-md-success {
 	background-color: #5cb85c;
 	color: rgba(255, 255, 255, .84);
 }
-.btn-material-light-green-600:hover,
-.btn-material-light-green-600:focus {
+.btn-md-success:hover,
+.btn-md-success:focus {
 	color: rgba(255, 255, 255, .84);
 	background-color: #5cb85c;
 }
@@ -156,7 +154,7 @@ ul {
 	position: relative;
 	background-color: white;
 	border-radius: 5px;
-	padding: 0px;
+	padding: 0;
 }
 .info-base {
 	padding: 15px;
@@ -199,7 +197,7 @@ ul {
 	width: 140px;
 }
 .side-base {
-	padding-right: 0px;
+	padding-right: 0;
 }
 .info-title {
 	margin-top: -4px;
@@ -248,8 +246,7 @@ li.post-style a {
 	background-color: rgb(230, 230, 230);
 	padding: 3px 8px;
 	border-radius: 3px;
-	margin: -2px 0;
-	margin-left: 5px;
+	margin: -2px 0 -2px 5px;
 }
 /*----- tag -------*/
 
@@ -266,7 +263,7 @@ li.post-style a {
 	font-weight: 500;
 }
 .post-list .post {
-	margin: 0px -15px;
+	margin: 0 -15px;
 	padding: 10px 15px;
 	border-top: 1px solid #F1F1F1;
 }
@@ -301,10 +298,8 @@ li.post-style a {
 	color: #757575;
 }
 .post-info-footer {
-	margin: 0 -15px;
-	margin-top: 15px;
-	padding: 0 15px;
-	padding-bottom: 15px;
+	margin: 15px -15px 0 -15px;
+	padding: 0 15px 15px 15px;
 	border-bottom: 1px solid #bdbdbd;
 }
 .post-footer span,
@@ -400,8 +395,8 @@ li.post-style a {
 
 .index-link:after {
 	content: '';
-	height: 0px;
-	line-height: 0px;
+	height: 0;
+	line-height: 0;
 	display: block;
 	clear: both;
 }
@@ -418,17 +413,17 @@ li.post-style a {
 }
 /*-------log panel---------*/
 
-.login .dropdown li a {
+.loginPanel .dropdown li a {
 	color: #1876d3;
 }
-.login>ul {
+.loginPanel>ul {
 	margin-top: 7px;
 }
-.login .dropdown >span {
+.loginPanel .dropdown >span {
 	padding: 2px;
 	/*vertical-align: middle;*/
 }
-.login .user-header>img {
+.loginPanel .user-header>img {
 	width: 42px;
 	height: 42px;
 	border-radius: 3px;
@@ -438,7 +433,7 @@ li.post-style a {
 	margin-left: 5px;
 	font-size: 16px;
 }
-.login>ul>li>a:hover {
+.loginPanel>ul>li>a:hover {
 	border: none;
 }
 /*----------以下 作者/个人信息 面板 ------------*/
@@ -449,8 +444,8 @@ li.post-style a {
 }
 .profile img {
 	position: absolute;
-	left: 0px;
-	top: 0px;
+	left: 0;
+	top: 0;
 	width: 66px;
 	height: 66px;
 	border-radius: 3px;
@@ -493,9 +488,8 @@ li.post-style a {
 	line-height: 40px;
 	text-decoration: none;
 	display: block;
-	padding: 0 15px;
+	padding: 0 15px 0 30px;
 	margin: 0 -15px;
-	padding-left: 30px;
 	border-bottom: 1px solid #eee;
 }
 .settings a:hover {
@@ -516,8 +510,8 @@ li.post-style a {
 .page-base:after {
 	content: '';
 	display: block;
-	line-height: 0px;
-	height: 0px;
+	line-height: 0;
+	height: 0;
 	clear: both;
 }
 .page-ctrl {
@@ -527,8 +521,8 @@ li.post-style a {
 .page-ctrl:after {
 	content: '';
 	display: block;
-	line-height: 0px;
-	height: 0px;
+	line-height: 0;
+	height: 0;
 	clear: both;
 }
 .page-ctrl a {
@@ -562,8 +556,8 @@ li.post-style a {
 
 .edit-btn {
 	position: absolute;
-	right: 0px;
-	top: 0px;
+	right: 0;
+	top: 0;
 	width: 66px;
 	background: #fff;
 	border-radius: 5px;
@@ -574,7 +568,7 @@ li.post-style a {
 .edit-btn a {
 	display: block;
 	width: 100%;
-	hegiht: 26px;
+	height: 26px;
 	line-height: 26px;
 	font-size: 14px;
 }
@@ -675,4 +669,21 @@ li.post-style a {
 /*------------找回密码-----------------*/
 .pwdfind {
 	margin-top: 50px;
+}
+
+/*---------@media--------------------*/
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin: 0 0 4px 0;
+    }
+    .nav>li>a:focus,.nav>li>a:hover {
+        margin-bottom: -4px;
+        border-bottom: 4px solid #7cb342;
+    }
+    .dropdown i.fa-caret-down{
+        display: none;
+    }
+    .navbar-toggle .icon-bar{
+        background-color: white;
+    }
 }

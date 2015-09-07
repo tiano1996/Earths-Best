@@ -12,18 +12,18 @@
                 <input type="text" name='sa' class="col-xs-11" placeholder='search'/>
                 <i class='fa fa-search fa-lg'></i>
             </div>
-            <div class="col-xs-3 login">
+            <div class="col-xs-3 loginPanel">
                 @if(Auth::guest())
-                <a href="/auth/login" class="btn btn-material-light-green-600">登录</a>
-                <a href="/auth/register" class="btn btn-material-blue-400">注册</a>
+                <a href="/auth/login" class="btn btn-md-success">登录</a>
+                <a href="/auth/register" class="btn btn-md-primary">注册</a>
                 @else
                 <ul>
                     <li class="dropdown list-unstyled">
                         <a href="#" class="dropdown-toggle user-header">
                             <img src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg">
-                        </a><span class="header-user">{{Auth::user()->user_name}}</span>
+                        </a><span class="header-user">{{Auth::user()->username}}</span>
                         <ul class="dropdown-menu">
-                            <li><a href="/user/user_info"><i class='fa fa-user'></i> 个人主页</a></li>
+                            <li><a href="/user"><i class='fa fa-user'></i> 个人主页</a></li>
                             <li><a href="/user/set_info"><i class='fa fa-cog fa-spin'></i> 个人设置</a></li>
                             <li><a href="/auth/logout"><i class='fa fa-sign-out'></i> 退出登录</a></li>
                         </ul>
@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <nav id="bs-navbar" class="navbar-collapse collapse">
+            <nav id="bs-navbar" class="navbar-collapse collapse text-center">
                 <ul class="nav navbar-nav">
                     <li class="">
                         <a href="/"><i class="fa fa-home"></i> 全部 </a>
