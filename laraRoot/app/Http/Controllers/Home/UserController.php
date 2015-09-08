@@ -1,18 +1,15 @@
 <?php namespace App\Http\Controllers\Home;
 
-use App\Models\Post;
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 
 class UserController extends Controller
 {
     public function show()
     {
-//        $post=Post::where('user_id',$id)->get();
-//        if($post==null){
-//            abort('404');
-//        }
-//        return view('user.user')->with('post',$post);
-        return view('user.user');
+        $id=\Auth::user()->id;
+        $article=Article::where('user_id',$id)->get();
+        return view('user.user')->with('articles',$article);
     }
 
     public function setInfo()
