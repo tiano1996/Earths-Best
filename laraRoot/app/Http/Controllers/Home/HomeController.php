@@ -9,17 +9,19 @@ class HomeController extends Controller
 
     /*
      *	首页
-     *	with hot
+     *	with article model
      */
     public function index()
     {
-        $articles = Article::where('status', '0')->get();
+        $articles = Article::with('comment')->select(['id','title','slug','view','introduction','updated_at'])
+            ->where('status',config('DbStatus.article.status'))->get();
         $list=array();
         foreach ($articles as $v) {
             $list=array_merge($list,explode(',', $v->slug));
+            $v->last_reply=$v->comment->max('created_at');
         }
-        $tag = array_unique($list);
-        return view('home.index')->with('articles', $articles)->with('tags', $tag);
+        $tags = array_unique($list);
+        return view('home.index')->with('articles', $articles)->with('tags', $tags);
     }
 
 }

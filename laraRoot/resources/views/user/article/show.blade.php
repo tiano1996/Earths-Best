@@ -12,7 +12,7 @@
                             <div class="post-footer post-info-footer">
                                 <i class="fa fa-edit"></i>&nbsp;<span>{{$article->updated_at}}</span>
                                 <i class="fa fa-reply"></i>&nbsp;<span>{{$article->last_reply}}</span>
-                                <i class="fa fa-eye"></i><span> 100</span>
+                                <i class="fa fa-eye"></i><span> {{$article->view}}</span>
                                 <i class="fa fa-comment"></i><span> {{count($article->comment)}}</span>
                                 @foreach($article->slug as $slug)
                                     <a class="post-badge" href="#">{{$slug}}</a>

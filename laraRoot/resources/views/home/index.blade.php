@@ -11,141 +11,42 @@
                             <li><a href="#">经验分享</a></li>
                             <li><a href="#">疑难解答</a></li>
                             <li><a href="#">资源分享</a></li>
-                            <li class="pull-right post-style"><a href="javascript:"><i class="fa fa-th-large"></i></a>
+                            <li class="pull-right post-style">
+                                <a href="javascript:"><i class="fa fa-th-large"></i></a>
                             </li>
-                            <li class="pull-right new-article"><a href="createPsot.html"
-                                                                  class="btn btn-success">发表新文章</a></li>
+                            <li class="pull-right new-article">
+                                <a href="/user/article/create" class="btn btn-success">发表新文章</a>
+                            </li>
                         </ul>
                         <ul class="tag list-unstyled clearfix">
-                            <li><a href="#" class="badge">angularJS</a></li>
-                            <li><a href="#" class="badge">Bootstrap</a></li>
-                            <li><a href="#" class="badge">招聘</a></li>
-                            <li><a href="#" class="badge">HMTL预处理</a></li>
+                            @foreach($tags as $tag)
+                                <li><a href="/article/tags/{{urlencode($tag)}}" class="badge">{{$tag}}</a></li>
+                            @endforeach
                             <li><a href="#" class="badge badge-success"><i class="fa fa-plus"></i> 更多</a></li>
                         </ul>
 
                         <div class="post-list">
-                            <div class="post">
-                                <div class="post-head">
-                                    <a href="/post/1"><span class="fa fa-share-alt"></span>Awesome Node.js development
-                                        tools for 2015 tools for 2015</a>
-                                    <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
+                            @foreach($articles as $article)
+                                <div class="post">
+                                    <div class="post-head">
+                                        <a href="/article/{{$article->id}}"><span class="fa fa-share-alt"></span>
+                                            {{$article->id.'.'.$article->title}}</a>
+                                    </div>
+                                    <div class="post-content">
+                                        <p>{{$article->introduction}}</p>
+                                    </div>
+                                    <div class="post-footer">
+                                        <i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
+                                        <i class="fa fa-edit"></i>&nbsp;<span>{{$article->updated_at}}</span>
+                                        <i class="fa fa-reply"></i>&nbsp;<span>{{($article->last_reply)?$article->last_reply:0}}</span>
+                                        <i class="fa fa-eye"></i><span> {{$article->view}}</span>
+                                        <i class="fa fa-comment"></i><span>{{count($article->comment)}}</span>
+                                        @foreach(explode(',',$article->slug) as $tag)
+                                            <a class="post-badge" href="/article/tag/{{$tag}}">{{$tag}}</a>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="post-content">
-                                    <p>
-                                        With the arrival of Node.js, creating a website in JavaScript is very easy and
-                                        cost-effective. This framework brings a massive changeover in the web
-                                        application development with the advanced push innovation instead of using old
-                                        web sockets. With these
-                                        beneficial aspects, [Node.js][2] is gaining popularity among web developers who
-                                        aspire to develop their next website in this framework. …
-                                    </p>
-                                </div>
-                                <div class="post-footer">
-                                    <i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
-                                    <i class="fa fa-edit"></i>&nbsp;<span>8-25 17:30</span>
-                                    <i class="fa fa-reply"></i>&nbsp;<span>8-25 18:00</span>
-                                    <a class="post-badge" href="#">angularJS</a><a class="post-badge"
-                                                                                   href="#">Bootstrap</a><a
-                                            class="post-badge" href="#">angularJS</a><a class="post-badge" href="#">Bootstrap</a><a
-                                            class="post-badge" href="#">angularJS</a><a class="post-badge" href="#">Bootstrap</a>
-                                </div>
-                            </div>
-                            <div class="post">
-                                <div class="post-head">
-                                    <a href="/post/2"><span class="fa fa-tag"></span>这个是中文的标题哦，哈哈哈你看怎么样啊嗯？ popohum兄</a>
-                                    <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
-                                </div>
-                                <div class="post-content">
-                                    <p>
-                                        With the arrival of Node.js, creating a website in JavaScript is very easy and
-                                        cost-effective. This framework brings a massive changeover in the web
-                                        application development with the advanced push innovation instead of using old
-                                        web sockets. With these
-                                        beneficial aspects, [Node.js][2] is gaining popularity among web developers who
-                                        aspire to develop their next website in this framework. …
-                                    </p>
-                                </div>
-                                <div class="post-footer">
-                                    <i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
-                                    <i class="fa fa-edit"></i>&nbsp;<span>8-25 17:30</span>
-                                    <i class="fa fa-reply"></i>&nbsp;<span>8-25 18:00</span>
-                                    <a class="post-badge" href="#">angularJS</a><a class="post-badge"
-                                                                                   href="#">Bootstrap</a>
-                                </div>
-                            </div>
-                            <div class="post">
-                                <div class="post-head">
-                                    <a href="/post/3"><span class="fa fa-tag"></span>Awesome Node.js development Awesome
-                                        Node.js deve5</a>
-                                    <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
-                                </div>
-                                <div class="post-content">
-                                    <p>
-                                        With the arrival of Node.js, creating a website in JavaScript is very easy and
-                                        cost-effective. This framework brings a massive changeover in the web
-                                        application development with the advanced push innovation instead of using old
-                                        web sockets. With these
-                                        beneficial aspects, [Node.js][2] is gaining popularity among web developers who
-                                        aspire to develop their next website in this framework. …
-                                    </p>
-                                </div>
-                                <div class="post-footer">
-                                    <i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
-                                    <i class="fa fa-edit"></i>&nbsp;<span>8-25 17:30</span>
-                                    <i class="fa fa-reply"></i>&nbsp;<span>8-25 18:00</span>
-                                    <a class="post-badge" href="#">angularJS</a><a class="post-badge"
-                                                                                   href="#">Bootstrap</a>
-                                </div>
-                            </div>
-                            <div class="post">
-                                <div class="post-head">
-                                    <a href="/post/4"><span class="fa fa-tag"></span>Awesome Node.js development tools for
-                                        2015</a>
-                                    <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
-                                </div>
-                                <div class="post-content">
-                                    <p>
-                                        With the arrival of Node.js, creating a website in JavaScript is very easy and
-                                        cost-effective. This framework brings a massive changeover in the web
-                                        application development with the advanced push innovation instead of using old
-                                        web sockets. With these
-                                        beneficial aspects, [Node.js][2] is gaining popularity among web developers who
-                                        aspire to develop their next website in this framework. …
-                                    </p>
-                                </div>
-                                <div class="post-footer">
-                                    <i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
-                                    <i class="fa fa-edit"></i>&nbsp;<span>8-25 17:30</span>
-                                    <i class="fa fa-reply"></i>&nbsp;<span>8-25 18:00</span>
-                                    <a class="post-badge" href="#">angularJS</a><a class="post-badge"
-                                                                                   href="#">Bootstrap</a>
-                                </div>
-                            </div>
-                            <div class="post">
-                                <div class="post-head">
-                                    <a href="/post/5"><span class="fa fa-tag"></span>Awesome Node.js development tools for
-                                        2015</a>
-                                    <i class="fa fa-lg fa-commenting pull-right" title="评论">58</i>
-                                </div>
-                                <div class="post-content">
-                                    <p>
-                                        With the arrival of Node.js, creating a website in JavaScript is very easy and
-                                        cost-effective. This framework brings a massive changeover in the web
-                                        application development with the advanced push innovation instead of using old
-                                        web sockets. With these
-                                        beneficial aspects, [Node.js][2] is gaining popularity among web developers who
-                                        aspire to develop their next website in this framework. …
-                                    </p>
-                                </div>
-                                <div class="post-footer">
-                                    <i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
-                                    <i class="fa fa-edit"></i>&nbsp;<span>8-25 17:30</span>
-                                    <i class="fa fa-reply"></i>&nbsp;<span>8-25 18:00</span>
-                                    <a class="post-badge" href="#">angularJS</a><a class="post-badge"
-                                                                                   href="#">Bootstrap</a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -179,7 +80,7 @@
         </div>
     </div>
     <script>
-        $('.post-style>a').on('click', function() {
+        $('.post-style>a').on('click', function () {
             if ($('.post .post-content').css('display') == 'none') {
                 $(this).find('>i').addClass('fa-th-list').removeClass('fa-th-large');
                 $('.post .post-content').slideDown('normal');
