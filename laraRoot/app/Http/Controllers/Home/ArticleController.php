@@ -9,13 +9,13 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $article = Article::where('status', config('DbStatus.article.status'))->get();
-        return view('user.article.index')->with('articles', $article);
+        $article = Article::where('status', config('DbStatus.article.status'))->where()->get();
+        return view('user.article.index')->with('articles', $article)->with('tops',$this->getTop10());
     }
 
     public function show($id)
     {
-        Article::where('status',config('DbStatus.article.status'))->findOrFail($id);
+        Article::where('status', config('DbStatus.article.status'))->findOrFail($id);
         $this->upView($id);
         $article = Article::find($id);
         $article->slug = explode(",", $article->slug);
@@ -58,5 +58,10 @@ class ArticleController extends Controller
             $art->save();
             Cache::add($viewName, true, config('DbStatus.article.time'));
         }
+    }
+    public static function getTop10(){
+        $art=Article::select(['id','title'])->where('status',config('DbStatus.article.status'))
+            ->orderBy('view','desc')->take(10)->get();
+        return $art;
     }
 }

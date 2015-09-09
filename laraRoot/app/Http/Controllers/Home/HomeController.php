@@ -21,7 +21,7 @@ class HomeController extends Controller
             $v->last_reply=$v->comment->max('created_at');
         }
         $tags = array_unique($list);
-        return view('home.index')->with('articles', $articles)->with('tags', $tags);
+        return view('home.index')->with('articles', $articles)->with('tags', $tags)->with('tops',ArticleController::getTop10());
     }
 
 }

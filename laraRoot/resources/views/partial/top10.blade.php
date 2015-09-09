@@ -5,16 +5,9 @@
             <i class="fa fa-list-ol"></i>&nbsp;TOP 10
         </div>
         <ol class="top10">
-            <li><a href="#">fdafdsafdsafdsafdsafdsafdsafdsafasd</a></li>
-            <li><a href="#">fdafdsafasd</a></li>
-            <li><a href="#">fdafdsafasd</a></li>
-            <li><a href="#">fdafdsafasd</a></li>
-            <li><a href="#">fdafdsafasd</a></li>
-            <li><a href="#">fdafdsafasd</a></li>
-            <li><a href="#">fdafdfdsafdsafdsafdsafsdafdsasafasd</a></li>
-            <li><a href="#">fdafdsadfsafdsafdsafdsafdsafdsafasd</a></li>
-            <li><a href="#">fdafdsdfsafdsafdsafdsafdsaafasd</a></li>
-            <li><a href="#">fdafddfafdsafdsafsdasafasd</a></li>
+            @foreach($tops as $v)
+                <li><a href="{{$v->id}}">{{$v->title}}</a></li>
+            @endforeach
         </ol>
     </div>
 </div>
