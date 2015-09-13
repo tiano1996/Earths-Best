@@ -32,51 +32,40 @@
                         <div class="info-title">
                             <i class="fa fa-edit"></i>&nbsp;发表新文章
                         </div>
-                        <form class="edit-form" action="" method="post">
+                        <form class="edit-form" action="{{route('user.article.store')}}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label for="title">文章标题<span>必填， 12 到 120 字节，当前 0 字节</span></label>
                                 <input class="form-control" type="text" name="title" placeholder="文章标题">
                                 <span class="pull-right post-err">请填写文章标题</span>
                             </div>
                             <div class="form-group">
-                                <label for="source">文章来源<span>如转载文章，请填写完整原文URL地址</span></label>
-                                <input class="form-control" type="text" name="source" placeholder="转载来源URL">
-                            </div>
-                            <div class="form-group">
                                 <label for="pType">文章分类<span>必选</span></label>
-                                <select class="form-control" name="pType" id="" value="1">
-                                    <option value="1">-请选择分类-</option>
-                                    <option value="">资源分享</option>
-                                    <option value="">经验分享</option>
-                                    <option value="">疑难解答</option>
+                                <select class="form-control" name="cate" id="cateOption" title="分类">
+                                    <option value="1" selected>-请选择分类-</option>
+                                    @foreach($category as $v)
+                                        <option value="{{$v->id}}">{{$v->title}}</option>
+                                    @endforeach
                                 </select>
                                 <span class="pull-right post-err">请选择分类</span>
                             </div>
                             <div class="form-group">
                                 <label for="content">文章正文<span>使用MarkDown语法，24 到 20480 字节，当前 0 字节</span></label>
-                                <textarea class="form-control" name="content" id="content" cols="30"
-                                          rows="10"></textarea>
+                                <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="badge">文章标签<span>最多设置5个标签，请用逗号隔开</span></label>
-                                <textarea class="form-control" name="badge" cols="30" rows="2"></textarea>
+                                <textarea class="form-control" name="slug" cols="30" rows="2" ondrop="false"></textarea>
 
                                 <div class="post-edit-badge">
                                     <span class="post-badge-tit">热门标签：</span>
-                                    <span>angularJS</span>
-                                    <span>bootstrap</span>
-                                    <span>招聘信息</span>
-                                    <span>外包</span>
-                                    <span>css3</span>
-                                    <span>linux</span>
-                                    <span>javascript</span>
-                                    <span>fontawsom</span>
-                                    <span>微信开发</span>
+                                    @foreach($hotTag as $slug)
+                                        <a class="badge" href="#">{{$slug}}</a>
+                                    @endforeach
                                 </div>
                             </div>
                             <a class="btn btn-info btn-markdown" href="javascript:void(0)">MarkDown语法提示&#47;正文预览</a>
                             <input type="submit" class="btn btn-success" value="发布">
-                            <input type="button" class="btn" value="取消">
                         </form>
                     </div>
                 </div>
@@ -84,12 +73,12 @@
             <!-- end 右侧容器 -->
         </div>
     </div>
+    <script>
+        // markdowm语法 正文与预览切换
+        $('.btn-markdown').on('click', function () {
+            $('#preview').toggle();
+            $('#p-markdown').toggle();
+            /* Act on the event */
+        });
+    </script>
 @endsection
-<script>
-    // markdowm语法 正文与预览切换
-    $('.btn-markdown').on('click', function() {
-        $('#preview').toggle();
-        $('#p-markdown').toggle();
-        /* Act on the event */
-    });
-</script>

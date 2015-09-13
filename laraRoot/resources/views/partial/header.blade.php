@@ -24,6 +24,7 @@
                         </a><span class="header-user">{{Auth::user()->username}}</span>
                         <ul class="dropdown-menu">
                             <li><a href="/user"><i class='fa fa-user'></i> 个人主页</a></li>
+                            <li><a href="/user/article"><i class='fa fa-list-alt'></i> 文章列表</a></li>
                             <li><a href="/user/set_info"><i class='fa fa-cog fa-spin'></i> 个人设置</a></li>
                             <li><a href="/auth/logout"><i class='fa fa-sign-out'></i> 退出登录</a></li>
                         </ul>

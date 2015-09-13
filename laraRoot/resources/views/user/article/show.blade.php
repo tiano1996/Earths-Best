@@ -11,11 +11,11 @@
 
                             <div class="post-footer post-info-footer">
                                 <i class="fa fa-edit"></i>&nbsp;<span>{{$article->updated_at}}</span>
-                                <i class="fa fa-reply"></i>&nbsp;<span>{{$article->last_reply}}</span>
+                                <i class="fa fa-reply"></i>&nbsp;<span>{{($article->last_reply)?$article->last_reply:$article->created_at}}</span>
                                 <i class="fa fa-eye"></i><span> {{$article->view}}</span>
                                 <i class="fa fa-comment"></i><span> {{count($article->comment)}}</span>
                                 @foreach($article->slug as $slug)
-                                    <a class="post-badge" href="#">{{$slug}}</a>
+                                    <a class="post-badge" href="/article/tags/{{$slug}}">{{$slug}}</a>
                                 @endforeach
                             </div>
                             <div class="post-content">
@@ -35,15 +35,15 @@
                     <form action="#" method="post">
                         <textarea name="comment" rows="5" cols="116"></textarea>
                         <input type="submit" class="btn btn-success" value="发布评论"/>
-                        <a href="#" class="btn btn-warning">取消</a>
+                        <a href="#" class="btn btn-warning">重写</a>
 							<span class="pull-right">已经输入3个字符，还可输入997个字符。&nbsp;&nbsp;&nbsp;&nbsp;
 							</span>
                     </form>
                     @foreach($article->comment as $comment)
                         <div class="media">
                             <div class="media-left">
-                                <img class="media-object img-circle" src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg"
-                                     alt="author head">
+                                <img class="media-object img-rounded" alt="author head"
+                                     src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg" >
                             </div>
                             <div class="media-body">
                                 <pre>{{$comment->text}}</pre>

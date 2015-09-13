@@ -13,7 +13,8 @@
                                 <a href="javascript:;"><i class="fa fa-th-large"></i></a>
                             </li>
                             <li class="pull-right new-article">
-                                <a href="/user/create_post" class="btn btn-success">发表新文章</a></li>
+                                <a href="{{route('user.article.create')}}" class="btn btn-success">发表新文章</a>
+                            </li>
                         </ul>
 
                         <div class="post-list">
@@ -22,11 +23,12 @@
                                     <div class="post-head">
                                         <a href="/article/{{$article->id}}"><span class="fa fa-share-alt"></span>
                                             {{$article->id.'.'.$article->title}}</a>
+
                                         <div class="edit-btn">
                                             <a href="javascript:void(0)">操作</a>
 
                                             <div class="edit-post">
-                                                <a href="/article/{{$article->id}}">查看</a>
+                                                <a href="{{route('user.article.show',[$article->id])}}">查看</a>
                                                 <a href="/user/article/{{$article->id}}/edit">编辑</a>
                                                 <form action="/user/article/{{$article->id}}" method="POST">
                                                     <input name="_method" type="hidden" value="DELETE">
@@ -41,15 +43,13 @@
                                     </div>
                                     <div class="post-footer">
                                         <i class="fa fa-user"></i>&nbsp;<a href="#">popohum</a>
-                                        <i class="fa fa-edit"></i>&nbsp;<span>8-25 17:30</span>
-                                        <i class="fa fa-reply"></i>&nbsp;<span>8-25 18:00</span>
-                                        <i class="fa fa-commenting"></i>&nbsp;<span>58</span>
-                                        <a class="post-badge" href="#">angularJS</a>
-                                        <a class="post-badge" href="#">Bootstrap</a>
-                                        <a class="post-badge" href="#">angularJS</a>
-                                        <a class="post-badge" href="#">Bootstrap</a>
-                                        <a class="post-badge" href="#">angularJS</a>
-                                        <a class="post-badge" href="#">Bootstrap</a>
+                                        <i class="fa fa-edit"></i>&nbsp;<span>{{$article->updated_at}}</span>
+                                        <i class="fa fa-reply"></i>&nbsp;<span>{{($article->last_reply)?$article->last_reply:$article->created_at}}</span>
+                                        <i class="fa fa-eye"></i><span> {{$article->view}}</span>
+                                        <i class="fa fa-comment"></i><span> {{count($article->comment)}}</span>
+                                        @foreach(explode(',',$article->slug) as $slug)
+                                            <a class="post-badge" href="/article/tags/{{$slug}}">{{$slug}}</a>
+                                        @endforeach
                                     </div>
                                 </div>
                             @endforeach
@@ -58,21 +58,11 @@
                 </div>
                 <!-- 分页 -->
                 <div class="page-base">
+                    {!! $articles->render() !!}
                     <div class="page-ctrl">
-                        <a href="#"><i class="fa fa-angle-double-left"></i></a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">5</a>
-                        <a href="#">5</a>
-                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
-                    </div>
-                    <div class="page-ctrl">
-                        <a href="#" class="active">10</a>
-                        <a href="#">20</a>
-                        <a href="#">50</a>
+                        <a href="{!! $articles->url('10') !!}" class="active">10</a>
+                        <a href="{!! $articles->url('20') !!}">20</a>
+                        <a href="{!! $articles->url('50') !!}">50</a>
                     </div>
                 </div>
             </div>

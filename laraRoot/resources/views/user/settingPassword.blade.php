@@ -26,7 +26,6 @@
                                     <span class="pull-right post-err">密码输入不一致</span>
                                 </div>
                                 <input type="submit" class="btn btn-success" value="保存">
-                                <input type="button" class="btn" value="取消">
                             </div>
                         </form>
                     </div>

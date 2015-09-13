@@ -21,7 +21,6 @@
                                 <span class="img-note">请选择正方形图片，文件不得大于200kb</span>
 
                                 <input type="submit" class="btn btn-success" value="保存">
-                                <input type="button" class="btn" value="取消">
                             </div>
                         </form>
                     </div>

@@ -6,7 +6,7 @@
         </div>
         <ol class="top10">
             @foreach($tops as $v)
-                <li><a href="{{$v->id}}">{{$v->title}}</a></li>
+                <li><a href="/article/{{$v->id}}">{{$v->title}}</a></li>
             @endforeach
         </ol>
     </div>
