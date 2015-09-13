@@ -21,14 +21,14 @@ return [
             'middleware' => 'auth',
         ],
 
-        'mode'=>'qiniu',//上传方式,local 为本地  qiniu 为七牛
+        'mode'=>'local',//上传方式,local 为本地  qiniu 为七牛
 
         //七牛配置,若mode='qiniu',以下为必填.
         'qiniu'=>[
-            'accessKey'=>'ZkOzPCRp-Fuz8GQqbqFUsy-p2OG3kc-GUIDiQUvz',
-            'secretKey'=>'u1obifdzqv8pRs2pDw-zOgrhgILbrvj8euVVxW2H',
-            'bucket'=>'mnhw',
-            'url'=>'http://7xk04w.com1.z0.glb.clouddn.com',//七牛分配的CDN域名,注意带上http://
+            'accessKey'=>'',
+            'secretKey'=>'',
+            'bucket'=>'',
+            'url'=>'',//七牛分配的CDN域名,注意带上http://
 
         ]
     ],

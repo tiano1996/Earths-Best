@@ -348,10 +348,9 @@ li.post-style a {
 .comment-panel {
 	padding: 15px;
 }
-.comment-body img {
+.media img {
 	width: 72px;
 	height: 72px;
-	border-radius: 3px;
 	margin: 10px;
 }
 /*----------- 以下 右侧TOP10列表-------------------*/
@@ -507,6 +506,9 @@ li.post-style a {
 }
 /*----------以下分页样式------------*/
 
+.pagination{
+    float: left;
+}
 .page-base:after {
 	content: '';
 	display: block;
@@ -515,8 +517,8 @@ li.post-style a {
 	clear: both;
 }
 .page-ctrl {
-	float: left;
-	padding-right: 5px;
+    float: left;
+    padding: 19px 5px;
 }
 .page-ctrl:after {
 	content: '';

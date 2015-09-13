@@ -1,16 +1,25 @@
 <?php namespace App\Http\Controllers\Home;
 
 use App\Models\Article;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
-use Cache;
+use Cache, Redirect,Input;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
 
     public function index()
     {
-        $article = Article::where('status', config('DbStatus.article.status'))->where()->get();
-        return view('user.article.index')->with('articles', $article)->with('tops',$this->getTop10());
+        $articles = Article::with('comment')
+            ->select(['id', 'title', 'slug', 'view', 'introduction', 'updated_at', 'created_at'])
+            ->where('status', config('DbStatus.article.status'))->paginate(1);
+        foreach ($articles as $v) {
+            $v->slug = str_replace('，', ',', $v->slug);
+            $v->last_reply = $v->comment->max('created_at');
+        }
+        return view('user.article.index')
+            ->with('articles', $articles)->with('tops', ArticleController::getTop10());
     }
 
     public function show($id)
@@ -18,34 +27,68 @@ class ArticleController extends Controller
         Article::where('status', config('DbStatus.article.status'))->findOrFail($id);
         $this->upView($id);
         $article = Article::find($id);
-        $article->slug = explode(",", $article->slug);
+        $article->slug = explode(",", str_replace('，', ',', $article->slug));
         $article->last_reply = $article->comment->max('created_at');
-        return view('user.article.show')->with('article', $article);
+        return view('user.article.show')
+            ->with('article', $article)->with('tops', ArticleController::getTop10());
     }
 
     public function create()
     {
-        return view('user.article.create');
+        $cate = Category::where('status', config('DbStatus.category.status'))->get();
+        return view('user.article.create')->with('hotTag', $this->hotTag())->with('category', $cate);
     }
 
     public function store()
     {
-        return 'article保存';
+        $article = new Article();
+        $article->user_id = \Auth::user()->id;
+        $article->title = Input::get('title');
+        $article->category_id = Input::get('cate');
+        $article->slug = Input::get('slug');
+        $article->content = Input::get('content');
+        $article->ip = \Request::getClientIp();
+        $article->created_at=Carbon::now();
+        $article->updated_at=Carbon::now();
+        if ($article->save()) {
+            return Redirect::to('/article/'.$article->id);
+        } else {
+            return Redirect::back()->withInput()->withErrors('保存失败！');
+        }
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('user.article.edit');
+        $art=Article::findOrFail($id);
+        $cate = Category::where('status', config('DbStatus.category.status'))->get();
+        return view('user.article.edit')->with('article',$art)->with('hotTag', $this->hotTag())->with('category', $cate);
     }
 
-    public function update()
+    public function update($id)
     {
-        return 'article更新';
+        $article = Article::find($id);
+        $article->user_id_edited = \Auth::user()->id;
+        $article->title = Input::get('title');
+        $article->category_id = Input::get('cate');
+        $article->slug = Input::get('slug');
+        $article->content = Input::get('content');
+        $article->ip = \Request::getClientIp();
+        $article->updated_at=Carbon::now();
+        if ($article->save()) {
+            return Redirect::to('/article/'.$article->id);
+        } else {
+            return Redirect::back()->withInput()->withErrors('更新失败！');
+        }
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-        return 'article删除';
+        $article=Article::findOrFail($id);
+        if ($article->delete()) {
+            return Redirect::back();
+        } else {
+            return Redirect::back()->withInput()->withErrors('更新失败！');
+        }
     }
 
     public function upView($id)
@@ -59,9 +102,25 @@ class ArticleController extends Controller
             Cache::add($viewName, true, config('DbStatus.article.time'));
         }
     }
-    public static function getTop10(){
-        $art=Article::select(['id','title'])->where('status',config('DbStatus.article.status'))
-            ->orderBy('view','desc')->take(10)->get();
+
+    public static function getTop10()
+    {
+        $art = Article::select(['id', 'title'])->where('status', config('DbStatus.article.status'))
+            ->orderBy('view', 'desc')->take(10)->get();
         return $art;
     }
+
+    public static function hotTag()
+    {
+        $slug = Article::select(['id', 'slug'])->where('status', config('DbStatus.article.status'))
+            ->orderBy('view', 'desc')->take(10)->get();
+        $data = array();
+        foreach ($slug as $v) {
+            $v->slug = str_replace('，', ',', $v->slug);
+            $data = array_merge($data, explode(',', $v->slug));
+        }
+        $data = array_unique($data);
+        return $data;
+    }
+
 }

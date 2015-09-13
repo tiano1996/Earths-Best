@@ -42,7 +42,6 @@
                                     </select>
                                 </div>
                                 <input type="submit" class="btn btn-success" value="保存">
-                                <input type="button" class="btn" value="取消">
                             </div>
                         </form>
                     </div>
