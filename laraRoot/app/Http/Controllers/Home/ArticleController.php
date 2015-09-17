@@ -12,10 +12,10 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::with('comment')
-            ->select(['id', 'title', 'slug', 'view', 'introduction', 'updated_at', 'created_at'])
+            ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
             ->where('status', config('DbStatus.article.status'))->paginate(1);
         foreach ($articles as $v) {
-            $v->slug = str_replace('，', ',', $v->slug);
+            $v->tag = str_replace('，', ',', $v->tag);
             $v->last_reply = $v->comment->max('created_at');
         }
         return view('user.article.index')
@@ -27,7 +27,7 @@ class ArticleController extends Controller
         Article::where('status', config('DbStatus.article.status'))->findOrFail($id);
         $this->upView($id);
         $article = Article::find($id);
-        $article->slug = explode(",", str_replace('，', ',', $article->slug));
+        $article->tag = explode(",", str_replace('，', ',', $article->tag));
         $article->last_reply = $article->comment->max('created_at');
         return view('user.article.show')
             ->with('article', $article)->with('tops', ArticleController::getTop10());
@@ -45,7 +45,7 @@ class ArticleController extends Controller
         $article->user_id = \Auth::user()->id;
         $article->title = Input::get('title');
         $article->category_id = Input::get('cate');
-        $article->slug = Input::get('slug');
+        $article->tag = Input::get('tag');
         $article->content = Input::get('content');
         $article->ip = \Request::getClientIp();
         $article->created_at=Carbon::now();
@@ -70,7 +70,7 @@ class ArticleController extends Controller
         $article->user_id_edited = \Auth::user()->id;
         $article->title = Input::get('title');
         $article->category_id = Input::get('cate');
-        $article->slug = Input::get('slug');
+        $article->tag = Input::get('tag');
         $article->content = Input::get('content');
         $article->ip = \Request::getClientIp();
         $article->updated_at=Carbon::now();
@@ -112,12 +112,12 @@ class ArticleController extends Controller
 
     public static function hotTag()
     {
-        $slug = Article::select(['id', 'slug'])->where('status', config('DbStatus.article.status'))
+        $tag = Article::select(['id', 'tag'])->where('status', config('DbStatus.article.status'))
             ->orderBy('view', 'desc')->take(10)->get();
         $data = array();
-        foreach ($slug as $v) {
-            $v->slug = str_replace('，', ',', $v->slug);
-            $data = array_merge($data, explode(',', $v->slug));
+        foreach ($tag as $v) {
+            $v->tag = str_replace('，', ',', $v->tag);
+            $data = array_merge($data, explode(',', $v->tag));
         }
         $data = array_unique($data);
         return $data;

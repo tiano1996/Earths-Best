@@ -48,8 +48,8 @@
                                         <i class="fa fa-reply"></i>&nbsp;<span>{{($article->last_reply)?$article->last_reply:$article->created_at}}</span>
                                         <i class="fa fa-eye"></i><span> {{$article->view}}</span>
                                         <i class="fa fa-comment"></i><span> {{count($article->comment)}}</span>
-                                        @foreach(explode(',',$article->slug) as $slug)
-                                            <a class="post-badge" href="/article/tags/{{$slug}}">{{$slug}}</a>
+                                        @foreach(explode(',',$article->tag) as $tag)
+                                            <a class="post-badge" href="/article/tags/{{$tag}}">{{$tag}}</a>
                                         @endforeach
                                     </div>
                                 </div>

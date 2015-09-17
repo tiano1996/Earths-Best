@@ -14,12 +14,12 @@ class HomeController extends Controller
     public function index()
     {
         $articles = Article::with('comment')
-            ->select(['id', 'title', 'slug', 'view', 'introduction', 'updated_at', 'created_at'])
+            ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
             ->where('status', config('DbStatus.article.status'))->paginate(10);
         $list = array();
         foreach ($articles as $v) {
-            $v->slug = str_replace('，', ',', $v->slug);
-            $list = array_merge($list, explode(',', $v->slug));
+            $v->tag = str_replace('，', ',', $v->tag);
+            $list = array_merge($list, explode(',', $v->tag));
             $v->last_reply = $v->comment->max('created_at');
         }
         $tags = array_unique($list);
@@ -30,15 +30,15 @@ class HomeController extends Controller
     public function tagList($name = null)
     {
         if ($name != null)
-            $articles = Article::with('comment')->select(['id', 'title', 'slug', 'view', 'introduction', 'updated_at', 'created_at'])
-                ->where('status', config('DbStatus.article.status'))->where('slug', 'like', '%' . $name . '%')->paginate(10);
+            $articles = Article::with('comment')->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
+                ->where('status', config('DbStatus.article.status'))->where('tag', 'like', '%' . $name . '%')->paginate(10);
         else
-            $articles = Article::with('comment')->select(['id', 'title', 'slug', 'view', 'introduction', 'updated_at', 'created_at'])
+            $articles = Article::with('comment')->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
                 ->where('status', config('DbStatus.article.status'))->paginate(10);
         $list = array();
         foreach ($articles as $v) {
-            $v->slug = str_replace('，', ',', $v->slug);
-            $list = array_merge($list, explode(',', $v->slug));
+            $v->tag = str_replace('，', ',', $v->tag);
+            $list = array_merge($list, explode(',', $v->tag));
             $v->last_reply = $v->comment->max('created_at');
         }
         $tags = array_unique($list);

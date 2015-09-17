@@ -25,11 +25,12 @@
                             <div class="info-title">
                                 &nbsp;找回密码
                             </div>
-                            <form action="" method="post">
+                            <form action="/password/email" method="post">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
                                 <div class="col-md-4 col-md-offset-4 pwdfind">
                                     <div class="form-group ">
                                         <label for="email">请输入邮箱</label>
-                                        <input class="form-control" type="text" name="email" placeholder="popohum">
+                                        <input class="form-control" type="text" name="email">
                                     </div>
                                     <button class="btn btn-success">发送</button>
                                 </div>

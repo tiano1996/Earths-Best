@@ -254,7 +254,7 @@
                 <div class="button login">
                     <button><span>登录</span> <i class="fa fa-check"></i></button>
                 </div>
-                <a href="/auth/password/email" class="pass-forgot">忘记密码?</a>
+                <a href="/password/email" class="pass-forgot">忘记密码?</a>
             </div>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
         </form>

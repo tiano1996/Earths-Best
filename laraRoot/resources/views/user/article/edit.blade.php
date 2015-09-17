@@ -60,13 +60,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="badge">文章标签<span>最多设置5个标签，请用逗号隔开</span></label>
-                                <textarea class="form-control" name="slug" cols="30" rows="2"
-                                          ondrop="false">{{$article->slug}}</textarea>
+                                <textarea class="form-control" name="tag" cols="30" rows="2"
+                                          ondrop="false">{{$article->tag}}</textarea>
 
                                 <div class="post-edit-badge">
                                     <span class="post-badge-tit">热门标签：</span>
-                                    @foreach($hotTag as $slug)
-                                        <a class="badge" href="#">{{$slug}}</a>
+                                    @foreach($hotTag as $tag)
+                                        <a class="badge" href="#">{{$tag}}</a>
                                     @endforeach
                                 </div>
                             </div>
