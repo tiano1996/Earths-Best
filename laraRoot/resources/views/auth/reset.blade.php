@@ -19,15 +19,27 @@
                         <div class="info-title">
                             &nbsp;重设密码
                         </div>
-                        <form action="" method="post">
+                        <form action="/password/reset" method="post">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="token" value="{{ $token }}">
+
                             <div class="col-md-4 col-md-offset-4 pwdfind">
-                                <div class="form-group ">
+                                <div class="form-group">
+                                    <label for="email">E-Mail Address</label>
+
+                                    <div class="form-group">
+                                        <input class="form-control" type="email" name="email"
+                                               value="{{ old('email') }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="pwdNew">新密码</label>
-                                    <input class="form-control" type="text" name="pwdNew" placeholder="popohum">
+                                    <input class="form-control" type="text" name="password" placeholder="请输入密码">
                                 </div>
                                 <div class="form-group ">
                                     <label for="pwdRe">重复新密码</label>
-                                    <input class="form-control" type="text" name="pwdRe" placeholder="popohum">
+                                    <input class="form-control" type="text" name="password_confirmation"
+                                           placeholder="请确认密码">
                                 </div>
                                 <button class="btn btn-success">保存</button>
                             </div>
