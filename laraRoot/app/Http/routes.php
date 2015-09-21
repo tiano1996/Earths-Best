@@ -5,10 +5,10 @@ Route::get('article/tags/{name?}', 'Home\HomeController@tagList');
 //用户路由
 Route::group(['prefix' => 'user', 'namespace' => 'Home', 'middleware' => 'auth'], function () {
     Route::get('/', 'UserController@index');
-    Route::get('set_info', 'UserController@setInfo');
-    Route::get('set_face', 'UserController@setFace');
-    Route::get('set_password', 'UserController@setPassword');
     Route::resource('article', 'ArticleController');
+    Route::get('setting/info', 'UserController@setInfo');
+    Route::get('setting/face', 'UserController@setFace');
+    Route::get('setting/password', 'UserController@setPassword');
 });
 Route::controller('auth', 'Auth\AuthController');
 Route::controller('password', 'Auth\PasswordController');
