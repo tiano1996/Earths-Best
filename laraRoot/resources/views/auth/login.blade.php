@@ -153,6 +153,7 @@
 
         .button.login button.active i.fa {
             opacity: 1;
+            color:#fff;
             transform: scale(1) rotate(-0deg);
             -webkit-transform: scale(1) rotate(-0deg);
             -ms-transform: scale(1) rotate(-0deg);
@@ -221,6 +222,10 @@
             list-style-type: none;
             outline: none;
         }
+
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px white inset !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -241,13 +246,13 @@
 
                 <div class="input">
                     <label for="name">用户名</label>
-                    <input type="text" name="username" id="name" value="{{ old('username') }}" autocomplete="off">
+                    <input type="text" name="username" id="name" @if(old('username') )value="{{old('username')}}"@endif>
                     <span class="spin"></span>
                 </div>
 
                 <div class="input">
                     <label for="pass">密码</label>
-                    <input type="password" name="password" id="pass" autocomplete="off">
+                    <input type="password" name="password" id="pass">
                     <span class="spin"></span>
                 </div>
 
@@ -260,24 +265,36 @@
         </form>
     </div>
     <script>
+
         $(function () {
-            if ($('#name').val() != '') {
-                $('#name').prev().css({
-                    "line-height": "18px",
-                    "font-size": "18px",
-                    "font-weight": "100",
-                    "top": "0px"
-                });
-                $('#name').next().css({
-                    "width": "100%"
-                });
-            }
+            setTimeout(function () {
+                if ($('#name').val() != '' && $('#name').val() != null) {
+                    $('#name').prev().css({
+                        "line-height": "18px",
+                        "font-size": "18px",
+                        "top": "0px"
+                    });
+                    $('#name').next().css({
+                        "width": "100%"
+                    });
+                    $('#pass').prev().css({
+                        "line-height": "18px",
+                        "font-size": "18px",
+                        "top": "0px"
+                    });
+                    $('#pass').next().css({
+                        "width": "100%"
+                    });
+                    clearTimeout(this);
+                }
+            },100);
+
+
             $('#name').onlyNumAlpha();
             $("#name,#pass").focus(function () {
                 $(this).prev().css({
                     "line-height": "18px",
                     "font-size": "18px",
-                    "font-weight": "100",
                     "top": "0px"
                 });
                 $(this).next().css({
@@ -285,15 +302,14 @@
                 });
             }).blur(function () {
                 if ($(this).val().trim() == "") {
-                    $(this).next().css({
-                        "width": "0px"
-                    });
                     $(this).prev().css({
                         "line-height": "60px",
                         "font-size": "24px",
-                        "font-weight": "300",
                         "top": "10px"
-                    })
+                    });
+                    $(this).next().css({
+                        "width": "0px"
+                    });
                 }
             });
             $(".login").click(function (e) {

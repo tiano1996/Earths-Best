@@ -34,11 +34,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="pwdNew">新密码</label>
-                                    <input class="form-control" type="text" name="password" placeholder="请输入密码">
+                                    <input class="form-control" type="password" name="password" placeholder="请输入密码">
                                 </div>
                                 <div class="form-group ">
                                     <label for="pwdRe">重复新密码</label>
-                                    <input class="form-control" type="text" name="password_confirmation"
+                                    <input class="form-control" type="password" name="password_confirmation"
                                            placeholder="请确认密码">
                                 </div>
                                 <button class="btn btn-success">保存</button>
