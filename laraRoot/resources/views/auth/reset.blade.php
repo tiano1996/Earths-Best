@@ -29,15 +29,15 @@
 
                                     <div class="form-group">
                                         <input class="form-control" type="email" name="email"
-                                               value="{{ old('email') }}">
+                                               value="{{ $data->email }}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pwdNew">新密码</label>
+                                    <label for="password">新密码</label>
                                     <input class="form-control" type="password" name="password" placeholder="请输入密码">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="pwdRe">重复新密码</label>
+                                    <label for="password_confirmation">重复新密码</label>
                                     <input class="form-control" type="password" name="password_confirmation"
                                            placeholder="请确认密码">
                                 </div>
