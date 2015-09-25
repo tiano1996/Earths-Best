@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use Cache;
 class CacheController extends Controller {
 
@@ -18,7 +19,7 @@ class CacheController extends Controller {
             }
         }
         Cache::forever('menu',$menuP);
-        return 'Menu flash success!';
+        return 'Menu flush success!';
     }
 
 }

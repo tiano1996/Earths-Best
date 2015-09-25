@@ -35,7 +35,7 @@ class ArticleController extends Controller
 
     public function create()
     {
-        $cate = Category::where('status', config('DbStatus.category.status'))->get();
+        $cate = Category::whereNull('deleted_at')->get();
         return view('user.article.create')->with('hotTag', $this->hotTag())->with('category', $cate);
     }
 

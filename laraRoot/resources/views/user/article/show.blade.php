@@ -33,11 +33,10 @@
                     <h4>评论：{{$article->title}}</h4>
 
                     <form action="#" method="post">
-                        <textarea name="comment" rows="5" cols="116"></textarea>
+                        <textarea name="comment" rows="5" cols="116" id="comment" placeholder="评论一下好伐啦！" style="resize:none"></textarea>
                         <input type="submit" class="btn btn-success" value="发布评论"/>
-                        <a href="#" class="btn btn-warning">重写</a>
-							<span class="pull-right">已经输入3个字符，还可输入997个字符。&nbsp;&nbsp;&nbsp;&nbsp;
-							</span>
+                        <a href="javascript:;" class="btn btn-warning" id="reset">重写</a>
+						<span class="pull-right" id="number">已经输入0个字符，还可输入1000个字符。&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </form>
                     @foreach($article->comment as $comment)
                         <div class="media">
@@ -47,7 +46,7 @@
                             </div>
                             <div class="media-body">
                                 <pre>{{$comment->text}}</pre>
-                                <a href="#" class="pull-right">回复</a>
+                                <a href="javascript:comment({{$comment->id}})" class="pull-right">回复</a>
                             </div>
                         </div>
                     @endforeach
@@ -62,4 +61,29 @@
             <!-- end 右侧容器 -->
         </div>
     </div>
+    <script>
+        function comment(id){
+            $('#comment').data('parent_id',id);
+            $('#comment').val($('#comment').val()+'#'+id+';');
+        }
+        $(document).ready(function () {
+            $('#reset').on('click',function(){
+                $('#comment').val('');
+                $('#number').text("已经输入0个字符，还可输入1000个字符。").append('&nbsp;&nbsp;&nbsp;&nbsp;');
+            });
+            listen('comment',function(){
+                if($('#comment').val().length>1000){
+                    $('#comment').val($('#comment').val().substring(0,1000));
+                }
+                $('#number').text("已经输入"+$('#comment').val().length+"个字符，还可输入"+(1000-$('#comment').val().length)+"个字符。").append('&nbsp;&nbsp;&nbsp;&nbsp;');
+            })
+
+        });
+        function listen(id,callback){
+            var obj = document.getElementById(id);
+            if(obj.onpropertychange){obj.onpropertychange = callback;}
+            else{obj.oninput = callback;}
+            obj.onchange = callback;
+        }
+    </script>
 @endsection
