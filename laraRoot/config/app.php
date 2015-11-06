@@ -145,6 +145,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        YuanChao\Pjax\EndaPjaxServiceProvider::class,
 //        Stevenyangecho\UEditor\UEditorServiceProvider::class
     ],
 

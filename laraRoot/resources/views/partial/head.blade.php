@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/public/style/common.css">
     @yield('css')
     <script src="/public/scripts/jquery-2.1.1.min.js"></script>
+    @include('pjax::pjax')
     <!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
