@@ -4,6 +4,7 @@ Route::get('article/{id}', 'Home\ArticleController@show');
 Route::get('article/tags/{name?}', 'Home\HomeController@tagList');
 Route::get('category/{name?}','Home\HomeController@cate');
 //用户路由
+Route::resource('comment', 'Home\CommentController');
 Route::group(['prefix' => 'user', 'namespace' => 'Home', 'middleware' => 'auth'], function () {
     Route::get('/', 'UserController@index');
     Route::resource('article', 'ArticleController');

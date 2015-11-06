@@ -18,7 +18,7 @@ class CacheController extends Controller {
             }
         }
         Cache::forever('menu',$menuP);
-        return 'Menu flash success!';
+        return 'Menu flush success!';
     }
 
 }

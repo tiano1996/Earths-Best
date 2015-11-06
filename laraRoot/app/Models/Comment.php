@@ -7,7 +7,7 @@ class Comment extends Model
      * Comment model
      * belongsTo Articles
      */
-    public $timestamps=true;
+    public $timestamps=false;
     protected $table='comments';
     protected $fillable = ['nickname', 'email', 'content'];
 }
