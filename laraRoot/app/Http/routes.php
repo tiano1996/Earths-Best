@@ -14,6 +14,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'Home', 'middleware' => 'auth']
 });
 Route::controller('auth', 'Auth\AuthController');
 Route::controller('password', 'Auth\PasswordController');
+Route::get('confirm/confirmation_code/{url}', 'Home\UserController@confirm');
 //todo:admin 后台
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'AdminController@index');

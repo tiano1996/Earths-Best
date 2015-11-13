@@ -33,4 +33,15 @@ class UserController extends Controller
     {
         return view('user.settingPassword');
     }
+
+    public function confirm($url){
+        $data = \DB::table('users')
+            ->whereNull('deleted_at')
+            ->where('confirmation_code',$url)
+            ->update(['confirmation_code' => null,'confirmed' => '1']);
+        if($data){
+            return view('auth.notice')->with('msg','激活成功，欢迎访问Earth Best！');
+        }
+        return view('auth.notice')->with('msg','So sad, 发生错误，请联系管理员！');
+    }
 }
