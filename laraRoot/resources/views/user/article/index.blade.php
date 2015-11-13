@@ -29,9 +29,8 @@
 
                                             <div class="edit-post">
                                                 <a href="{{route('user.article.show',[$article->id])}}">查看</a>
-                                                <a href="/user/article/{{$article->id}}/edit">编辑</a>
-
-                                                <form action="/user/article/{{$article->id}}" method="POST">
+                                                <a href="{{route('user.article.edit',[$article->id])}}">编辑</a>
+                                                <form action="{{route('user.article.destroy',[$article->id])}}" method="POST">
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <input type="submit" class="btn-link" value="删除">
