@@ -85,7 +85,7 @@ class ArticleController extends Controller
     {
         $article=Article::findOrFail($id);
         if ($article->delete()) {
-            return Redirect::back();
+            return Redirect::to('/user/article');
         } else {
             return Redirect::back()->withInput()->withErrors('更新失败！');
         }

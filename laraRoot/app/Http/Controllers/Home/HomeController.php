@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CacheController;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Request;
 
 class HomeController extends Controller
 {
@@ -11,11 +12,20 @@ class HomeController extends Controller
      *	首页
      *	with article model
      */
-    public function index()
+    public function index($parm = null)
     {
-        $articles = Article::with('comment')
-            ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
-            ->where('status', config('DbStatus.article.status'))->paginate(10);
+        if ($parm != null) {
+            $articles = Article::with('comment')
+                ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
+                ->where('status', config('DbStatus.article.status'))
+                ->orderBy($parm,'desc')
+                ->paginate(2);
+        } else {
+            $articles = Article::with('comment')
+                ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
+                ->where('status', config('DbStatus.article.status'))
+                ->paginate(2);
+        }
         $list = array();
         foreach ($articles as $v) {
             $v->tag = str_replace('，', ',', $v->tag);
@@ -48,8 +58,8 @@ class HomeController extends Controller
 
     public static function menu()
     {
-        if(!\Cache::has('menu'))
-        CacheController::flushMenu();
+        if (!\Cache::has('menu'))
+            CacheController::flushMenu();
         return \Cache::get('menu');
     }
 
@@ -73,5 +83,21 @@ class HomeController extends Controller
         $tags = array_unique($list);
         return view('home.cateList')
             ->with('articles', $articles)->with('tags', $tags)->with('tops', ArticleController::getTop10());
+    }
+
+    public function order()
+    {
+        if (Request::is('latest')) {
+            return $this->index('created_at');
+//            dd('latest');
+        } elseif (Request::is('hot')) {
+            return $this->index('view');
+//            dd('hot');
+        } elseif (Request::is('update')) {
+            return $this->index('updated_at');
+//            dd('update');
+        } else {
+            return $this->index();
+        }
     }
 }

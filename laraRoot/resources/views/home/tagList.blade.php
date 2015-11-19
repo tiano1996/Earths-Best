@@ -7,10 +7,9 @@
                 <div class="bg-info">
                     <div class="info-base main-info-base">
                         <ul class="cate list-unstyled clearfix">
-                            <li class="active"><a href="#">最新发布</a></li>
-                            <li><a href="#">经验分享</a></li>
-                            <li><a href="#">疑难解答</a></li>
-                            <li><a href="#">资源分享</a></li>
+                            <li class="{{ (Request::is('latest') ? 'active' : '') }}"><a href="/latest">最新发布</a></li>
+                            <li class="{{ (Request::is('hot') ? 'active' : '') }}"><a href="/hot">最热门</a></li>
+                            <li class="{{ (Request::is('update') ? 'active' : '') }}"><a href="/update">最近评论</a></li>
                             <li class="pull-right post-style">
                                 <a href="javascript:"><i class="fa fa-th-large"></i></a>
                             </li>
@@ -52,22 +51,12 @@
                 </div>
                 <!-- 分页 -->
                 <div class="page-base">
-                    <div class="page-ctrl">
-                        <a href="#"><i class="fa fa-angle-double-left"></i></a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">5</a>
-                        <a href="#">5</a>
-                        <a href="#"><i class="fa fa-angle-double-right"></i></a>
-                    </div>
-                    <div class="page-ctrl">
-                        <a href="#" class="active">10</a>
-                        <a href="#">20</a>
-                        <a href="#">50</a>
-                    </div>
+                    {!! $articles->render() !!}
+                    {{--<div class="page-ctrl">--}}
+                    {{--<a href="{!! $articles->url('10') !!}" class="active">10</a>--}}
+                    {{--<a href="{!! $articles->url('20') !!}">20</a>--}}
+                    {{--<a href="{!! $articles->url('50') !!}">50</a>--}}
+                    {{--</div>--}}
                 </div>
             </div>
             <!-- end 左侧容器 -->

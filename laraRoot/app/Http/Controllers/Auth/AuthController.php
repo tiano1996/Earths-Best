@@ -3,7 +3,7 @@ use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Auth, Input, Redirect;
+use Auth, Input, Redirect,Mail;
 
 class AuthController extends Controller
 {
@@ -21,11 +21,6 @@ class AuthController extends Controller
         $username = Input::get('username');
         $password = Input::get('password');
         $this->validator( array('username' => $username, 'password' => $password));
-//        \Validator::make(
-//            array('username' => $username, 'password' => $password),
-//            ['username' => 'required|max:255',
-////          'email' => 'required|email|max:255|unique:users',
-//                'password' => 'required|confirmed|min:6']);
         if (Auth::attempt(array('username' => $username, 'password' => $password,'confirmed' => 1))) {
             return Redirect::to('/');
         } else {
@@ -38,7 +33,6 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-//            'email' => 'required|email|max:30|unique:users',
             'username' => 'required|max:30',
             'password' => 'required|min:6',
         ]);
@@ -47,7 +41,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $data['token'] = str_random(32);
-        \Mail::send('emails.confirm', $data, function ($message) {
+        Mail::send('emails.confirm', ['token'=>$data['token'],'email'=>$data['email']], function ($message) {
             $message->to(Input::get('email'))->subject('Welcome to the Earth Best,Confirm Link!');
         });
         return User::create([

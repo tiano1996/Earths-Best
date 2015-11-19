@@ -91,12 +91,12 @@
                 /* Act on the event */
             });
             $('.post-style>a').on('click', function () {
-                if ($('.post .post-content').css('display') == 'none') {
-                    $(this).find('>i').addClass('fa-th-list').removeClass('fa-th-large');
-                    $('.post .post-content').slideDown('normal');
+                if ($(".post>.post-content").css('display') == 'none') {
+                    $(this).find('>i').removeClass('fa-th-large').addClass('fa-th-list');
+                    $('.post .post-content').stop().slideDown('fast');
                 } else {
                     $(this).find('>i').removeClass('fa-th-list').addClass('fa-th-large');
-                    $('.post .post-content').slideUp('normal');
+                    $('.post .post-content').stop().slideUp('fast');
                 }
             })
         });

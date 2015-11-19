@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use Carbon\Carbon;
 use Redirect, Input;
 use App\Models\Comment;
@@ -17,6 +18,9 @@ class CommentController extends Controller {
         $comment->parent_id=Input::get('p_id');
         $comment->created_at=Carbon::now();
 		if ($comment->save()) {
+            $article=Article::find($comment->article_id);
+            $article->setUpdatedAt(Carbon::now());
+            $article->save();
 			return Redirect::back();
 		} else {
 			return Redirect::back()->withInput()->withErrors('评论发表失败！');
