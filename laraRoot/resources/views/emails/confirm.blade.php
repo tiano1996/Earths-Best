@@ -27,7 +27,7 @@
                 <table width="730" cellpadding="0" cellspacing="0" border="0" style="background: #fff;">
                   <tr>
                     <td style="padding: 15px;">
-                      <p>Hi~! 这里是地球最好项目发来的邮件~</p>
+                      <p>Hi~! {{$email}},这里是地球最好项目发来的邮件~</p>
                       <h2 style=" font-weight: 500;">激活帐号,开始遨游之旅！！(-｡-;)</h2>
                       <p style="line-height: 1.75em;">
                         <a href="{{ url('confirm/confirmation_code',[$token]) }}">点击这里</a>&nbsp;激活帐号。。。<br>

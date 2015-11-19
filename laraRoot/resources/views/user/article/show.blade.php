@@ -35,7 +35,7 @@
                         @foreach($article->comment as $comment)
                             <li class="media">
                                 <a class="pull-left" href="#" id="comment-{{$comment->id}}">
-                                    <img src="//img0.bdstatic.com/img/image/shouye/qdmmx06.jpg"
+                                    <img src="//www.gravatar.com/avatar/{{md5($comment->author_email)}}?s=64"
                                          alt="Picture of {{$comment->author_nickname}}"
                                          class="media-object img-rounded">
                                 </a>

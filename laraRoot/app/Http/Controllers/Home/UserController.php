@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Input, Validator, Redirect, Auth, Hash;
 
 class UserController extends Controller
 {
@@ -34,14 +35,47 @@ class UserController extends Controller
         return view('user.settingPassword');
     }
 
-    public function confirm($url){
+    public function postPassword()
+    {
+        $pwdOld = Input::get('pwdOld');
+        $pwdNew = Input::get('pwdNew');
+        $pwdRe = Input::get('pwdRe');
+        $v = Validator::make([
+            'pass_old' => $pwdOld,
+            'password' => $pwdNew,
+            'password_confirmation' => $pwdRe,
+        ],
+            [
+                'pass_old' => 'required|min:6',
+                'password' => 'required|confirmed|min:6',
+                'password_confirmation' => 'required|min:6',
+            ]);
+        if ($v->fails()) {
+            Redirect::back()->withErrors($v->errors());
+        } else {
+            if (!Hash::check($pwdOld, Auth::getUser()->getAuthPassword())) {
+                return Redirect::back()->with('msg', '原密码错误！');
+            } else {
+                $user = Auth::getUser();
+                $user->password = Hash::make($pwdNew);
+                if ($user->save()) {
+                    return Redirect::back()->with('info', '密码修改成功！');
+                } else {
+                    return Redirect::back()->with('info', '密码修改失败！');
+                }
+            }
+        }
+    }
+
+    public function confirm($url)
+    {
         $data = \DB::table('users')
             ->whereNull('deleted_at')
-            ->where('confirmation_code',$url)
-            ->update(['confirmation_code' => null,'confirmed' => '1']);
-        if($data){
-            return view('auth.notice')->with('msg','激活成功，欢迎访问Earth Best！');
+            ->where('confirmation_code', $url)
+            ->update(['confirmation_code' => null, 'confirmed' => '1']);
+        if ($data) {
+            return view('auth.notice')->with('msg', '激活成功，欢迎访问Earth Best！');
         }
-        return view('auth.notice')->with('msg','So sad, 发生错误，请联系管理员！');
+        return view('auth.notice')->with('msg', 'So sad, 发生错误，请联系管理员！');
     }
 }
