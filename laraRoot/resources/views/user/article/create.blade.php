@@ -1,33 +1,14 @@
 @extends('_layouts.index')
+<link rel="stylesheet" href="/public/md-editor/editor.css" />
+<script type="text/javascript" src="/public/md-editor/editor.js"></script>
+<script type="text/javascript" src="/public/md-editor/marked.js"></script>
 @section('content')
     <div class="container">
         <div class="row">
-            <!-- 左侧容器 main-base -->
-            <div class="col-md-6 main-base">
+            <!-- 主容器 -->
+            <div class="col-md-10 col-md-offset-1 main-base">
+                <!-- markdown -->
                 <div class="bg-info">
-                    <div class="info-base" id="preview">
-                        <div class="info-title">
-                            <i class="fa fa-file-text-o"></i>&nbsp;正文预览
-                        </div>
-                        <div class="preview-con">
-                            fdsafdasfdsafdsafdsafdsafsda
-                        </div>
-                    </div>
-                    <div class="info-base" id="p-markdown">
-                        <div class="info-title">
-                            <i class="fa fa-info-circle"></i>&nbsp;MarkDown 语法
-                        </div>
-                        <div class="preview-con">
-                            kjjjkjkfajkdjdsfjsdfjksdfjdfjdfsdjkjasdfjk
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end 左侧容器 -->
-            <!-- 右侧容器 -->
-            <div class="col-md-6 side-base">
-                <!-- 文章 -->
-                <div class=" bg-info">
                     <div class="info-base">
                         <div class="info-title">
                             <i class="fa fa-edit"></i>&nbsp;发表新文章
@@ -51,12 +32,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="content">文章正文<span>使用MarkDown语法，24 到 20480 字节，当前 0 字节</span></label>
-                                <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+                                <textarea class="form-control" name="content" cols="30" rows="10" id="editor"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="badge">文章标签<span>最多设置5个标签，请用逗号隔开</span></label>
-                                <textarea class="form-control" name="tag" cols="30" rows="2" ondrop="false"></textarea>
-
+                                <textarea class="form-control" name="tag" cols="30" rows="2" ondrop="false" ></textarea>
+                                <a class="btn btn-info btn-markdown" href="javascript:void(0)">MarkDown语法提示&#47;正文预览</a>
                                 <div class="post-edit-badge">
                                     <span class="post-badge-tit">热门标签：</span>
                                     @foreach($hotTag as $tag)
@@ -64,7 +45,6 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <a class="btn btn-info btn-markdown" href="javascript:void(0)">MarkDown语法提示&#47;正文预览</a>
                             <input type="submit" class="btn btn-success" value="发布">
                         </form>
                     </div>
@@ -74,11 +54,9 @@
         </div>
     </div>
     <script>
-        // markdowm语法 正文与预览切换
-        $('.btn-markdown').on('click', function () {
-            $('#preview').toggle();
-            $('#p-markdown').toggle();
-            /* Act on the event */
+        var editor = new Editor({
+            element: document.getElementById('editor')
         });
+        editor.render();
     </script>
 @endsection

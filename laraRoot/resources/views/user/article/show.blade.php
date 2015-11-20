@@ -1,4 +1,5 @@
 @extends('_layouts.index')
+<script type="text/javascript" src="/public/md-editor/marked.js"></script>
 @section('content')
     <div class="container post-page">
         <div class="row">
@@ -19,11 +20,7 @@
                                     <a class="post-badge" href="/article/tags/{{$tag}}">{{$tag}}</a>
                                 @endforeach
                             </div>
-                            <div class="post-content">
-                                <pre>
-                                    {{$article->content}}
-                                </pre>
-                            </div>
+                            <div class="post-content" id="content">{{$article->content}} </div>
                             <div class="post-footer">
                             </div>
                         </div>
@@ -39,8 +36,10 @@
                                          alt="Picture of {{$comment->author_nickname}}"
                                          class="media-object img-rounded">
                                 </a>
+
                                 <div class="media-body">
-                                    @if($comment->parent_id)<p>回复:<a href="#comment-{{$comment->parent_id}}">{{$comment->parent_id}}楼</a></p>
+                                    @if($comment->parent_id)<p>回复:<a
+                                                href="#comment-{{$comment->parent_id}}">{{$comment->parent_id}}楼</a></p>
                                     @else <p>回复:<a href="#article-title">楼主</a></p>
                                     @endif
                                     <pre>{{$comment->text}}</pre>
@@ -54,21 +53,23 @@
                             </li>
                         @endforeach
                     </ul>
-                    <form action="{{route('comment.store')}}" id="comment-form" class="comment-form" role="form" onsubmit="checkComment()" method="POST">
+                    <form action="{{route('comment.store')}}" id="comment-form" class="comment-form" role="form" method="POST">
                         <h4>评论一下： </h4>
+
                         <div class="form-group">
                             <label class="sr-only" for="nickname">昵称</label>
-                            <input type="text" class="form-control" name="nickname" id="nickname" placeholder="昵称">
+                            <input type="text" class="form-control" name="nickname" id="nickname" placeholder="昵称" required>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="邮箱">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="邮箱" required>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="content">评论</label>
+
                             <p id="comment_content"> 回复:</p>
                             <textarea rows="8" class="form-control" name="content" id='comment' placeholder="评论一下好伐啦！"
-                                      style="resize:none"></textarea>
+                                      style="resize:none" required></textarea>
                         </div>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="hidden" name="article_id" value="{{$article->id}}">
@@ -90,15 +91,11 @@
     </div>
     <script>
         function comment(id) {
-            if (!$('#p_id').val()) {
-                $('#p_id').val(id);
-                $('#comment_content').html('回复：' + id + '楼 ');
-            } else {
-                $('#p_id').val(id);
-                $('#comment_content').html('回复：' + id + '楼 ');
-            }
+            $('#p_id').val(id);
+            $('#comment_content').html('回复：' + id + '楼 ');
         }
         $(document).ready(function () {
+            $('#content').html(marked($('#content').html()));
             $('#reset').on('click', function () {
                 $('#number').text("已经输入0个字符，还可输入1000个字符。").append('&nbsp;&nbsp;&nbsp;&nbsp;');
             });
@@ -107,8 +104,7 @@
                     $('#comment').val($('#comment').val().substring(0, 1000));
                 }
                 $('#number').text("已经输入" + $('#comment').val().length + "个字符，还可输入" + (1000 - $('#comment').val().length) + "个字符。").append('&nbsp;&nbsp;&nbsp;&nbsp;');
-            })
-
+            });
         });
         function listen(id, callback) {
             var obj = document.getElementById(id);
@@ -119,10 +115,6 @@
                 obj.oninput = callback;
             }
             obj.onchange = callback;
-        }
-        function checkComment() {
-            if (true) {
-            }
         }
     </script>
 @endsection

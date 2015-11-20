@@ -1,6 +1,6 @@
 <?php
 Route::get('/', 'Home\HomeController@index');
-Route::get('article/{id}', 'Home\ArticleController@show');
+Route::get('article/{id}', ['as'=>'article.show','uses'=>'Home\ArticleController@show']);
 Route::get('article/tags/{name?}', 'Home\HomeController@tagList');
 Route::get('category/{name?}','Home\HomeController@cate');
 Route::get('latest','Home\HomeController@order');

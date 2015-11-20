@@ -28,7 +28,7 @@
                                             <a href="javascript:void(0)">操作</a>
 
                                             <div class="edit-post">
-                                                <a href="{{route('user.article.show',[$article->id])}}">查看</a>
+                                                <a href="{{route('article.show',[$article->id])}}">查看</a>
                                                 <a href="{{route('user.article.edit',[$article->id])}}">编辑</a>
                                                 <form action="{{route('user.article.destroy',[$article->id])}}" method="POST">
                                                     <input name="_method" type="hidden" value="DELETE">
