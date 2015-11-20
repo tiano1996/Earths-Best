@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers\Auth;
+
 use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Auth, Input, Redirect,Mail;
+use Auth, Input, Redirect, Mail;
 
 class AuthController extends Controller
 {
@@ -20,12 +21,18 @@ class AuthController extends Controller
     {
         $username = Input::get('username');
         $password = Input::get('password');
-        $this->validator( array('username' => $username, 'password' => $password));
-        if (Auth::attempt(array('username' => $username, 'password' => $password,'confirmed' => 1))) {
+        $check = \DB::table('users')->where('username', $username)->where('confirmed', '1')->first();
+        if (!$check) {
+            return Redirect::to('auth/login')
+                ->withErrors('sorry,帐号未激活!!!')
+                ->withInput();
+        }
+        $this->validator(array('username' => $username, 'password' => $password));
+        if (Auth::attempt(array('username' => $username, 'password' => $password))) {
             return Redirect::to('/');
         } else {
-            return Redirect::to('auth/login')
-                ->withErrors('密码不正确或帐号未激活!!!')
+            return Redirect::back()
+                ->withErrors('用户名或密码不正确!!')
                 ->withInput();
         }
     }
@@ -41,7 +48,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $data['token'] = str_random(32);
-        Mail::send('emails.confirm', ['token'=>$data['token'],'email'=>$data['email']], function ($message) {
+        Mail::send('emails.confirm', ['token' => $data['token'], 'email' => $data['email']], function ($message) {
             $message->to(Input::get('email'))->subject('Welcome to the Earth Best,Confirm Link!');
         });
         return User::create([

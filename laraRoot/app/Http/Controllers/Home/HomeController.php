@@ -17,13 +17,13 @@ class HomeController extends Controller
         if ($parm != null) {
             $articles = Article::with('comment')
                 ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
-                ->where('status', config('DbStatus.article.status'))
+                ->whereNull('deleted_at')
                 ->orderBy($parm,'desc')
                 ->paginate(2);
         } else {
             $articles = Article::with('comment')
                 ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
-                ->where('status', config('DbStatus.article.status'))
+                ->whereNull('deleted_at')
                 ->paginate(2);
         }
         $list = array();
@@ -41,10 +41,10 @@ class HomeController extends Controller
     {
         if ($name != null)
             $articles = Article::with('comment')->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
-                ->where('status', config('DbStatus.article.status'))->where('tag', 'like', '%' . $name . '%')->paginate(10);
+                ->whereNull('deleted_at')->where('tag', 'like', '%' . $name . '%')->paginate(10);
         else
             $articles = Article::with('comment')->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
-                ->where('status', config('DbStatus.article.status'))->paginate(10);
+                ->whereNull('deleted_at')->paginate(10);
         $list = array();
         foreach ($articles as $v) {
             $v->tag = str_replace('，', ',', $v->tag);
@@ -71,7 +71,7 @@ class HomeController extends Controller
         }
         if ($cate != null)
             $articles = Article::with('comment')->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
-                ->where('status', config('DbStatus.article.status'))->where('category_id', $cateId->id)->paginate(10);
+                ->whereNull('deleted_at')->where('category_id', $cateId->id)->paginate(10);
         else
             return $this->tagList();
         $list = array();

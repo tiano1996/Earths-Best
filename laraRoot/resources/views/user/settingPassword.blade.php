@@ -36,7 +36,6 @@
                                     <div class="form-group">
                                         <label for="pwdRe">当前密码</label>
                                         <input class="form-control" type="password" name="pwdRe" placeholder="重复新密码">
-                                        <span class="pull-right post-err">密码输入不一致</span>
                                     </div>
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <input type="submit" class="btn btn-success" value="保存">

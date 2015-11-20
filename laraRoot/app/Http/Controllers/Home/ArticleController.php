@@ -3,7 +3,7 @@
 use App\Models\Article;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use Cache, Redirect,Input;
+use Cache, Auth, Redirect, Input;
 use Carbon\Carbon;
 
 class ArticleController extends Controller
@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         $articles = Article::with('comment')
             ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
-            ->where('status', config('DbStatus.article.status'))->paginate(1);
+            ->whereNull('deleted_at')->paginate(1);
         foreach ($articles as $v) {
             $v->tag = str_replace('，', ',', $v->tag);
             $v->last_reply = $v->comment->max('created_at');
@@ -24,7 +24,7 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        Article::where('status', config('DbStatus.article.status'))->findOrFail($id);
+        Article::whereNull('deleted_at')->findOrFail($id);
         $this->upView($id);
         $article = Article::find($id);
         $article->tag = explode(",", str_replace('，', ',', $article->tag));
@@ -42,26 +42,26 @@ class ArticleController extends Controller
     public function store()
     {
         $article = new Article();
-        $article->user_id = \Auth::user()->id;
+        $article->user_id = Auth::user()->id;
         $article->title = Input::get('title');
         $article->category_id = Input::get('cate');
         $article->tag = Input::get('tag');
         $article->content = Input::get('content');
         $article->ip = \Request::getClientIp();
-        $article->created_at=Carbon::now();
-        $article->updated_at=Carbon::now();
+        $article->created_at = Carbon::now();
+        $article->updated_at = Carbon::now();
         if ($article->save()) {
-            return Redirect::to('/article/'.$article->id);
+            return Redirect::to('/article/' . $article->id);
         } else {
-            return Redirect::back()->withInput()->withErrors('保存失败！');
+            return Redirect::back()->withInput()->withErrors('发表失败！');
         }
     }
 
     public function edit($id)
     {
-        $art=Article::findOrFail($id);
-        $cate = Category::where('status', config('DbStatus.category.status'))->get();
-        return view('user.article.edit')->with('article',$art)->with('hotTag', $this->hotTag())->with('category', $cate);
+        $art = Article::findOrFail($id);
+        $cate = Category::whereNull('deleted_at')->get();
+        return view('user.article.edit')->with('article', $art)->with('hotTag', $this->hotTag())->with('category', $cate);
     }
 
     public function update($id)
@@ -73,9 +73,9 @@ class ArticleController extends Controller
         $article->tag = Input::get('tag');
         $article->content = Input::get('content');
         $article->ip = \Request::getClientIp();
-        $article->updated_at=Carbon::now();
+        $article->updated_at = Carbon::now();
         if ($article->save()) {
-            return Redirect::to('/article/'.$article->id);
+            return Redirect::to('/article/' . $article->id);
         } else {
             return Redirect::back()->withInput()->withErrors('更新失败！');
         }
@@ -83,7 +83,7 @@ class ArticleController extends Controller
 
     public function destroy($id)
     {
-        $article=Article::findOrFail($id);
+        $article = Article::findOrFail($id);
         if ($article->delete()) {
             return Redirect::to('/user/article');
         } else {
@@ -105,14 +105,14 @@ class ArticleController extends Controller
 
     public static function getTop10()
     {
-        $art = Article::select(['id', 'title'])->where('status', config('DbStatus.article.status'))
+        $art = Article::select(['id', 'title'])->whereNull('deleted_at')
             ->orderBy('view', 'desc')->take(10)->get();
         return $art;
     }
 
     public static function hotTag()
     {
-        $tag = Article::select(['id', 'tag'])->where('status', config('DbStatus.article.status'))
+        $tag = Article::select(['id', 'tag'])->whereNull('deleted_at')
             ->orderBy('view', 'desc')->take(10)->get();
         $data = array();
         foreach ($tag as $v) {

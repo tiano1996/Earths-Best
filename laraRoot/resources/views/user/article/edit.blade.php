@@ -1,32 +1,13 @@
 @extends('_layouts.index')
+<link rel="stylesheet" href="/public/md-editor/editor.css"/>
+<script type="text/javascript" src="/public/md-editor/editor.js"></script>
+<script type="text/javascript" src="/public/md-editor/marked.js"></script>
 @section('content')
     <div class="container">
         <div class="row">
-            <!-- 左侧容器 main-base -->
-            <div class="col-md-6 main-base">
-                <div class="bg-info">
-                    <div class="info-base" id="preview">
-                        <div class="info-title">
-                            <i class="fa fa-file-text-o"></i>&nbsp;正文预览
-                        </div>
-                        <div class="preview-con">
-                            {!! $article->content !!}
-                        </div>
-                    </div>
-                    <div class="info-base" id="p-markdown">
-                        <div class="info-title">
-                            <i class="fa fa-info-circle"></i>&nbsp;MarkDown 语法
-                        </div>
-                        <div class="preview-con">
-                            {!! $article->content !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end 左侧容器 -->
-            <!-- 右侧容器 -->
-            <div class="col-md-6 side-base">
-                <!-- 文章 -->
+            <!-- 主容器 -->
+            <div class="col-md-10 col-md-offset-1 main-base">
+                <!-- markdown -->
                 <div class=" bg-info">
                     <div class="info-base">
                         <div class="info-title">
@@ -39,22 +20,21 @@
                             <div class="form-group">
                                 <label for="title">文章标题<span>必填， 12 到 120 字节，当前 0 字节</span></label>
                                 <input class="form-control" type="text" name="title" placeholder="文章标题"
-                                       value="{{$article->title}}">
-                                <span class="pull-right post-err">请填写文章标题</span>
+                                       value="{{$article->title}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="pType">文章分类<span>必选</span></label>
-                                <select class="form-control" name="cate" id="cateOption" title="分类">
+                                <select class="form-control" name="cate" id="cateOption" title="分类"
+                                        style="max-width: 200px">
                                     <option value="1" selected>-请选择分类-</option>
                                     @foreach($category as $v)
                                         <option value="{{$v->id}}"
                                                 @if($article->category_id==$v->id) selected @endif>{{$v->title}}</option>
                                     @endforeach
                                 </select>
-                                <span class="pull-right post-err">请选择分类</span>
                             </div>
                             <div class="form-group">
-                                <label for="content">文章正文<span>使用MarkDown语法，24 到 20480 字节，当前 0 字节</span></label>
+                                <label for="content">文章正文<span>使用MarkDown语法</span></label>
                                 <textarea class="form-control" name="content" id="content" cols="30"
                                           rows="10">{{$article->content}}</textarea>
                             </div>
@@ -80,11 +60,9 @@
         </div>
     </div>
     <script>
-        // markdowm语法 正文与预览切换
-        $('.btn-markdown').on('click', function () {
-            $('#preview').toggle();
-            $('#p-markdown').toggle();
-            /* Act on the event */
+        var editor = new Editor({
+            element: document.getElementById('editor')
         });
+        editor.render();
     </script>
 @endsection
