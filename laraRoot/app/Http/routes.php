@@ -16,6 +16,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'Home', 'middleware' => 'auth']
     Route::get('setting/password', 'UserController@setPassword');
     Route::post('setting/password','UserController@postPassword');
 });
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
+    Route::get('start.html', 'ApiController@getIndexStart');
+    Route::get('skin.html', 'ApiController@getSkinConfig');
+});
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',

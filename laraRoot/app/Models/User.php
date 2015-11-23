@@ -15,6 +15,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $timestamp=true;
     protected $fillable = ['username', 'email', 'password','confirmation_code'];
     protected $hidden = ['password', 'remember_token'];
+    protected $guarded = ['admin'];
 
     public function article(){
         return $this->hasMany('App\Models\Article');

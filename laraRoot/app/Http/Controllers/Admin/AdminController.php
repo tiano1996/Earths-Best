@@ -7,10 +7,10 @@ class AdminController extends Controller {
 
 	public function index()
 	{
-        if(Auth::User()->role=='adminer'){
+        if(Auth::User()->admin=='1'){
             return view('admin.index');
         }else{
-            \Log::warning('Notice,guest try to visit admins:'.Auth::User()->name);
+            \Log::warning('Notice,User guest try to visit admins:'. Auth::User()->username);
             return Redirect::to('/');
         }
 	}
