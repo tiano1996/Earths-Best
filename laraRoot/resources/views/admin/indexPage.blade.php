@@ -11,10 +11,7 @@
             <br>SelfDesign WebKit…
             <br>…………
             <h4 class="text-danger">Now，Its coming！ </h4>
-
-            <h3>hello,{{Auth::getUser()->username}}</h3>
-
-            <h1 style="text-shadow:  4px 3px 0px rgba(0, 0, 0, 0.15);">{{Auth::getUser()->username}}</h1>
+            hello,<h1 style="text-shadow:  4px 3px 0px rgba(0, 0, 0, 0.15);">{{Auth::getUser()->username}}</h1>
         </blockquote>
         <hr>
     </div>

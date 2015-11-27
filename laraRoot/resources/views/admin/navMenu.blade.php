@@ -1,4 +1,3 @@
-{{--$data = getMenu();--}}
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
@@ -18,16 +17,6 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
-                            <a href="form_avatar.html">
-                                修改头像
-                            </a>
-                        </li>
-                        <li>
-                            <a href="profile.html">
-                                个人资料
-                            </a>
-                        </li>
-                        <li>
                             <a href="contacts.html">
                                 联系我们
                             </a>
@@ -40,7 +29,7 @@
                         <li class="divider">
                         </li>
                         <li>
-                            <a href="doAdminAction.php?act=exit">
+                            <a href="/">
                                 安全退出
                             </a>
                         </li>
@@ -51,25 +40,39 @@
                 </div>
             </li>
             <li class="active">
-                <a href="../index.php">
-                    <i class="fa fa-th-large">
-                    </i> <span class="nav-label">分类管理</span>
-					<span class="fa arrow">
-					</span>
+                <a href=" ">
+                    <i class="fa fa-suitcase"> </i> <span class="nav-label">文章管理</span> <span class="fa arrow"> </span>
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="cateList.php" target="mainBox">
+                        <a href="admin/articleList" target="mainBox">
+                            文章列表
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin/articleAdd" target="mainBox">
+                            添加文章
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa fa-th-large"></i> <span class="nav-label">分类管理</span><span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="admin/cateList" target="mainBox">
                             分类列表
                         </a>
                     </li>
                     <li>
-                        <a href="cateAdd.php" target="mainBox">
+                        <a href="admin/cateAdd" target="mainBox">
                             添加分类
                         </a>
                     </li>
                     <li>
-                        <a href="cateDelete.php" target="mainBox">
+                        <a href="admin/cateDel" target="mainBox">
                             删除分类
                         </a>
                     </li>
@@ -77,20 +80,16 @@
             </li>
             <li>
                 <a href=" ">
-                    <i class="fa fa-user">
-                    </i>
-                    <span class="nav-label">管理员管理</span>
-					<span class="fa arrow">
-					</span>
+                    <i class="fa fa-user"></i><span class="nav-label">管理员管理</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="adminList.php" target="mainBox">
+                        <a href="admin/adminList" target="mainBox">
                             管理员列表
                         </a>
                     </li>
                     <li>
-                        <a href="adminAdd.php" target="mainBox">
+                        <a href="admin/adminAdd" target="mainBox">
                             添加管理员
                         </a>
                     </li>
@@ -98,38 +97,29 @@
             </li>
             <li>
                 <a href=" ">
-                    <i class="fa fa-suitcase">
-                    </i>
-                    <span class="nav-label">商品管理</span>
-					<span class="fa arrow">
-					</span>
+                    <i class="fa fa-th-list"></i><span class="nav-label">菜单列表</span><span class="fa arrow"></span>
+                </a>
+                <ul class='nav nav-second-level'>
+                    {{--echo "<li><a href='javascript:;' target='mainBox'>";--}}
+                    {{--echo "{$key['cName']}";--}}
+                    {{--echo "</a></li>";--}}
+                </ul>
+            </li>
+            <li>
+                <a href=" ">
+                    <i class="fa fa-cog"></i><span class="nav-label">高级设置</span><span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="goodsList.php" target="mainBox">
-                            商品列表
+                        <a href="admin/config" target="mainBox">
+                            系统设置
                         </a>
                     </li>
                     <li>
-                        <a href="goodsAdd.php" target="mainBox">
-                            添加商品
+                        <a href="admin/optimize" target="mainBox">
+                            系统优化
                         </a>
                     </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href=" ">
-                    <i class="fa fa-th-list">
-                    </i>
-                    <span class="nav-label">菜单列表</span>
-					<span class="fa arrow">
-					</span>
-                </a>
-                <ul class='nav nav-second-level'>
-                        {{--echo "<li><a href='javascript:;' target='mainBox'>";--}}
-                        {{--echo "{$key['cName']}";--}}
-                        {{--echo "</a></li>";--}}
                 </ul>
             </li>
         </ul>

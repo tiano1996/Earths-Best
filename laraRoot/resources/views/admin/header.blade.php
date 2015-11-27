@@ -1,9 +1,4 @@
 <!--Head-->
-<style>
-    .nav-head{
-        margin-bottom: 20px;
-    }
-</style>
 <div class="row border-bottom nav-head">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -19,10 +14,10 @@
         <ul class="nav navbar-top-links navbar-right">
             <li>
                  <span class="m-r-sm text-muted welcome-message">
-                     <a href="adminIndex.php" title="返回首页" target="mainBox"><i class="fa fa-home"></i></a>欢迎使用No·Blue后台主题</span>
+                     <a href="/admin/start.html" title="返回首页" target="mainBox"><i class="fa fa-home"></i></a>欢迎使用No·Blue后台主题</span>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="../index.php">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="/">
                     <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
@@ -66,7 +61,7 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="../index.php">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="/">
                     <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
                 </a>
                 <ul class="dropdown-menu dropdown-alerts">
@@ -99,7 +94,7 @@
                 </ul>
             </li>
             <li>
-                <a href="doAdminAction.php?act=logout">
+                <a href="/auth/logout">
                     <i class="fa fa-sign-out"></i> 注销
                 </a>
             </li>

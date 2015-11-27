@@ -16,17 +16,38 @@ Route::group(['prefix' => 'user', 'namespace' => 'Home', 'middleware' => 'auth']
     Route::get('setting/password', 'UserController@setPassword');
     Route::post('setting/password','UserController@postPassword');
 });
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
-    Route::get('start.html', 'ApiController@getIndexStart');
-    Route::get('skin.html', 'ApiController@getSkinConfig');
-});
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
 Route::get('confirm/confirmation_code/{url}', 'Home\UserController@confirm');
-//todo:admin 后台
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'AdminController@index');
     Route::get('/flush/menu','CacheController@flushMenu');
+    Route::get('start.html', 'ApiController@getIndexStart');
+    Route::get('skin.html', 'ApiController@getSkinConfig');
+    Route::get('config', 'AdminController@config');
+    Route::post('config', 'AdminController@postConfig');
+    Route::get('optimize', 'AdminController@optimize');
+    Route::post('optimize/clearSession','AdminController@postClearSession');
+    Route::post('optimize/clearCache','AdminController@postClearCache');
+
+//todo: 功能更新
+    Route::get('cateList','AdminController@cateList');
+    Route::get('cateAdd','AdminController@cateAdd');
+    Route::post('cateAdd','AdminController@postCateAdd');
+    Route::get('cateDel','AdminController@cateDel');
+    Route::post('cateDel','AdminController@postCateDel');
+
+    Route::get('adminList','AdminController@adminList');
+    Route::get('adminAdd','AdminController@adminAdd');
+    Route::post('adminAdd','AdminController@postAdminAdd');
+    Route::get('adminDel','AdminController@adminDel');
+    Route::post('adminDel','AdminController@postAdminDel');
+
+    Route::get('articleList','AdminController@articleList');
+    Route::get('articleAdd','AdminController@articleAdd');
+    Route::post('articleAdd','AdminController@postArticleAdd');
+    Route::get('articleDel','AdminController@articleDel');
+    Route::post('articleDel','AdminController@postArticleDel');
 });

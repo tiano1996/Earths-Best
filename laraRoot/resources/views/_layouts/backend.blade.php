@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="/public/admin/jquery.gritter.css">
     <link rel="stylesheet" type="text/css" href="/public/admin/animate.css">
     <link rel="stylesheet" type="text/css" href="/public/style/style.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     @yield('css')
     <script src="/public/scripts/jquery-2.1.1.min.js"></script>
 </head>
@@ -22,5 +23,6 @@
 <script src="/public/admin/jquery.slimscroll.min.js"></script>
 <script src="/public/admin/pace.min.js"></script>
 <script src="/public/admin/hs.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </body>
 </html>

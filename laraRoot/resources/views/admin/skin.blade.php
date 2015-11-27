@@ -213,9 +213,3 @@
         $("body").addClass("skin-3");
     });
 </script>
-
-<style>
-    .fixed-nav .slimScrollDiv #side-menu {
-        padding-bottom: 60px;
-    }
-</style>
