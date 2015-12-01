@@ -4,6 +4,8 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Input;
 use Redirect;
+use Session;
+use Cache;
 
 class AdminController extends Controller
 {
@@ -52,13 +54,30 @@ class AdminController extends Controller
 
     public function postClearSession()
     {
-        \Session::flash('notify', ['status' => 'success', 'msg' => 'Session 清理成功！']);
+        Session::flush();
+        Session::flash('notify', ['status' => 'success', 'msg' => 'Session 清理成功！']);
         return redirect()->back();
     }
 
     public function postClearCache()
     {
-        \Session::flash('notify', ['status' => 'success', 'msg' => 'Cache 清理成功！']);
+        Cache::flush();
+        Session::flash('notify', ['status' => 'success', 'msg' => 'Cache 清理成功！']);
+        return redirect()->back();
+    }
+
+    public function postFlashMenu(){
+        $menuP = \DB::table('article_categories')->where("pid", 0)->whereNull('deleted_at')->get();
+        foreach ($menuP as &$v) {
+            $menuS = \DB::table('article_categories')->where("pid", $v->id)->whereNull('deleted_at')->get();
+            if (count($menuS)) {
+                foreach ($menuS as $sv) {
+                    $v->menu[] = $sv;
+                }
+            }
+        }
+        Cache::forever('menu',$menuP);
+        Session::flash('notify', ['status' => 'success', 'msg' => 'Menu flash success!']);
         return redirect()->back();
     }
 

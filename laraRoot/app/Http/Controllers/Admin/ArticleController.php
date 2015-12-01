@@ -1,9 +1,9 @@
-<?php namespace App\Http\Controllers\Home;
+<?php namespace App\Http\Controllers\Admin;
 
 use App\Models\Article;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use Cache, Auth, Redirect, Input;
+use Auth, Redirect, Input,Session;
 use Carbon\Carbon;
 
 class ArticleController extends Controller
@@ -11,14 +11,13 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::with('comment')
-            ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
-            ->whereNull('deleted_at')->paginate(1);
+        $articles = Article::select(['id', 'title', 'user_id', 'updated_at', 'created_at'])
+            ->whereNull('deleted_at')->paginate(10);
         foreach ($articles as $v) {
             $v->last_reply = $v->comment->max('created_at');
         }
-        return view('user.article.index')
-            ->with('articles', $articles)->with('tops', ArticleController::getTop10());
+        return view('admin.article.index')
+            ->with('articles', $articles);
     }
 
     public function show($id)
@@ -35,7 +34,7 @@ class ArticleController extends Controller
     public function create()
     {
         $cate = Category::whereNull('deleted_at')->get();
-        return view('user.article.create')->with('hotTag', $this->hotTag())->with('category', $cate);
+        return view('admin.article.create')->with('hotTag', \App\Http\Controllers\Home\ArticleController::hotTag())->with('category', $cate);
     }
 
     public function store()
@@ -50,7 +49,8 @@ class ArticleController extends Controller
         $article->created_at = Carbon::now();
         $article->updated_at = Carbon::now();
         if ($article->save()) {
-            return Redirect::to('/article/' . $article->id);
+            Session::flash('notify', ['status' => 'success', 'msg' => 'Article store success!']);
+            return Redirect::to(route('admin.article.index'));
         } else {
             return Redirect::back()->withInput()->withErrors('发表失败！');
         }
@@ -60,7 +60,7 @@ class ArticleController extends Controller
     {
         $art = Article::findOrFail($id);
         $cate = Category::whereNull('deleted_at')->get();
-        return view('admin.article.edit')->with('article', $art)->with('hotTag', $this->hotTag())->with('category', $cate);
+        return view('admin.article.edit')->with('article', $art)->with('hotTag', \App\Http\Controllers\Home\ArticleController::hotTag())->with('category', $cate);
     }
 
     public function update($id)
@@ -74,7 +74,8 @@ class ArticleController extends Controller
         $article->ip = \Request::getClientIp();
         $article->updated_at = Carbon::now();
         if ($article->save()) {
-            return Redirect::to('/article/' . $article->id);
+            Session::flash('notify', ['status' => 'success', 'msg' => 'Article update success!']);
+            return Redirect::to(route('admin.article.index'));
         } else {
             return Redirect::back()->withInput()->withErrors('更新失败！');
         }
@@ -84,41 +85,11 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
         if ($article->delete()) {
-            return Redirect::to('/user/article');
+            Session::flash('notify', ['status' => 'success', 'msg' => 'Article delete success!']);
+            return Redirect::to(route('admin.article.index'));
         } else {
             return Redirect::back()->withInput()->withErrors('更新失败！');
         }
-    }
-
-    public function upView($id)
-    {
-        $ip = \Request::getClientIp();
-        $viewName = 'view_' . $id . '_' . ip2long($ip);
-        if (!Cache::has($viewName)) {
-            $art = Article::find($id);
-            $art->view++;
-            $art->save();
-            Cache::add($viewName, true, config('DbStatus.article.time'));
-        }
-    }
-
-    public static function getTop10()
-    {
-        $art = Article::select(['id', 'title'])->whereNull('deleted_at')
-            ->orderBy('view', 'desc')->take(10)->get();
-        return $art;
-    }
-
-    public static function hotTag()
-    {
-        $tag = Article::select(['id', 'tag'])->whereNull('deleted_at')
-            ->orderBy('view', 'desc')->take(10)->get();
-        $data = array();
-        foreach ($tag as $v) {
-            $data = array_merge($data, explode(',', $v->tag));
-        }
-        $data = array_unique($data);
-        return $data;
     }
 
 }

@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Admin\CacheController;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Cache;
+use DB;
 use Request;
 
 class HomeController extends Controller
@@ -18,7 +19,7 @@ class HomeController extends Controller
             $articles = Article::with('comment')
                 ->select(['id', 'title', 'tag', 'view', 'introduction', 'updated_at', 'created_at'])
                 ->whereNull('deleted_at')
-                ->orderBy($parm,'desc')
+                ->orderBy($parm, 'desc')
                 ->paginate(2);
         } else {
             $articles = Article::with('comment')
@@ -58,14 +59,24 @@ class HomeController extends Controller
 
     public static function menu()
     {
-        if (!\Cache::has('menu'))
-            CacheController::flushMenu();
-        return \Cache::get('menu');
+        if (!Cache::has('menu')) {
+            $menuP = \DB::table('article_categories')->where("pid", 0)->whereNull('deleted_at')->get();
+            foreach ($menuP as &$v) {
+                $menuS = \DB::table('article_categories')->where("pid", $v->id)->whereNull('deleted_at')->get();
+                if (count($menuS)) {
+                    foreach ($menuS as $sv) {
+                        $v->menu[] = $sv;
+                    }
+                }
+            }
+            Cache::forever('menu', $menuP);
+        }
+        return Cache::get('menu');
     }
 
     public function cate($cate = null)
     {
-        $cateId = \DB::table('article_categories')->select('id')->where('title', $cate)->first();
+        $cateId = DB::table('article_categories')->select('id')->where('title', $cate)->first();
         if (is_null($cateId)) {
             return $this->tagList();
         }

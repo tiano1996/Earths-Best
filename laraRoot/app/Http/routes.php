@@ -23,7 +23,6 @@ Route::controllers([
 Route::get('confirm/confirmation_code/{url}', 'Home\UserController@confirm');
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'AdminController@index');
-    Route::get('/flush/menu','CacheController@flushMenu');
     Route::get('start.html', 'ApiController@getIndexStart');
     Route::get('skin.html', 'ApiController@getSkinConfig');
     Route::get('config', 'AdminController@config');
@@ -31,7 +30,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('optimize', 'AdminController@optimize');
     Route::post('optimize/clearSession','AdminController@postClearSession');
     Route::post('optimize/clearCache','AdminController@postClearCache');
+    Route::post('optimize/flashMenu','AdminController@postFlashMenu');
 
+    Route::resource('article', 'ArticleController');
 //todo: 功能更新
     Route::get('cateList','AdminController@cateList');
     Route::get('cateAdd','AdminController@cateAdd');
@@ -45,9 +46,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::get('adminDel','AdminController@adminDel');
     Route::post('adminDel','AdminController@postAdminDel');
 
-    Route::get('articleList','AdminController@articleList');
-    Route::get('articleAdd','AdminController@articleAdd');
-    Route::post('articleAdd','AdminController@postArticleAdd');
-    Route::get('articleDel','AdminController@articleDel');
-    Route::post('articleDel','AdminController@postArticleDel');
+
 });

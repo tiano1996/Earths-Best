@@ -30,7 +30,6 @@
                     </ul>
                 </div>
             @endif
-            @include('partial.notify')
             <div class="col-md-12">
                 <div class="ibox float-e-margins">
                     <div class="row">
@@ -99,7 +98,7 @@
                             <label class="col-sm-2 control-label" for="password">Mail Password：</label>
 
                             <div class="col-sm-5">
-                                <input class="form-control" type="text" name="password" placeholder="mail password"
+                                <input class="form-control" type="password" name="password" placeholder="mail password"
                                        value="{{$config['MAIL_PASSWORD']}}">
                             </div>
                         </div>
@@ -117,5 +116,6 @@
         </div>
     </div>
 </div>
+@include('partial.notify')
 </body>
 </html>

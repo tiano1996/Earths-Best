@@ -45,12 +45,12 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/articleList" target="mainBox">
+                        <a href="admin/article" target="mainBox">
                             文章列表
                         </a>
                     </li>
                     <li>
-                        <a href="admin/articleAdd" target="mainBox">
+                        <a href="admin/article/create" target="mainBox">
                             添加文章
                         </a>
                     </li>
