@@ -2,12 +2,26 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" href="/public/md/css/bootstrap.min.css"/>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+        }
+    </style>
 </head>
 <body>
-<div class="row  border-bottom white-bg dashboard-header">
+<div class="container">
     <div class="col-sm-12">
+        <h3>
+            No·Blue 后台主题UI框架
+        </h3>
+
+        <p>
+            <b>当前版本：</b>{{ App::version()}}
+        </p>
+    </div>
+    <div class="col-sm-5">
         <blockquote class="text-warning" style="font-size:14px">
-            <br>NoBlue后台主题…
+            <br>NoBlue 后台主题…
             <br>SelfDesign WebKit…
             <br>…………
             <h4 class="text-danger">Now，Its coming！ </h4>
@@ -15,50 +29,46 @@
         </blockquote>
         <hr>
     </div>
-</div>
-<div class="row container">
-    <div class="col-sm-4">
-        <h2>
-            No·Blue 后台主题UI框架
-        </h2>
-
-        <p>
-            <b>当前版本：</b>v1.0
-        </p>
-
-        <p>
-            <a class="btn btn-success btn-outline"
-               href="http://wpa.qq.com/msgrd?v=3&uin=510752553&site=qq&menu=yes" target="_blank">
-                <i class="fa fa-qq"> </i> 联系我
-            </a>
-            <a class="btn btn-white btn-bitbucket" href="http://www.no.me" target="_blank">
-                <i class="fa fa-home"></i> 访问博客
-            </a>
-        </p>
-    </div>
-    <div class="col-sm-4">
-        <h2>Hello, King</h2>
-    </div>
-    <div class="col-sm-4">
-        <div>
-            <table class="main">
-                <tr>
-                    <th>操作系统：</th>
-                    <td><?php echo PHP_OS; ?></td>
-                </tr>
-                <tr>
-                    <th>Apache 版本：</th>
-                    <td><?php echo apache_get_version(); ?></td>
-                </tr>
-                <tr>
-                    <th>PHP 版本：</th>
-                    <td><?php echo phpversion(); ?></td>
-                </tr>
-                <tr>
-                    <th>运行方式：</th>
-                    <td><?php echo PHP_SAPI ?></td>
-                </tr>
-            </table>
+    <div class="col-sm-7">
+        <div class="row">
+            <div class="col-sm-4 text-right">
+                <span>操作系统：</span>
+            </div>
+            <div class="col-sm-8">
+                {{PHP_OS}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 text-right">
+                <span>PHP 版本：</span>
+            </div>
+            <div class="col-sm-8">
+                {{phpversion()}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 text-right">
+                <span>Apache 版本：</span>
+            </div>
+            <div class="col-sm-8">
+                {{apache_get_version()}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 text-right">
+                <span>运行方式：</span>
+            </div>
+            <div class="col-sm-8">
+                {{PHP_SAPI}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 text-right">
+                <span>运行环境：</span>
+            </div>
+            <div class="col-sm-8">
+                {{ App::environment()}}
+            </div>
         </div>
     </div>
 </div>

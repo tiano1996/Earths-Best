@@ -39,6 +39,7 @@
                     <div class="form-horizontal">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">清除 Session：</label>
+
                             <div class="col-sm-5">
                                 <form action="/admin/optimize/clearSession" method="POST">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -66,6 +67,7 @@
                     <div class="form-horizontal">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">刷新 Menu：</label>
+
                             <div class="col-sm-5">
                                 <form action="/admin/optimize/flashMenu" method="POST">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -76,6 +78,19 @@
                         <div class="hr-line-dashed"></div>
                     </div>
 
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">优化 数据库：</label>
+
+                            <div class="col-sm-5">
+                                <form action="/admin/optimize/optimizeDatabase" method="POST">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <input type="submit" class="btn btn-info" value="确定">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                    </div>
 
                 </div>
             </div>

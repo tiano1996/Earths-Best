@@ -6,6 +6,7 @@ use Input;
 use Redirect;
 use Session;
 use Cache;
+use DB;
 
 class AdminController extends Controller
 {
@@ -39,10 +40,10 @@ class AdminController extends Controller
         $config['MAIL_USERNAME'] = Input::get('username');
         $config['MAIL_PASSWORD'] = Input::get('password');
         if ($this->modifyEnv($config)) {
-            \Session::flash('notify', ['status' => 'success', 'msg' => '保存成功']);
+            Session::flash('notify', ['status' => 'success', 'msg' => '保存成功']);
             return redirect()->back();
         } else {
-            \Session::flash('notify', ['status' => 'warning', 'msg' => '保存失败']);
+            Session::flash('notify', ['status' => 'warning', 'msg' => '保存失败']);
             return redirect()->back()->withInput()->withErrors('保存失败!');
         }
     }
@@ -67,9 +68,9 @@ class AdminController extends Controller
     }
 
     public function postFlashMenu(){
-        $menuP = \DB::table('article_categories')->where("pid", 0)->whereNull('deleted_at')->get();
+        $menuP = DB::table('article_categories')->where("pid", 0)->whereNull('deleted_at')->get();
         foreach ($menuP as &$v) {
-            $menuS = \DB::table('article_categories')->where("pid", $v->id)->whereNull('deleted_at')->get();
+            $menuS = DB::table('article_categories')->where("pid", $v->id)->whereNull('deleted_at')->get();
             if (count($menuS)) {
                 foreach ($menuS as $sv) {
                     $v->menu[] = $sv;
@@ -78,6 +79,13 @@ class AdminController extends Controller
         }
         Cache::forever('menu',$menuP);
         Session::flash('notify', ['status' => 'success', 'msg' => 'Menu flash success!']);
+        return redirect()->back();
+    }
+
+    public function postOptimizeDatabase(){
+        $res=DB::statement("OPTIMIZE TABLE `articles`, `article_categories`, `comments`, `password_resets`, `photos`, `photo_albums`, `users`");
+        if($res)
+        Session::flash('notify', ['status' => 'success', 'msg' => 'Database optimize Success!']);
         return redirect()->back();
     }
 

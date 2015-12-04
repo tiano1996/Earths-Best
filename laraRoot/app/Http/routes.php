@@ -31,14 +31,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::post('optimize/clearSession','AdminController@postClearSession');
     Route::post('optimize/clearCache','AdminController@postClearCache');
     Route::post('optimize/flashMenu','AdminController@postFlashMenu');
-
+    Route::post('optimize/optimizeDatabase','AdminController@postOptimizeDatabase');
     Route::resource('article', 'ArticleController');
+    Route::resource('cate', 'CateController');
 //todo: 功能更新
-    Route::get('cateList','AdminController@cateList');
-    Route::get('cateAdd','AdminController@cateAdd');
-    Route::post('cateAdd','AdminController@postCateAdd');
-    Route::get('cateDel','AdminController@cateDel');
-    Route::post('cateDel','AdminController@postCateDel');
 
     Route::get('adminList','AdminController@adminList');
     Route::get('adminAdd','AdminController@adminAdd');
