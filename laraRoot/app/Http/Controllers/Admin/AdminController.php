@@ -26,6 +26,8 @@ class AdminController extends Controller
         $config['APP_ENV'] = env('APP_ENV');
         $config['APP_DEBUG'] = env('APP_DEBUG');
         $config['APP_KEY'] = env('APP_KEY');
+        $config['APP_URL'] = env('APP_URL');
+        $config['LOG_DRIVER'] = env('LOG_DRIVER');
         $config['MAIL_HOST'] = env('MAIL_HOST');
         $config['MAIL_USERNAME'] = env('MAIL_USERNAME');
         $config['MAIL_PASSWORD'] = env('MAIL_PASSWORD');
@@ -36,6 +38,8 @@ class AdminController extends Controller
     {
         $config['APP_DEBUG'] = (Input::get('debug') == 'open') ? true : false;
         $config['APP_KEY'] = Input::get('key');
+        $config['APP_URL'] = Input::get('url');
+        $config['LOG_DRIVER'] = Input::get('log');
         $config['MAIL_HOST'] = Input::get('host');
         $config['MAIL_USERNAME'] = Input::get('username');
         $config['MAIL_PASSWORD'] = Input::get('password');

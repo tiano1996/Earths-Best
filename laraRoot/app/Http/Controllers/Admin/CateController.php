@@ -1,17 +1,19 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Models\Article;
-use App\Models\Category;
 use App\Http\Controllers\Controller;
-use Auth, Redirect, Input,Session;
-use Carbon\Carbon;
+use Popohum\UnlimitedTree\Tree;
+use Redirect;
+use Session;
+use \App\Models\Category;
 
 class CateController extends Controller
 {
 
     public function index()
     {
-        return view('admin.cate.index');
+        $data = Category::whereNull('deleted_at')->get()->toArray();
+        $res = new Tree($data);
+        return view('admin.cate.index')->with('foo', $res->getTree());
     }
 
     public function show($id)

@@ -68,12 +68,39 @@
                         <div class="hr-line-dashed"></div>
 
                         <div class="form-group">
+                            <label for="debug" class="col-sm-2 control-label">Log 模式：</label>
+
+                            <div class="col-sm-10">
+                                <div class="log">
+                                        <select name="log" title="log">
+                                            <option value="single" @if($config['LOG_DRIVER']=='single') selected @endif>单个文件</option>
+                                            <option value="daily" @if($config['LOG_DRIVER']=='daily') selected @endif>按日分隔</option>
+                                            <option value="syslog" @if($config['LOG_DRIVER']=='syslog') selected @endif>系统日志</option>
+                                            <option value="errorlog" @if($config['LOG_DRIVER']=='errorlog') selected @endif>错误日志</option>
+                                        </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
                             <label for="key" class="col-sm-2 control-label">加密 Key：</label>
 
                             <div class="col-sm-5">
                                 <input class="form-control" type="text" name="key" placeholder="app key"
                                        value="{{$config['APP_KEY']}}" required>
                                 <span class="help-block m-b-none">32位随机字符串</span>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <label for="key" class="col-sm-2 control-label">Server Url：</label>
+
+                            <div class="col-sm-5">
+                                <input class="form-control" type="text" name="url" placeholder="app url"
+                                       value="{{$config['APP_URL']}}" required>
+                                <span class="help-block m-b-none">服务器地址，http://</span>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>

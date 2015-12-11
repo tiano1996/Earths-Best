@@ -62,18 +62,13 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/cateList" target="mainBox">
+                        <a href="admin/cate" target="mainBox">
                             分类列表
                         </a>
                     </li>
                     <li>
-                        <a href="admin/cateAdd" target="mainBox">
+                        <a href="admin/cate/create" target="mainBox">
                             添加分类
-                        </a>
-                    </li>
-                    <li>
-                        <a href="admin/cateDel" target="mainBox">
-                            删除分类
                         </a>
                     </li>
                 </ul>
