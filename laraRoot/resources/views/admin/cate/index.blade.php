@@ -1,7 +1,7 @@
 <html>
 <head>
     <style type="text/css">
-        * {
+        body {
             font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
         }
 

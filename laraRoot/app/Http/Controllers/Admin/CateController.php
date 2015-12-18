@@ -29,9 +29,11 @@ class CateController extends Controller
     public function store()
     {
         if (true) {
+            Session::flash('notify', ['status' => 'success', 'msg' => 'Cate store success!']);
             return Redirect::to(route('admin.cate.index'));
         } else {
-            return Redirect::back()->withInput()->withErrors('修改失败！');
+            Session::flash('notify', ['status' => 'fail', 'msg' => 'Cate store faile!']);
+            return Redirect::back()->withInput();
         }
     }
 
@@ -44,9 +46,9 @@ class CateController extends Controller
     {
         if (true) {
             Session::flash('notify', ['status' => 'success', 'msg' => 'Cate update success!']);
-            return Redirect::to(route('admin.article.index'));
+            return Redirect::to(route('admin.cate.index'));
         } else {
-            return Redirect::back()->withInput()->withErrors('更新失败！');
+            return Redirect::back()->withInput();
         }
     }
 
@@ -56,7 +58,8 @@ class CateController extends Controller
             Session::flash('notify', ['status' => 'success', 'msg' => 'Cate delete success!']);
             return Redirect::to(route('admin.cate.index'));
         } else {
-            return Redirect::back()->withInput()->withErrors('更新失败！');
+            Session::flash('notify', ['status' => 'fail', 'msg' => 'Cate delete fail!']);
+            return Redirect::back()->withInput();
         }
     }
 

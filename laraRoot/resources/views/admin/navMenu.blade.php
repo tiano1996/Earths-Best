@@ -10,15 +10,16 @@
 						<span class="clear">
 							<span class="block m-t-xs">
 								<strong class="font-bold">{{Auth::User()->username}}</strong>
-							</span>  <span class="text-muted text-xs block">超级管理员
-								<b class="caret">
-                                </b></span>
+							</span>
+                            <span class="text-muted text-xs block">超级管理员
+								<b class="caret"> </b>
+                            </span>
 						</span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
-                            <a href="contacts.html">
-                                联系我们
+                            <a href="/admin/user" target="mainBox">
+                                管理员列表
                             </a>
                         </li>
                         <li>

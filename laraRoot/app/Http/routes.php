@@ -10,6 +10,7 @@ Route::get('update','Home\HomeController@order');
 Route::resource('comment', 'Home\CommentController');
 Route::group(['prefix' => 'user', 'namespace' => 'Home', 'middleware' => 'auth'], function () {
     Route::get('/', 'UserController@index');
+    Route::get('{id}','UserController@show');
     Route::resource('article', 'ArticleController');
     Route::get('setting/info', 'UserController@setInfo');
     Route::get('setting/face', 'UserController@setFace');
@@ -34,13 +35,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth
     Route::post('optimize/optimizeDatabase','AdminController@postOptimizeDatabase');
     Route::resource('article', 'ArticleController');
     Route::resource('cate', 'CateController');
-//todo: 功能更新
-
-    Route::get('adminList','AdminController@adminList');
-    Route::get('adminAdd','AdminController@adminAdd');
-    Route::post('adminAdd','AdminController@postAdminAdd');
-    Route::get('adminDel','AdminController@adminDel');
-    Route::post('adminDel','AdminController@postAdminDel');
-
-
+    Route::resource('user', 'UserController');
 });
