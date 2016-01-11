@@ -2,7 +2,7 @@
 <head>
     <style type="text/css">
         body {
-            font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+            font-family: 'Helvetica Neue', Helvetica,'Arial','Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
         }
 
         .tree {
@@ -87,7 +87,7 @@
 </head>
 <body>
 <div class="tree well">
-    {!! $foo !!}
+    {!! $tree !!}
 </div>
 </body>
 <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>

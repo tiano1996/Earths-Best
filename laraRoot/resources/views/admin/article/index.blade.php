@@ -9,6 +9,16 @@
         .margin-fix {
             margin: 50px 100px 30px 50px;
         }
+
+        td {
+            font-size: 14px;
+        }
+
+        button[type='submit']{
+            color: #337ab7;
+            border: none;
+            background-color: transparent;
+        }
     </style>
 </head>
 <body>
@@ -17,7 +27,8 @@
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul class="list-unstyled"> @foreach ($errors->all() as $error)
+                <ul class="list-unstyled">
+                    @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
@@ -30,8 +41,8 @@
                 <th></th>
                 <th>ID</th>
                 <th>标题</th>
-                <th>create</th>
-                <th>update</th>
+                <th>分类</th>
+                <th>create / update</th>
                 <th>reply</th>
                 <th>作者</th>
                 <th>管理</th>
@@ -42,18 +53,20 @@
                 <tr>
                     <td></td>
                     <td>{{$article->id}}</td>
-                    <td><a href="#" onclick="window.open('{{route('article.show',$article->id)}}')">{{$article->title}}</a></td>
-                    <td>{{$article->created_at}}</td>
-                    <td>{{$article->updated_at}}</td>
+                    <td><a href="#" onclick="window.open('{{route('article.show',$article->id)}}')"
+                           @if($article->deleted_at!=null) style="color:#f00;"@endif>{{$article->title}}</a></td>
+                    <td>{{$article->category->title}}</td>
+                    <td>{{$article->created_at}}<br>
+                        {{$article->updated_at}}</td>
                     <td>{{$article->last_reply}}</td>
                     <td>{{ \App\Models\User::find($article->user_id)->username}}</td>
-                    <td><a href="{{route('admin.article.edit',$article->id)}}" class="btn btn-success">编辑</a>
-
+                    <td>
+                        <a href="{{route('admin.article.edit',$article->id)}}" class="glyphicon glyphicon-edit"></a>
                         <form action="{{route('admin.article.destroy',$article->id)}}" method="POST"
                               style="display: inline;">
-                            <input name="_method" type="hidden" value="DELETE">
+                            <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                            <button type="submit" class="btn btn-danger">删除</button>
+                            <button type="submit" class="glyphicon glyphicon-trash"></button>
                         </form>
                     </td>
                 </tr>

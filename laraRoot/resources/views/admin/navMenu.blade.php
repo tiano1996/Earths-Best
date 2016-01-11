@@ -18,7 +18,7 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li>
-                            <a href="/admin/user" target="mainBox">
+                            <a href="admin/user" target="mainBox">
                                 管理员列表
                             </a>
                         </li>
@@ -30,7 +30,7 @@
                         <li class="divider">
                         </li>
                         <li>
-                            <a href="/">
+                            <a href="/auth/logout">
                                 安全退出
                             </a>
                         </li>
@@ -64,12 +64,12 @@
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="admin/cate" target="mainBox">
-                            分类列表
+                            菜单列表
                         </a>
                     </li>
                     <li>
                         <a href="admin/cate/create" target="mainBox">
-                            添加分类
+                            添加菜单
                         </a>
                     </li>
                 </ul>
@@ -80,25 +80,15 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="admin/adminList" target="mainBox">
+                        <a href="admin/user" target="mainBox">
                             管理员列表
                         </a>
                     </li>
                     <li>
-                        <a href="admin/adminAdd" target="mainBox">
+                        <a href="admin/user/create" target="mainBox">
                             添加管理员
                         </a>
                     </li>
-                </ul>
-            </li>
-            <li>
-                <a href=" ">
-                    <i class="fa fa-th-list"></i><span class="nav-label">菜单列表</span><span class="fa arrow"></span>
-                </a>
-                <ul class='nav nav-second-level'>
-                    {{--echo "<li><a href='javascript:;' target='mainBox'>";--}}
-                    {{--echo "{$key['cName']}";--}}
-                    {{--echo "</a></li>";--}}
                 </ul>
             </li>
             <li>

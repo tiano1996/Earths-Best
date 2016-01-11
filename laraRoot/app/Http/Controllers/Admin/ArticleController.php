@@ -11,13 +11,11 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::select(['id', 'title', 'user_id', 'updated_at', 'created_at'])
-            ->whereNull('deleted_at')->paginate(10);
+        $articles = Article::select(['id', 'title', 'user_id', 'category_id','updated_at', 'created_at', 'deleted_at'])->paginate(10);
         foreach ($articles as $v) {
             $v->last_reply = $v->comment->max('created_at');
         }
-        return view('admin.article.index')
-            ->with('articles', $articles);
+        return view('admin.article.index')->with('articles', $articles);
     }
 
     public function show($id)
@@ -52,7 +50,8 @@ class ArticleController extends Controller
             Session::flash('notify', ['status' => 'success', 'msg' => 'Article store success!']);
             return Redirect::to(route('admin.article.index'));
         } else {
-            return Redirect::back()->withInput()->withErrors('发表失败！');
+            Session::flash('notify', ['status' => 'error', 'msg' => 'Article store fail!']);
+            return Redirect::back()->withInput()->withErrors('发布失败！');
         }
     }
 
@@ -77,6 +76,7 @@ class ArticleController extends Controller
             Session::flash('notify', ['status' => 'success', 'msg' => 'Article update success!']);
             return Redirect::to(route('admin.article.index'));
         } else {
+            Session::flash('notify', ['status' => 'error', 'msg' => 'Article update fail!']);
             return Redirect::back()->withInput()->withErrors('更新失败！');
         }
     }
@@ -84,11 +84,13 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $article = Article::findOrFail($id);
-        if ($article->delete()) {
+        $article->deleted_at=Carbon::now();
+        if ($article->save()) {
             Session::flash('notify', ['status' => 'success', 'msg' => 'Article delete success!']);
             return Redirect::to(route('admin.article.index'));
         } else {
-            return Redirect::back()->withInput()->withErrors('更新失败！');
+            Session::flash('notify', ['status' => 'error', 'msg' => 'Article delete fail!']);
+            return Redirect::back();
         }
     }
 

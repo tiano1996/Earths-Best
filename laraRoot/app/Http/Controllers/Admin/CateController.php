@@ -13,7 +13,7 @@ class CateController extends Controller
     {
         $data = Category::whereNull('deleted_at')->get()->toArray();
         $res = new Tree($data);
-        return view('admin.cate.index')->with('foo', $res->getTree());
+        return view('admin.cate.index')->with('tree', $res->getTree());
     }
 
     public function show($id)

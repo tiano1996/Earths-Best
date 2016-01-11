@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Input;
 use Redirect;
 use Session;
@@ -70,12 +71,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        if ($user->delete()) {
+        $user->deleted_at=Carbon::now();
+        if ($user->Save()) {
             Session::flash('notify', ['status' => 'success', 'msg' => 'User delete success!']);
-            return Redirect::to(route('admin.user.index'));
+            return Redirect::back();
         } else {
             Session::flash('notify', ['status' => 'warning', 'msg' => 'User delete fail!']);
-            return Redirect::back()->withInput();
+            return Redirect::back();
         }
     }
 

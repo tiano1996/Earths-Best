@@ -9,6 +9,16 @@
         .margin-fix {
             margin: 50px 100px 30px 50px;
         }
+
+        td {
+            font-size: 14px;
+        }
+
+        button[type='submit'] {
+            color: #337ab7;
+            border: none;
+            background-color: transparent;
+        }
     </style>
 </head>
 <body>
@@ -48,11 +58,11 @@
                     <td>{{$user->admin?"是":"否"}}</td>
                     <td>{{$user->confirmed?"是":"否"}}</td>
                     <td>
-                        <a href="{{route('admin.user.edit',$user->id)}}" class="btn btn-success">编辑</a>
+                        <a href="{{route('admin.user.edit',$user->id)}}" class="glyphicon glyphicon-edit"> </a>
                         <form action="{{route('admin.user.destroy',$user->id)}}" method="POST" style="display: inline;">
                             <input name="_method" type="hidden" value="DELETE">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                            <button type="submit" class="btn btn-danger">删除</button>
+                            <button type="submit" class="glyphicon glyphicon-trash"></button>
                         </form>
                     </td>
                 </tr>
