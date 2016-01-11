@@ -29,7 +29,7 @@ class AuthController extends Controller
         }
         $this->validator(array('username' => $username, 'password' => $password));
         if (Auth::attempt(array('username' => $username, 'password' => $password))) {
-            return Redirect::to('/');
+            return Redirect::intended();
         } else {
             return Redirect::back()
                 ->withErrors('用户名或密码不正确!!')

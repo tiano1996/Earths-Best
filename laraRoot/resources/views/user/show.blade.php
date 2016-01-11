@@ -18,7 +18,7 @@
                         </ul>
 
                         <div class="post-list">
-                            @foreach($articles as $article)
+                            @foreach($user->article as $article)
                                 <div class="post">
                                     <div class="post-head">
                                         <a href="/article/{{$article->id}}"><span class="fa fa-share-alt"></span>
@@ -30,9 +30,10 @@
                                             <div class="edit-post">
                                                 <a href="{{route('article.show',[$article->id])}}">查看</a>
                                                 <a href="{{route('user.article.edit',[$article->id])}}">编辑</a>
-                                                <form action="{{route('user.article.destroy',[$article->id])}}" method="POST">
+                                                <form action="{{route('user.article.destroy',[$article->id])}}"
+                                                      method="POST">
                                                     <input name="_method" type="hidden" value="DELETE">
-                                                    <input name="_token" type="hidden" value="{{ csrf_token() }}">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                     <input type="submit" class="btn-link" value="删除">
                                                 </form>
                                             </div>
@@ -58,47 +59,35 @@
                 </div>
                 <!-- 分页 -->
                 <div class="page-base">
-                    {!! $articles->render() !!}
                     <div class="page-ctrl">
-                        <a href="{!! $articles->url('10') !!}" class="active">10</a>
-                        <a href="{!! $articles->url('20') !!}">20</a>
-                        <a href="{!! $articles->url('50') !!}">50</a>
                     </div>
                 </div>
             </div>
             <!-- end 左侧容器 -->
             <!-- 右侧容器 -->
             <div class="col-md-3 side-base">
-                @include('user.userInfo')
-                @include('user.setting')
+                <!-- 个人信息 面板 -->
+                <div class="bg-info">
+                    <div class="info-base">
+                        <div class="info-title">
+                            <i class="fa fa-user"></i>&nbsp;个人中心
+                        </div>
+                        <div class="profile">
+                            <img src="http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg" alt="">
+                            <a href="#" class="user-name">{{$user->username}}</a>
+                            <span class="fa fa-male"></span><span class="fa fa-female"></span>
+                            <span class="jobs">前端攻城狮</span>
+                            <a href="#">{{count($user->article)}}</a>&nbsp;文章&nbsp;&#124;&nbsp;<a href="#">{{$count}}</a>&nbsp;评论
+                        </div>
+                        <dl class="profile-info">
+                            <dt>登陆邮箱</dt><dd>{{$user->email}}</dd>
+                            <dt>注册时间</dt><dd>{{$user->created_at}}</dd>
+                            <dt>最后登录</dt><dd>{{$user->updated_at}}</dd>
+                        </dl>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- end 右侧容器 -->
-    <script>
-        // 个人中心操作按钮下拉
-        $(document).ready(function () {
-            $('.edit-btn > a').on('mouseover', function () {
-                $(this).parent().css('z-index', '1');
-                $(this).addClass('active');
-                $(this).next().stop().show('fast');
-                /* Act on the event */
-            });
-            $('.edit-btn').on('mouseleave', function () {
-                $(this).find('.edit-post').stop().hide('normal');
-                $(this).css('z-index', '0');
-                $(this).find('.active').removeClass('active');
-                /* Act on the event */
-            });
-            $('.post-style>a').on('click', function () {
-                if ($(".post>.post-content").css('display') == 'none') {
-                    $(this).find('>i').removeClass('fa-th-large').addClass('fa-th-list');
-                    $('.post .post-content').stop().slideDown('fast');
-                } else {
-                    $(this).find('>i').removeClass('fa-th-list').addClass('fa-th-large');
-                    $('.post .post-content').stop().slideUp('fast');
-                }
-            })
-        });
-    </script>
+
 @endsection

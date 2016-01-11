@@ -10,6 +10,7 @@ Route::get('update','Home\HomeController@order');
 Route::resource('comment', 'Home\CommentController');
 Route::group(['prefix' => 'user', 'namespace' => 'Home', 'middleware' => 'auth'], function () {
     Route::get('/', 'UserController@index');
+    Route::get('{id}','UserController@show');
     Route::resource('article', 'ArticleController');
     Route::get('setting/info', 'UserController@setInfo');
     Route::get('setting/face', 'UserController@setFace');
@@ -21,8 +22,18 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 Route::get('confirm/confirmation_code/{url}', 'Home\UserController@confirm');
-//todo:admin 后台
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'AdminController@index');
-    Route::get('/flush/menu','CacheController@flushMenu');
+    Route::get('start.html', 'ApiController@getIndexStart');
+    Route::get('skin.html', 'ApiController@getSkinConfig');
+    Route::get('config', 'AdminController@config');
+    Route::post('config', 'AdminController@postConfig');
+    Route::get('optimize', 'AdminController@optimize');
+    Route::post('optimize/clearSession','AdminController@postClearSession');
+    Route::post('optimize/clearCache','AdminController@postClearCache');
+    Route::post('optimize/flashMenu','AdminController@postFlashMenu');
+    Route::post('optimize/optimizeDatabase','AdminController@postOptimizeDatabase');
+    Route::resource('article', 'ArticleController');
+    Route::resource('cate', 'CateController');
+    Route::resource('user', 'UserController');
 });
